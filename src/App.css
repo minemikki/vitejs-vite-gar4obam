@@ -114,16 +114,20 @@
 }
 .hero-scene-wrap { position: absolute; inset: 0; z-index: -1; }
 .hero-scene { width: 100%; height: 100%; }
-.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%; }
-/* Ekte foto er lyst i nedre venstre hjørne, akkurat der den hvite teksten
-   står. Sløret legger et varmt, mørkt dyp nederst og til venstre så tittelen
-   holder kontrast, mens solnedgangen og kalksteinen oppe til høyre får stå
-   fram. To lag: ett bunn-til-topp, ett venstre-til-høyre. */
+.hero-photo {
+  width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%;
+  /* Et lite løft så turkisen og solnedgangen syder litt mer */
+  filter: saturate(1.08) contrast(1.03);
+}
+/* Sløret skal så vidt mørkne bunnen og venstre kant der teksten står — ikke
+   legge et grønt teppe over hele bildet. Nøytral, kjølig tone (ikke grønn),
+   lav dekkevne og kort rekkevidde, så vannet og kalksteinen får stå fram.
+   Lesbarheten på tittelen tas mest av tekstskyggen under, ikke av sløret. */
 .hero-scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(0deg, rgba(3, 30, 28, 0.82) 0%, rgba(3, 30, 28, 0.44) 26%, rgba(3, 30, 28, 0.08) 52%, rgba(3, 30, 28, 0) 72%),
-    linear-gradient(90deg, rgba(3, 30, 28, 0.58) 0%, rgba(3, 30, 28, 0.2) 38%, rgba(3, 30, 28, 0) 66%);
+    linear-gradient(0deg, rgba(5, 18, 24, 0.6) 0%, rgba(5, 18, 24, 0.2) 22%, rgba(5, 18, 24, 0) 44%),
+    linear-gradient(90deg, rgba(5, 18, 24, 0.42) 0%, rgba(5, 18, 24, 0.08) 32%, rgba(5, 18, 24, 0) 56%);
 }
 .hero-inner {
   position: relative;
@@ -145,16 +149,22 @@
 .hero-title {
   font-size: clamp(2.4rem, 5.6vw, 4rem);
   color: #fff;
-  text-shadow: 0 2px 30px rgba(4, 26, 21, 0.36);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.42), 0 3px 34px rgba(2, 14, 18, 0.4);
   margin-bottom: 16px;
+  /* Hold tittelen til venstre/midt, så den ikke strekker seg inn i den lyse
+     solnedgangen til høyre på brede skjermer — der ville gulltuen falme. */
+  max-width: 15em;
 }
-.hero-title-accent { color: var(--gold-soft); font-style: italic; }
+.hero-title-accent {
+  color: var(--gold-soft); font-style: italic;
+  text-shadow: 0 1px 4px rgba(2, 14, 18, 0.55), 0 2px 20px rgba(2, 14, 18, 0.4);
+}
 .hero-lead {
   font-size: clamp(1.02rem, 1.5vw, 1.16rem);
   max-width: 34em;
-  color: rgba(255, 255, 255, 0.94);
+  color: #fff;
   margin-bottom: 26px;
-  text-shadow: 0 1px 12px rgba(4, 26, 21, 0.34);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 16px rgba(2, 14, 18, 0.4);
 }
 
 .searchbar {
@@ -184,7 +194,8 @@
 
 .hero-trust {
   display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
-  margin-top: 22px; font-size: 0.93rem; color: rgba(255, 255, 255, 0.95);
+  margin-top: 22px; font-size: 0.93rem; color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
 .hero-stars { color: var(--gold-soft); gap: 1px; }
