@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { read, write, KEYS } from '../lib/storage.js';
-import { analytics, CONSENT_MONTHS } from '../config.js';
+import { analytics, partners, CONSENT_MONTHS } from '../config.js';
 
 /*
  * GDPR-samtykke gjort riktig:
@@ -16,6 +16,24 @@ const expired = (c) => {
   const months = (Date.now() - c.at) / (1000 * 60 * 60 * 24 * 30.4);
   return months > CONSENT_MONTHS;
 };
+
+/**
+ * GetYourGuides analyseskript. Viser i partnerdashbordet hvilke turer folk
+ * klikker seg videre på — altså hva de faktisk vurderer, ikke bare hva de
+ * ser på. GetYourGuide ber deg legge det i <head> på hver side; det gjør vi
+ * ikke, fordi det setter sporing fra tredjepart før brukeren har sagt ja.
+ */
+function loadPartnerAnalytics() {
+  const id = partners.gygPartnerId;
+  if (!id || document.getElementById('gyg-analytics')) return;
+  const s = document.createElement('script');
+  s.id = 'gyg-analytics';
+  s.async = true;
+  s.defer = true;
+  s.src = 'https://widget.getyourguide.com/dist/pa.umd.production.min.js';
+  s.dataset.gygPartnerId = id;
+  document.head.appendChild(s);
+}
 
 /** Laster analyseverktøy — kalles KUN etter samtykke. */
 function loadAnalytics() {
@@ -40,7 +58,10 @@ export function useConsent() {
   useEffect(() => {
     const stored = read(KEYS.consent, null);
     if (expired(stored)) setOpen(true);
-    else if (stored?.analytics) loadAnalytics();
+    else if (stored?.analytics) {
+      loadAnalytics();
+      loadPartnerAnalytics();
+    }
   }, []);
 
   const decide = useCallback((accepted) => {
@@ -48,7 +69,10 @@ export function useConsent() {
     write(KEYS.consent, value);
     setConsent(value);
     setOpen(false);
-    if (accepted) loadAnalytics();
+    if (accepted) {
+      loadAnalytics();
+      loadPartnerAnalytics();
+    }
   }, []);
 
   const reopen = useCallback(() => setOpen(true), []);

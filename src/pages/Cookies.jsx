@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useConsent } from '../components/CookieBanner.jsx';
-import { analytics, CONSENT_MONTHS } from '../config.js';
+import { analytics, partners, CONSENT_MONTHS } from '../config.js';
 import { DraftNotice } from './Privacy.jsx';
 
 export default function Cookies() {
@@ -57,6 +57,18 @@ export default function Cookies() {
                 <td>Til du sletter den</td>
                 <td>Nødvendig</td>
               </tr>
+              {partners.gygPartnerId ? (
+                <tr>
+                  <td><code>GetYourGuide</code></td>
+                  <td>
+                    Måler hvilke turer du klikker deg videre på, så vi vet hva
+                    som er verdt å ta inn i utvalget. Settes av GetYourGuide,
+                    som er vår bookingpartner.
+                  </td>
+                  <td>Se GetYourGuides egen erklæring</td>
+                  <td>Statistikk (krever samtykke)</td>
+                </tr>
+              ) : null}
               {analytics.googleAnalyticsId ? (
                 <tr>
                   <td><code>_ga</code>, <code>_ga_*</code></td>
@@ -68,8 +80,8 @@ export default function Cookies() {
                 <tr>
                   <td colSpan="4">
                     <em>
-                      Ingen analyseverktøy er koblet på ennå. Legges det til
-                      senere, kjører det først etter at du har samtykket.
+                      Google Analytics er ikke koblet på. Legges det til senere,
+                      kjører det først etter at du har samtykket.
                     </em>
                   </td>
                 </tr>

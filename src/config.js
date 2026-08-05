@@ -101,6 +101,20 @@ export const newsletter = {
  * Ikke last inn sporing før brukeren har samtykket (GDPR). Legg inn ID her,
  * så aktiveres den først etter samtykke i cookie-banneret.
  */
+/*
+ * PARTNERE
+ * --------
+ * `gygPartnerId` er ID-en fra GetYourGuides partnerprogram. Den brukes to
+ * steder: i affiliate-lenkene på hver opplevelse (`bookingUrl` i data.js),
+ * og av analyseskriptet som viser deg hvilke turer folk klikker på.
+ *
+ * Skriptet lastes først etter samtykke, ikke i <head> slik GetYourGuide
+ * foreslår. Det er sporing fra tredjepart, og da gjelder GDPR.
+ */
+export const partners = {
+  gygPartnerId: '1BG7LK4',
+};
+
 export const analytics = {
   // f.eks. 'G-XXXXXXXXXX' for Google Analytics 4
   googleAnalyticsId: '',
