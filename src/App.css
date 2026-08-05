@@ -1675,7 +1675,13 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 
 /* GetYourGuide bestillingswidget i bestillingsboksen */
-.gyg-widget { min-height: 300px; margin-bottom: 14px; }
+.bookbox--widget { padding: 22px 18px; }
+.bookbox-head { margin-bottom: 16px; }
+.bookbox-title { font-size: 1.24rem; letter-spacing: -0.02em; margin-bottom: 5px; }
+.bookbox-sub { font-size: 0.9rem; line-height: 1.45; color: var(--muted); }
+.gyg-widget {
+  min-height: 300px; margin: 0 -4px 16px;
+}
 .gyg-widget span { font-size: 0.8rem; color: var(--muted); }
 .bookbox-consent { margin-bottom: 4px; }
 .bookbox-consent .btn-lg { gap: 8px; margin-bottom: 12px; }

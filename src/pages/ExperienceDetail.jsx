@@ -11,6 +11,14 @@ import { track } from '../lib/analytics.js';
 import { read, write, KEYS } from '../lib/storage.js';
 import NotFound from './NotFound.jsx';
 
+// Bestillingen skjer hos partneren via en ren, merkevaretilpasset knapp som
+// lander kunden rett på turens egen side (med vår partner-ID for provisjon).
+// GetYourGuide-kalenderen (BookingWidget) finnes fortsatt i koden, men er
+// slått av: den lastes i en iframe vi ikke kan style, og «Drevet av / Bli med
+// i partnerprogram»-merket + den blå knappen så uprofesjonelt ut ved siden av
+// resten av siden. Sett denne til true for å hente kalenderen tilbake.
+const USE_GYG_WIDGET = false;
+
 /*
  * Bestillingsboks for turer vi selger gjennom en partner.
  *
@@ -95,38 +103,47 @@ function BookingWidget({ exp }) {
   }, [consented, exp.gygTourId]);
 
   return (
-    <aside className="bookbox" aria-label="Bestilling">
-      <div className="bookbox-price">
-        <span className="bookbox-from">Fra</span>
-        <strong>{nok(exp.priceNOK)}</strong>
-        <span>per person</span>
-      </div>
-
+    <aside className="bookbox bookbox--widget" aria-label="Bestilling">
       {consented ? (
-        <div className="gyg-widget" ref={host} />
+        <>
+          <div className="bookbox-head">
+            <h3 className="bookbox-title">Book denne turen</h3>
+            <p className="bookbox-sub">
+              Velg dato og antall reisende — du får bekreftelse med en gang.
+            </p>
+          </div>
+          <div className="gyg-widget" ref={host} />
+        </>
       ) : (
-        <div className="bookbox-consent">
-          <a
-            className="btn btn-gold btn-block btn-lg"
-            href={exp.bookingUrl}
-            target="_blank"
-            rel="sponsored noopener noreferrer"
-            onClick={() => track('partner_click', { id: exp.id, partner: exp.partner })}
-          >
-            Sjekk ledige datoer <Icon.arrow width={18} height={18} />
-          </a>
-          <p className="bookbox-consent-note">
-            Vil du velge dato og booke direkte her på siden?{' '}
-            <button
-              type="button"
-              className="linklike"
-              onClick={() => window.dispatchEvent(new Event('st-open-consent'))}
+        <>
+          <div className="bookbox-price">
+            <span className="bookbox-from">Fra</span>
+            <strong>{nok(exp.priceNOK)}</strong>
+            <span>per person</span>
+          </div>
+          <div className="bookbox-consent">
+            <a
+              className="btn btn-gold btn-block btn-lg"
+              href={exp.bookingUrl}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              onClick={() => track('partner_click', { id: exp.id, partner: exp.partner })}
             >
-              Godta informasjonskapsler fra {exp.partner}
-            </button>
-            , så vises bestillingskalenderen her.
-          </p>
-        </div>
+              Sjekk ledige datoer <Icon.arrow width={18} height={18} />
+            </a>
+            <p className="bookbox-consent-note">
+              Vil du velge dato og booke direkte her på siden?{' '}
+              <button
+                type="button"
+                className="linklike"
+                onClick={() => window.dispatchEvent(new Event('st-open-consent'))}
+              >
+                Godta informasjonskapsler fra {exp.partner}
+              </button>
+              , så vises bestillingskalenderen her.
+            </p>
+          </div>
+        </>
       )}
 
       <p className="bookbox-partner">
@@ -478,7 +495,7 @@ export default function ExperienceDetail() {
           </section>
         </div>
 
-        {exp.gygTourId ? (
+        {USE_GYG_WIDGET && exp.gygTourId ? (
           <BookingWidget exp={exp} />
         ) : exp.bookingUrl ? (
           <PartnerBox exp={exp} />
