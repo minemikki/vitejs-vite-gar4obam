@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getExperience, allExperiences } from '../data.js';
 import { Scene, Icon } from '../scenes.jsx';
 import ExperienceCard from '../components/ExperienceCard.jsx';
 import { nok, num, todayISO } from '../lib/format.js';
+import TripButton from '../components/TripButton.jsx';
+import { track } from '../lib/analytics.js';
+import { read, write, KEYS } from '../lib/storage.js';
 import NotFound from './NotFound.jsx';
 
 function BookingBox({ exp }) {
@@ -14,6 +17,7 @@ function BookingBox({ exp }) {
 
   const submit = (e) => {
     e.preventDefault();
+    track('begin_checkout', { id: exp.id, title: exp.title, value: total });
     const p = new URLSearchParams({ dato: date, antall: String(people) });
     navigate(`/bestill/${exp.slug}?${p}`);
   };
@@ -59,6 +63,8 @@ function BookingBox({ exp }) {
         </button>
       </form>
 
+      <TripButton exp={exp} variant="block" />
+
       <ul className="bookbox-perks">
         <li><Icon.check width={16} height={16} /> Gratis avbestilling inntil 24 t før</li>
         <li><Icon.check width={16} height={16} /> Bekreftelse på e-post umiddelbart</li>
@@ -71,6 +77,14 @@ function BookingBox({ exp }) {
 export default function ExperienceDetail() {
   const { slug } = useParams();
   const exp = getExperience(slug);
+
+  // Registrer visningen for «nylig sett» og for statistikk.
+  useEffect(() => {
+    if (!exp) return;
+    track('view_experience', { id: exp.id, title: exp.title, place: exp.place });
+    const prev = read(KEYS.recentlyViewed, []).filter((id) => id !== exp.id);
+    write(KEYS.recentlyViewed, [exp.id, ...prev].slice(0, 8));
+  }, [exp]);
 
   if (!exp) return <NotFound />;
 

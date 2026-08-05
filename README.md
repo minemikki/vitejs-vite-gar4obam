@@ -5,6 +5,8 @@ React Router**, forhåndsrendret til statisk HTML og klar for **Vercel**.
 
 ---
 
+**[→ Les vekstplanen](VEKSTPLAN.md)** — strategi, SEO, kanaler og tall.
+
 ## Kom i gang
 
 ```bash
@@ -109,6 +111,17 @@ scripts/
   prerender.mjs        ← lager statisk HTML + sitemap.xml ved bygg
 ```
 
+### Legge til innhold (viktigst for vekst)
+
+| Vil du legge til … | Rediger |
+| --- | --- |
+| En opplevelse | `src/data.js` |
+| Et reisemål | `src/content/destinations.js` |
+| En guide/artikkel | `src/content/guides.js` |
+
+Alt får automatisk egen adresse, egne metatagger, structured data og plass i
+`sitemap.xml` ved neste bygg. Du trenger ikke røre noe annet.
+
 ### Legge til en ny opplevelse
 
 Legg til et objekt i `experiences` i `src/data.js`. Adressen (`slug`) og
@@ -117,6 +130,16 @@ bygg. Vil du ha egne høydepunkter og «inkludert»-liste, legg inn en post med
 samme `id` i `details`-objektet lenger nede i samme fil.
 
 ---
+
+## Funksjoner som skiller oss fra Klook
+
+- **Min reise** (`/min-reise`) — planlegg dager, se totalpris for hele følget,
+  del planen med en lenke. Advarer hvis du legger to heldagsturer på samme dag.
+- **Sammenligning** — inntil tre opplevelser side ved side, inkludert hva som
+  *ikke* er inkludert.
+- **Instant søk** — Ctrl/Cmd+K, tastaturnavigering, tåler æøå.
+- **Filtre i URL-en** — et filtrert søk kan bokmerkes og deles.
+- **Kuratert utvalg med redaksjonell linje** — ingen elefantridning.
 
 ## SEO
 

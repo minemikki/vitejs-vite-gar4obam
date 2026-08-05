@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Scene, Icon } from '../scenes.jsx';
 import { nok, num } from '../lib/format.js';
+import TripButton from './TripButton.jsx';
 
 export default function ExperienceCard({ exp, saved, onSave }) {
   const href = `/opplevelser/${exp.slug}`;
@@ -47,6 +48,8 @@ export default function ExperienceCard({ exp, saved, onSave }) {
             <span className="tag" key={t}>{t}</span>
           ))}
         </div>
+
+        <TripButton exp={exp} variant="card" />
 
         <div className="card-foot">
           <div className="card-price">

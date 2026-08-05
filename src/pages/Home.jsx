@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { allExperiences, categories, destinations, testimonials } from '../data.js';
 import { Scene, HeroScene, Icon } from '../scenes.jsx';
 import ExperienceCard from '../components/ExperienceCard.jsx';
+import Newsletter from '../components/Newsletter.jsx';
 
 function Hero() {
   const navigate = useNavigate();
@@ -263,6 +264,7 @@ export default function Home() {
       <Destinations />
       <HowItWorks />
       <Testimonials />
+      <section className="section"><Newsletter /></section>
       <Cta />
     </>
   );

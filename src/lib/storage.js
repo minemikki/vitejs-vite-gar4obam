@@ -46,4 +46,7 @@ export const KEYS = {
   consent: 'st.consent.v1',
   wishlist: 'st.wishlist.v1',
   draftBooking: 'st.booking.draft.v1',
+  trip: 'st.trip.v1',
+  recentlyViewed: 'st.recent.v1',
+  newsletter: 'st.newsletter.v1',
 };

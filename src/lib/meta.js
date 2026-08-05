@@ -5,18 +5,26 @@
  */
 import { site } from '../config.js';
 import { allExperiences, destinations } from '../data.js';
+import { destinations as destPages } from '../content/destinations.js';
+import { guides } from '../content/guides.js';
 
 const abs = (path) => `${site.url}${path === '/' ? '' : path}`;
 
 export const staticRoutes = [
   '/',
   '/opplevelser',
+  '/reisemal',
+  '/guider',
+  '/min-reise',
   '/faq',
   '/om-oss',
   '/personvern',
   '/vilkar',
   '/informasjonskapsler',
 ];
+
+export const destinationRoutes = destPages.map((d) => `/reisemal/${d.slug}`);
+export const guideRoutes = guides.map((g) => `/guider/${g.slug}`);
 
 export const experienceRoutes = allExperiences.map((e) => `/opplevelser/${e.slug}`);
 
@@ -25,10 +33,21 @@ export const experienceRoutes = allExperiences.map((e) => `/opplevelser/${e.slug
 export const checkoutRoutes = allExperiences.map((e) => `/bestill/${e.slug}`);
 
 /** Sider som skrives til disk ved bygg. */
-export const allRoutes = [...staticRoutes, ...experienceRoutes, ...checkoutRoutes];
+export const allRoutes = [
+  ...staticRoutes,
+  ...experienceRoutes,
+  ...destinationRoutes,
+  ...guideRoutes,
+  ...checkoutRoutes,
+];
 
 /** Sider som skal ligge i sitemap.xml — checkout hører ikke hjemme i søk. */
-export const sitemapRoutes = [...staticRoutes, ...experienceRoutes];
+export const sitemapRoutes = [
+  ...staticRoutes.filter((r) => r !== '/min-reise'),
+  ...experienceRoutes,
+  ...destinationRoutes,
+  ...guideRoutes,
+];
 
 /* ----------------------------- JSON-LD ----------------------------- */
 
@@ -75,6 +94,29 @@ const breadcrumbLd = (trail) => ({
   })),
 });
 
+const articleLd = (g) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: g.title,
+  description: g.excerpt,
+  url: abs(`/guider/${g.slug}`),
+  datePublished: g.published,
+  dateModified: g.published,
+  inLanguage: 'nb-NO',
+  author: { '@type': 'Organization', name: site.name, url: site.url },
+  publisher: { '@type': 'Organization', name: site.name, url: site.url },
+  articleSection: g.topic,
+});
+
+const placeLd = (d) => ({
+  '@context': 'https://schema.org',
+  '@type': 'TouristDestination',
+  name: d.name,
+  description: d.tagline,
+  url: abs(`/reisemal/${d.slug}`),
+  address: { '@type': 'PostalAddress', addressRegion: d.region, addressCountry: 'TH' },
+});
+
 export const faqLd = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -98,6 +140,21 @@ const STATIC_META = {
   '/opplevelser': {
     title: `Alle opplevelser i Thailand — ${site.name}`,
     description: `Se alle kuraterte turer og aktiviteter i ${DEST_NAMES}. Filtrer på kategori, se priser i norske kroner og book på norsk.`,
+  },
+  '/reisemal': {
+    title: `Reisemål i Thailand — hvor bør du dra? | ${site.name}`,
+    description:
+      'Bangkok, Phuket, Chiang Mai, Krabi, Koh Samui og Pattaya — forklart på norsk. Hva som er verdt tiden, når du bør reise og hva du kan hoppe over.',
+  },
+  '/guider': {
+    title: `Thailand-guider på norsk | ${site.name}`,
+    description:
+      'Ærlige guider om Thailand: beste reisetid, hva turen koster, reise med barn, etiske elefantparker og hvordan du velger mellom reisemålene.',
+  },
+  '/min-reise': {
+    title: `Min reise — planlegg Thailand-turen | ${site.name}`,
+    description:
+      'Samle opplevelsene du vurderer, fordel dem på dager og se hva hele turen koster. Planen lagres i nettleseren din.',
   },
   '/faq': {
     title: `Ofte stilte spørsmål — ${site.name}`,
@@ -144,6 +201,48 @@ export function metaForPath(pathname) {
       });
     }
     return { ...m, canonical: abs(path), jsonLd };
+  }
+
+  const dest = path.match(/^\/reisemal\/(.+)$/);
+  if (dest) {
+    const d = destPages.find((x) => x.slug === dest[1]);
+    if (d) {
+      return {
+        title: `${d.metaTitle} | ${site.name}`,
+        description: d.metaDescription,
+        canonical: abs(path),
+        jsonLd: [
+          placeLd(d),
+          faqLd(d.faq),
+          breadcrumbLd([
+            { name: 'Hjem', path: '/' },
+            { name: 'Reisemål', path: '/reisemal' },
+            { name: d.name, path },
+          ]),
+        ],
+      };
+    }
+  }
+
+  const guide = path.match(/^\/guider\/(.+)$/);
+  if (guide) {
+    const g = guides.find((x) => x.slug === guide[1]);
+    if (g) {
+      return {
+        title: `${g.metaTitle} | ${site.name}`,
+        description: g.metaDescription,
+        canonical: abs(path),
+        jsonLd: [
+          articleLd(g),
+          ...(g.faq?.length ? [faqLd(g.faq)] : []),
+          breadcrumbLd([
+            { name: 'Hjem', path: '/' },
+            { name: 'Guider', path: '/guider' },
+            { name: g.title, path },
+          ]),
+        ],
+      };
+    }
   }
 
   const checkout = path.match(/^\/bestill\/(.+)$/);

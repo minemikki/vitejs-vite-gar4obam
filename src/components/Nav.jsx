@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { LogoMark, Icon } from '../scenes.jsx';
 import { site } from '../config.js';
+import { useTrip } from '../lib/trip.js';
+import Search from './Search.jsx';
 
 export function Logo({ light = false }) {
   return (
@@ -16,16 +18,18 @@ export function Logo({ light = false }) {
 
 const LINKS = [
   { to: '/opplevelser', label: 'Opplevelser' },
+  { to: '/reisemal', label: 'Reisemål' },
+  { to: '/guider', label: 'Guider' },
   { to: '/om-oss', label: 'Om oss' },
-  { to: '/faq', label: 'Spørsmål' },
 ];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const { trip } = useTrip();
   const { pathname } = useLocation();
 
-  // Forsiden har mørkt hero-bilde bak menyen; alle andre sider er lyse.
   const overHero = pathname === '/';
 
   useEffect(() => {
@@ -35,7 +39,18 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lukk menyen ved navigering, og lås bakgrunnen mens den er åpen.
+  // Cmd/Ctrl+K åpner søket — det folk som bruker nettet mye forventer.
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     if (!open) return undefined;
@@ -46,45 +61,60 @@ export default function Nav() {
   }, [open]);
 
   const transparent = overHero && !solid && !open;
+  const tripCount = trip.items.length;
 
   return (
-    <header className={`nav ${transparent ? '' : 'is-solid'}`}>
-      <div className="nav-inner">
-        <Logo />
+    <>
+      <header className={`nav ${transparent ? '' : 'is-solid'}`}>
+        <div className="nav-inner">
+          <Logo />
 
-        <nav className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Hovedmeny">
-          {LINKS.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) => (isActive ? 'is-current' : '')}
-            >
-              {l.label}
+          <nav className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Hovedmeny">
+            {LINKS.map((l) => (
+              <NavLink key={l.to} to={l.to} className={({ isActive }) => (isActive ? 'is-current' : '')}>
+                {l.label}
+              </NavLink>
+            ))}
+            <NavLink to="/min-reise" className={({ isActive }) => `nav-mobileonly ${isActive ? 'is-current' : ''}`}>
+              Min reise{tripCount > 0 ? ` (${tripCount})` : ''}
             </NavLink>
-          ))}
-        </nav>
+          </nav>
 
-        <div className="nav-right">
-          <span className="nav-nok" title="Alle priser vises i norske kroner">
-            <Icon.globe width={15} height={15} /> NOK
-          </span>
-          <Link to="/opplevelser" className="btn btn-primary btn-sm nav-book">
-            Book nå
-          </Link>
-          <button
-            className="nav-burger"
-            aria-label={open ? 'Lukk meny' : 'Åpne meny'}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <Icon.x width={22} height={22} /> : (
-              <>
-                <span /><span /><span />
-              </>
-            )}
-          </button>
+          <div className="nav-right">
+            <button
+              className="nav-icon"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Søk"
+              title="Søk (Ctrl+K)"
+            >
+              <Icon.search width={20} height={20} />
+            </button>
+
+            <Link
+              to="/min-reise"
+              className="nav-icon nav-trip"
+              aria-label={tripCount ? `Min reise, ${tripCount} lagt til` : 'Min reise'}
+              title="Min reise"
+            >
+              <Icon.ticket width={20} height={20} />
+              {tripCount > 0 && <span className="nav-badge">{tripCount}</span>}
+            </Link>
+
+            <Link to="/opplevelser" className="btn btn-primary btn-sm nav-book">Book nå</Link>
+
+            <button
+              className="nav-burger"
+              aria-label={open ? 'Lukk meny' : 'Åpne meny'}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <Icon.x width={22} height={22} /> : (<><span /><span /><span /></>)}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {searchOpen && <Search onClose={() => setSearchOpen(false)} />}
+    </>
   );
 }

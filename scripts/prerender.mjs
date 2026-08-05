@@ -53,9 +53,9 @@ function headFor(meta) {
   return tags.join('\n    ');
 }
 
-function pageFor(route) {
+async function pageFor(route) {
   const meta = metaForPath(route);
-  const html = render(route);
+  const html = await render(route);
 
   return template
     // Erstatt standardtittelen fra index.html med rutens egen.
@@ -70,7 +70,7 @@ for (const route of allRoutes) {
   try {
     const outDir = route === '/' ? dist : join(dist, route);
     mkdirSync(outDir, { recursive: true });
-    writeFileSync(join(outDir, 'index.html'), pageFor(route));
+    writeFileSync(join(outDir, 'index.html'), await pageFor(route));
     written += 1;
   } catch (err) {
     failures.push(`${route}: ${err.message}`);
@@ -79,7 +79,7 @@ for (const route of allRoutes) {
 
 // 404-side som Vercel serverer for ukjente stier.
 try {
-  writeFileSync(join(dist, '404.html'), pageFor('/finnes-ikke'));
+  writeFileSync(join(dist, '404.html'), await pageFor('/finnes-ikke'));
 } catch (err) {
   failures.push(`404: ${err.message}`);
 }
