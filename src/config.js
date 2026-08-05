@@ -27,9 +27,9 @@ export const site = {
   // Bytt den dagen du kobler på eget domene i Vercel. Ingen skråstrek til slutt.
   url: 'https://andaman.no',
 
-  // TODO: ekte kontaktopplysning. Denne står i vilkårene og er adressen
-  // bestillingsforespørsler sendes til — den MÅ finnes før du tar imot kunder.
-  email: 'hei@andaman.no',
+  // Står i vilkår, footer, checkout og structured data. Postkassa finnes
+  // hos domene.no, og kontakt@ / hei@ / info@ videresendes hit.
+  email: 'post@andaman.no',
   phone: '', // f.eks. '+47 400 00 000' — la stå tom om du ikke vil oppgi telefon
 
   // TODO: juridiske opplysninger. Disse VISES i vilkår og personvern og må
