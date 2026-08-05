@@ -119,15 +119,15 @@ function Plate({ uid, pAR, label, from, to, glow, gx, gy, seed, mt, children }) 
           <stop offset="1" stopColor={from} />
         </linearGradient>
         <radialGradient id={g('gl')} cx={gx / W} cy={gy / H} r="0.85">
-          <stop offset="0" stopColor={glow} stopOpacity="0.5" />
-          <stop offset="0.42" stopColor={glow} stopOpacity="0.14" />
+          <stop offset="0" stopColor={glow} stopOpacity="0.72" />
+          <stop offset="0.45" stopColor={glow} stopOpacity="0.22" />
           <stop offset="1" stopColor={glow} stopOpacity="0" />
         </radialGradient>
         <linearGradient id={g('sc')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#000" stopOpacity="0.3" />
+          <stop offset="0" stopColor="#000" stopOpacity="0.2" />
           <stop offset="0.32" stopColor="#000" stopOpacity="0" />
           <stop offset="0.68" stopColor="#000" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity="0.46" />
+          <stop offset="1" stopColor="#000" stopOpacity="0.38" />
         </linearGradient>
         <pattern id={g('gr')} width="4" height="4" patternUnits="userSpaceOnUse">
           <circle cx="0.6" cy="0.8" r="0.55" fill="#fff" opacity="0.055" />
@@ -152,7 +152,7 @@ function Plate({ uid, pAR, label, from, to, glow, gx, gy, seed, mt, children }) 
         strokeWidth="2.6"
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity="0.24"
+        opacity="0.3"
         transform={mt}
       >
         {children}
@@ -176,8 +176,8 @@ const Islands = (p) => (
     {...p}
     label="Øyer og longtailbåt"
     mt={fit(190, 152, 1.1)}
-    from="#04222a"
-    to="#0b4954"
+    from="#073b48"
+    to="#12798d"
     glow="#ffd08a"
     gx={306}
     gy={74}
@@ -204,8 +204,8 @@ const Karst = (p) => (
     {...p}
     label="Kalksteinsformasjoner i havet"
     mt={fit(203, 148, 1.14)}
-    from="#0c1a30"
-    to="#264674"
+    from="#12325c"
+    to="#3a72b8"
     glow="#a9d3ff"
     gx={318}
     gy={62}
@@ -236,8 +236,8 @@ const Temple = (p) => (
     {...p}
     label="Tempeltårn ved elven"
     mt={fit(200, 166, 1.02)}
-    from="#25102a"
-    to="#7d3527"
+    from="#4a1f45"
+    to="#c25a34"
     glow="#ffc98a"
     gx={300}
     gy={86}
@@ -258,8 +258,8 @@ const Jungle = (p) => (
     {...p}
     label="Elefant i reservat"
     mt={fit(213, 176, 1.26)}
-    from="#07241a"
-    to="#1a6247"
+    from="#0d4530"
+    to="#26946a"
     glow="#ffe6a8"
     gx={300}
     gy={72}
@@ -284,8 +284,8 @@ const Canopy = (p) => (
     {...p}
     label="Palmeblad i regnskogen"
     mt={fit(200, 150, 1.0)}
-    from="#04201a"
-    to="#12574b"
+    from="#0a3d33"
+    to="#1b8a76"
     glow="#a9f2d4"
     gx={312}
     gy={64}
@@ -305,8 +305,8 @@ const City = (p) => (
     {...p}
     label="Bysilhuett om kvelden"
     mt={fit(200, 174, 1.06)}
-    from="#160e2c"
-    to="#5d2153"
+    from="#2c1a52"
+    to="#a03a8c"
     glow="#ffa8d6"
     gx={300}
     gy={76}
@@ -324,8 +324,8 @@ const Arena = (p) => (
     {...p}
     label="Muay Thai"
     mt={fit(200, 182, 1.3)}
-    from="#150a11"
-    to="#70202f"
+    from="#33121c"
+    to="#b8354b"
     glow="#ffb094"
     gx={286}
     gy={70}
@@ -346,8 +346,8 @@ const Safari = (p) => (
     {...p}
     label="Sjiraff i safaripark"
     mt={fit(204, 148, 0.94)}
-    from="#0f2016"
-    to="#4f5c1e"
+    from="#1d3a22"
+    to="#8a9430"
     glow="#ffe294"
     gx={296}
     gy={74}
@@ -386,8 +386,8 @@ const Market = (p) => (
     {...p}
     label="Lykter over et nattmarked"
     mt={fit(200, 128, 1.16)}
-    from="#231206"
-    to="#8d5015"
+    from="#4a2410"
+    to="#d4801f"
     glow="#ffc76b"
     gx={296}
     gy={70}
@@ -444,24 +444,24 @@ export function HeroScene() {
     >
       <defs>
         <linearGradient id={g('base')} x1="0" y1="0" x2="0.3" y2="1">
-          <stop offset="0" stopColor="#06131d" />
-          <stop offset="0.46" stopColor="#0a2b2a" />
-          <stop offset="1" stopColor="#04120f" />
+          <stop offset="0" stopColor="#0a2b44" />
+          <stop offset="0.5" stopColor="#155c5c" />
+          <stop offset="1" stopColor="#0b3f30" />
         </linearGradient>
         <radialGradient id={g('sun')} cx="0.74" cy="0.5" r="0.62">
-          <stop offset="0" stopColor="#ffb04d" stopOpacity="0.52" />
-          <stop offset="0.3" stopColor="#f0803c" stopOpacity="0.2" />
+          <stop offset="0" stopColor="#ffc46b" stopOpacity="0.82" />
+          <stop offset="0.32" stopColor="#f5893f" stopOpacity="0.42" />
           <stop offset="1" stopColor="#f0803c" stopOpacity="0" />
         </radialGradient>
         <radialGradient id={g('jade')} cx="0.1" cy="1" r="0.85">
-          <stop offset="0" stopColor="#0f7a5f" stopOpacity="0.42" />
+          <stop offset="0" stopColor="#17b487" stopOpacity="0.4" />
           <stop offset="1" stopColor="#0f7a5f" stopOpacity="0" />
         </radialGradient>
         <linearGradient id={g('vig')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#020a09" stopOpacity="0.5" />
+          <stop offset="0" stopColor="#02231f" stopOpacity="0.34" />
           <stop offset="0.34" stopColor="#020a09" stopOpacity="0" />
           <stop offset="0.72" stopColor="#020a09" stopOpacity="0.16" />
-          <stop offset="1" stopColor="#020a09" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#02231f" stopOpacity="0.4" />
         </linearGradient>
         <linearGradient id={g('side')} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#020a09" stopOpacity="0.52" />
