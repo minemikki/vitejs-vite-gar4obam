@@ -38,6 +38,8 @@ export default function Footer({ onOpenConsent }) {
 
         <nav className="footer-col" aria-label="Informasjon">
           <h4>Informasjon</h4>
+          <Link to="/naar-reise">Når bør du reise</Link>
+          <Link to="/guider">Guider</Link>
           <Link to="/om-oss">Om oss</Link>
           <Link to="/faq">Spørsmål og svar</Link>
           <Link to="/vilkar">Bestillingsvilkår</Link>

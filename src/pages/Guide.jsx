@@ -99,6 +99,16 @@ export default function Guide() {
             </div>
           ))}
 
+          {g.cta && (
+            <aside className="guide-cta">
+              <h2>{g.cta.h}</h2>
+              <p>{g.cta.p}</p>
+              <Link className="btn btn-primary" to={g.cta.to}>
+                {g.cta.label} <Icon.arrow width={17} height={17} />
+              </Link>
+            </aside>
+          )}
+
           {g.faq?.length > 0 && (
             <section className="guide-section">
               <h2>Vanlige spørsmål</h2>

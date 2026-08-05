@@ -15,6 +15,7 @@ export const staticRoutes = [
   '/opplevelser',
   '/reisemal',
   '/guider',
+  '/naar-reise',
   '/min-reise',
   '/faq',
   '/om-oss',
@@ -150,6 +151,11 @@ const STATIC_META = {
     title: `Thailand-guider på norsk | ${site.name}`,
     description:
       'Ærlige guider om Thailand: beste reisetid, hva turen koster, reise med barn, etiske elefantparker og hvordan du velger mellom reisemålene.',
+  },
+  '/naar-reise': {
+    title: `Når bør du reise til Thailand? Måned for måned | ${site.name}`,
+    description:
+      'Thailand har to kyster med hver sin regntid. Se hvilken region som har best vær hver eneste måned — og hvorfor november er høysesong på Phuket og våtest på Koh Samui.',
   },
   '/min-reise': {
     title: `Min reise — planlegg Thailand-turen | ${site.name}`,

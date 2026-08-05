@@ -19,6 +19,7 @@ export function Logo({ light = false }) {
 const LINKS = [
   { to: '/opplevelser', label: 'Opplevelser' },
   { to: '/reisemal', label: 'Reisemål' },
+  { to: '/naar-reise', label: 'Når reise' },
   { to: '/guider', label: 'Guider' },
   { to: '/om-oss', label: 'Om oss' },
 ];

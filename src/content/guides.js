@@ -84,6 +84,12 @@ export const guides = [
   },
   {
     slug: 'beste-tid-a-reise-til-thailand',
+    cta: {
+      h: 'Se det måned for måned',
+      p: 'Værkartet vårt viser alle fire regionene i Thailand for hver eneste måned — og hvorfor de to kystene er speilvendte.',
+      label: 'Åpne værkartet',
+      to: '/naar-reise',
+    },
     title: 'Når er den beste tiden å reise til Thailand?',
     excerpt:
       'Det korte svaret er november til februar. Det lange svaret er at landet har to helt forskjellige regntider — og velger du riktig kyst, kan du reise når som helst.',
@@ -142,6 +148,7 @@ export const guides = [
         h: 'Vårt råd',
         p: [
           'Har du fri når du vil, velg november eller februar. Er du bundet til norsk fellesferie i juli, dra til Koh Samui-siden framfor Phuket. Skal du til Chiang Mai for elefanter og fjell, unngå mars og april.',
+          'Vil du se dette måned for måned og region for region, har vi laget et eget værkart du kan klikke deg gjennom.',
         ],
       },
     ],
@@ -451,6 +458,491 @@ export const guides = [
       {
         q: 'Hvor mye bør jeg gi i tips?',
         a: 'Tips er ikke forventet slik som i USA, men er hyggelig for god service. Å runde opp regningen, eller gi guiden noen hundre baht etter en heldagstur, er vanlig.',
+      },
+    ],
+  },
+  {
+    slug: 'thailand-rundreise-tre-uker',
+    title: 'Thailand på tre uker — tre ruter som faktisk fungerer',
+    excerpt:
+      'De fleste prøver å få med alt og bruker halve ferien på nattbuss. Her er tre ruter satt opp etter hvor mye du orker å flytte deg — og hva du bør droppe.',
+    metaTitle: 'Thailand rundreise 3 uker — ferdige ruteforslag',
+    metaDescription:
+      'Tre gjennomtenkte ruter for tre uker i Thailand: nord og øyer, bare sør, eller den rolige varianten. Med reisetid, overnattingsfordeling og hva du bør kutte.',
+    published: '2026-08-05',
+    readMinutes: 9,
+    topic: 'Planlegging',
+    related: { destinations: ['bangkok', 'chiang-mai', 'krabi', 'koh-samui'], categories: [] },
+    sections: [
+      {
+        h: 'Den vanligste tabben',
+        p: [
+          'Tre uker høres ut som lang tid. Så legger man inn Bangkok, Chiang Mai, Phuket, Krabi, Koh Samui og Koh Phangan — og plutselig er seks av tjueen dager brukt på transport.',
+          'Thailand er større enn det ser ut på kartet. Bangkok til Chiang Mai er 70 mil. Vestkysten og østkysten ligger på hver sin side av halvøya, og å bytte mellom dem koster deg en hel dag.',
+          'Regelen vi bruker selv: maks fire baser på tre uker, og minst fire netter på hvert sted du faktisk vil oppleve noe.',
+        ],
+      },
+      {
+        h: 'Rute 1 — klassikeren: nord og sør',
+        p: [
+          'Dette er ruten for deg som vil se to helt ulike Thailand: templer og fjell i nord, hav og øyer i sør.',
+        ],
+        table: {
+          head: ['Dager', 'Sted', 'Hva du gjør'],
+          rows: [
+            ['1–4', 'Bangkok', 'Templer, Chao Phraya, gatemat, dagstur til Ayutthaya'],
+            ['5–9', 'Chiang Mai', 'Elefantreservat, Doi Suthep, matkurs, gamlebyen'],
+            ['10–11', 'Reise sørover', 'Fly Chiang Mai–Krabi, én overgangsnatt'],
+            ['12–17', 'Krabi / Railay', 'Øyhopping, kajakk, klatring, strandliv'],
+            ['18–21', 'Koh Lanta', 'Roligere avslutning, sen hjemreise fra Krabi'],
+          ],
+        },
+      },
+      {
+        h: 'Rute 2 — bare sør, dobbelt så avslappet',
+        p: [
+          'Har du vært i Thailand før, eller reiser du med små barn, er dette den bedre ruten. Kortere avstander, mindre pakking, mer tid i vannet.',
+        ],
+        table: {
+          head: ['Dager', 'Sted', 'Hva du gjør'],
+          rows: [
+            ['1–3', 'Bangkok', 'Kort byopphold før du drar videre'],
+            ['4–10', 'Khao Lak eller Koh Lanta', 'Rolige strender, Similan eller Phi Phi som dagstur'],
+            ['11–16', 'Krabi / Ao Nang', 'Øyhopping, mangroveturer, varme kilder'],
+            ['17–21', 'Phuket', 'Siste dager nær flyplassen, kort vei hjem'],
+          ],
+        },
+      },
+      {
+        h: 'Rute 3 — nord og Thailandsbukta (for sommerferie)',
+        p: [
+          'Reiser du i juli eller august, er vestkysten ustabil. Da bytter du ut Krabi og Phuket med øyene i Thailandsbukta, som har fint vær akkurat da.',
+        ],
+        table: {
+          head: ['Dager', 'Sted', 'Hva du gjør'],
+          rows: [
+            ['1–3', 'Bangkok', 'Byen, templene, markedene'],
+            ['4–9', 'Chiang Mai', 'Elefanter, fjell, grønt og frodig i regntiden'],
+            ['10–15', 'Koh Samui', 'Strender, vannfall, dagstur til Ang Thong'],
+            ['16–21', 'Koh Tao eller Koh Phangan', 'Dykking eller ro, ferge tilbake til Samui'],
+          ],
+        },
+      },
+      {
+        h: 'Hva du bør droppe',
+        list: [
+          'Nattbuss og nattog for å «spare en natt». Du sparer ikke en natt, du ofrer den påfølgende dagen.',
+          'Både Phuket og Krabi og Koh Samui på samme tur. Velg én kyst.',
+          'Én natt hvor som helst. Det er en overgangsnatt, ikke et opphold.',
+          'Å booke alle interne fly hjemmefra. Innenriks i Thailand er billig og fleksibelt — la de siste ukene stå åpne.',
+        ],
+      },
+      {
+        h: 'Hvor lang tid tar det egentlig å flytte seg?',
+        table: {
+          head: ['Strekning', 'Hvordan', 'Reell tid dør til dør'],
+          rows: [
+            ['Bangkok – Chiang Mai', 'Fly', 'Rundt 4 timer'],
+            ['Bangkok – Krabi/Phuket', 'Fly', 'Rundt 4 timer'],
+            ['Chiang Mai – Krabi', 'Fly, ofte med bytte', '6–9 timer'],
+            ['Krabi – Koh Lanta', 'Buss og ferge', '3–4 timer'],
+            ['Phuket – Phi Phi', 'Hurtigbåt', '2 timer hver vei'],
+            ['Vestkysten – Koh Samui', 'Fly eller buss og ferge', 'En hel dag'],
+          ],
+        },
+      },
+      {
+        h: 'Vårt råd',
+        p: [
+          'Velg rute etter når du reiser, ikke etter hva som ser flest ut på kartet. November til april: rute 1 eller 2. Mai til september: rute 3.',
+          'Og legg de dyre dagsturene tidlig i oppholdet. Blir en båttur avlyst på grunn av vær, har du fortsatt dager igjen til å prøve på nytt.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Er tre uker for lenge i Thailand?',
+        a: 'Nei. Tre uker er nok til å se to landsdeler uten å stresse. Med to uker bør du droppe nord og holde deg til én kyst i sør.',
+      },
+      {
+        q: 'Bør jeg booke hotellene på forhånd?',
+        a: 'Book de første nettene og eventuelt høysesong i romjulen. Resten kan du gjerne booke underveis — det gir deg friheten til å bli lenger et sted du liker.',
+      },
+      {
+        q: 'Hvor mye koster tre uker?',
+        a: 'Fly fra Norge ligger typisk mellom 6 000 og 12 000 kroner tur-retur avhengig av sesong. På bakken kommer du langt med 700–1 200 kroner dagen per person i mellomklasse. Se den detaljerte budsjettguiden vår.',
+      },
+    ],
+  },
+  {
+    slug: 'bangkok-paa-tre-dager',
+    title: 'Bangkok på tre dager — uten å stå i kø hele tiden',
+    excerpt:
+      'De tre store templene, én båttur, ett marked og én rooftop. Her er rekkefølgen som gjør at du slipper både varmen og verste køen.',
+    metaTitle: 'Bangkok på 3 dager — komplett reiserute',
+    metaDescription:
+      'Tre dager i Bangkok, time for time: templene i riktig rekkefølge, hvordan du bruker elvebåtene, hvilke markeder som er verdt turen og hva du kan droppe.',
+    published: '2026-08-05',
+    readMinutes: 8,
+    topic: 'Reiseruter',
+    related: { destinations: ['bangkok'], categories: ['Mat & kultur'] },
+    sections: [
+      {
+        h: 'Det korte svaret',
+        p: [
+          'Tre dager er nok til Bangkok hvis du er disiplinert på to ting: start tidlig, og ikke prøv å krysse byen mer enn én gang om dagen.',
+          'Trafikken er byens virkelige utfordring. En tur som ser ut som tjue minutter på kartet kan ta en time i drosje klokka fem. Elvebåtene og skytoget går derimot alltid like fort.',
+        ],
+      },
+      {
+        h: 'Dag 1 — templene og elva',
+        list: [
+          'Klokka 08: Storpalasset og Wat Phra Kaew. Vær der når de åpner. Innen elleve er både varmen og bussgruppene på plass. Dekk skuldre og knær, ellers slipper du ikke inn.',
+          'Klokka 11: Gå ti minutter til Wat Pho og den liggende Buddha. Ta en times thaimassasje i tempelets egen skole mens det er varmest ute.',
+          'Klokka 14: Ferge over elva til Wat Arun. Den er finest i ettermiddagslyset.',
+          'Klokka 18: Elvebåt nordover til solnedgang, og middag ved vannet.',
+        ],
+      },
+      {
+        h: 'Dag 2 — marked og mat',
+        list: [
+          'Formiddag: Chatuchak helgemarked hvis du er der lørdag eller søndag — 15 000 boder, ta med kontanter og lav forventning om å finne tilbake til noe.',
+          'Er det hverdag: Or Tor Kor-markedet rett ved. Mindre, mye bedre mat, mindre kaos.',
+          'Ettermiddag: Jim Thompson House. Et rolig pustehull midt i byen, og den beste innføringen i thailandsk arkitektur du får på en time.',
+          'Kveld: Matkurs eller gatematvandring i Chinatown. Yaowarat våkner først etter mørkets frembrudd.',
+        ],
+      },
+      {
+        h: 'Dag 3 — velg selv',
+        p: [
+          'Den tredje dagen bør avhenge av hva du likte best de to første. Tre gode alternativer:',
+        ],
+        list: [
+          'Dagstur til Ayutthaya — den gamle hovedstaden, halvannen time nordover med tog eller minibuss. Templer i ruiner, langt roligere enn Bangkok.',
+          'Flytende marked og jernbanemarkedet i Maeklong — turistete, men jernbanemarkedet der togene kjører gjennom bodene er noe helt for seg selv.',
+          'Bli i byen: Lumphini Park om morgenen, båt til Thonburi-kanalene, og en rooftop på ettermiddagen.',
+        ],
+      },
+      {
+        h: 'Hva du kan droppe',
+        list: [
+          'Khao San Road, med mindre du er nysgjerrig i tjue minutter. Det er ikke Bangkok, det er en gate for turister.',
+          'Alle som stopper deg utenfor et tempel og sier at det er «stengt i dag». Det er det ikke. Det er starten på en skredderselgersvindel.',
+          'Drosje uten taksameter. Si «meter, please» eller ta neste bil. Appene fungerer godt i Bangkok.',
+        ],
+      },
+      {
+        h: 'Praktisk',
+        table: {
+          head: ['Ting', 'Råd'],
+          rows: [
+            ['Hvor du bør bo', 'Nær skytoget (Sukhumvit eller Silom) eller ved elva. Ikke midt i gamlebyen — det er langt fra alt kollektivt.'],
+            ['Kleskode i templer', 'Skuldre og knær dekket, gjelder alle. Ta med et sjal.'],
+            ['Beste tid på dagen', 'Før 10 og etter 16. Midt på dagen er det for varmt til å gå.'],
+            ['Kontanter', 'Ja, til gatemat og markeder. Kort fungerer på restauranter og i butikk.'],
+          ],
+        },
+      },
+    ],
+    faq: [
+      {
+        q: 'Er tre dager nok i Bangkok?',
+        a: 'For å se hovedattraksjonene, ja. Vil du oppleve byen mer enn å krysse av på lista, er fire til fem dager bedre — Bangkok belønner den som blir litt lenger.',
+      },
+      {
+        q: 'Er Bangkok trygt?',
+        a: 'Ja, vold mot turister er sjelden. Det du skal se opp for er svindel: skreddere, edelstener, drosjer uten taksameter og «tempelet er stengt i dag».',
+      },
+      {
+        q: 'Bør jeg legge Bangkok først eller sist på turen?',
+        a: 'Først. Da har du byen unnagjort mens du fortsatt er ny og nysgjerrig, og kan avslutte ferien på en strand i stedet for i trafikken.',
+      },
+    ],
+  },
+  {
+    slug: 'hvilken-oy-i-thailand',
+    cta: {
+      h: 'Se det måned for måned',
+      p: 'Værkartet vårt viser alle fire regionene i Thailand for hver eneste måned — og hvorfor de to kystene er speilvendte.',
+      label: 'Åpne værkartet',
+      to: '/naar-reise',
+    },
+    title: 'Hvilken thailandsk øy passer for deg?',
+    excerpt:
+      'Phuket, Krabi, Koh Samui, Koh Lanta, Koh Tao, Koh Phangan. De er ikke varianter av det samme — de er helt ulike ferier. Her er hvem hver av dem passer for.',
+    metaTitle: 'Beste øy i Thailand — slik velger du riktig',
+    metaDescription:
+      'Sammenligning av de mest populære øyene i Thailand: hvem de passer for, når du bør reise dit, hvor lett de er å komme til og hva de koster.',
+    published: '2026-08-05',
+    readMinutes: 8,
+    topic: 'Reisemål',
+    related: { destinations: ['phuket', 'krabi', 'koh-samui'], categories: ['Øyer & strender'] },
+    sections: [
+      {
+        h: 'Første spørsmål: når reiser du?',
+        p: [
+          'Dette avgjør mer enn noe annet. Vestkysten — Phuket, Krabi, Koh Lanta, Phi Phi — er fin fra november til april. Østkysten — Koh Samui, Koh Phangan, Koh Tao — er fin fra februar til august.',
+          'Reiser du i juli, er valget enkelt: østkysten. Reiser du i januar, er det vestkysten. Først når måneden er avklart, blir det interessant å sammenligne øyene.',
+        ],
+      },
+      {
+        h: 'Kort oversikt',
+        table: {
+          head: ['Øy', 'Passer for', 'Beste tid', 'Adkomst'],
+          rows: [
+            ['Phuket', 'Førstegangsreisende, familier, kort reisevei', 'Nov–apr', 'Egen flyplass'],
+            ['Krabi / Railay', 'Natur, klatring, dramatisk landskap', 'Nov–apr', 'Flyplass, så båt'],
+            ['Koh Lanta', 'Rolige familier, lange strender', 'Nov–apr', 'Buss og ferge fra Krabi'],
+            ['Phi Phi', 'Dagstur, ikke opphold', 'Nov–apr', 'Båt fra Phuket eller Krabi'],
+            ['Koh Samui', 'Komfort, hotellstandard, sommerferie', 'Feb–aug', 'Egen flyplass'],
+            ['Koh Phangan', 'Yngre reisende, ro utenom fullmåne', 'Feb–aug', 'Ferge fra Samui'],
+            ['Koh Tao', 'Dykking og snorkling', 'Feb–aug', 'Ferge, lengst reisevei'],
+          ],
+        },
+      },
+      {
+        h: 'Phuket — enklest, men ikke roligst',
+        p: [
+          'Phuket er Thailands største øy og har egen internasjonal flyplass. Det gjør den til det enkleste valget hvis du har begrenset tid eller reiser med barn.',
+          'Til gjengjeld er den mest utbygd. Patong er høyt tempo og uteliv. Kata og Karon er roligere og familievennlige. Nord på øya — Mai Khao, Nai Yang — er det stille nok til at du hører bølgene.',
+          'Velger du feil område på Phuket, får du en helt annen ferie enn den du så for deg. Les om områdene før du booker hotell.',
+        ],
+      },
+      {
+        h: 'Krabi — for deg som vil se noe',
+        p: [
+          'Krabi har det mest dramatiske landskapet i Thailand: kalksteinstårnene som stiger rett opp av havet. Railay nås bare med båt og føles som et eget sted.',
+          'Strendene er ikke nødvendigvis bedre enn på Phuket, men omgivelsene er i en annen klasse. Dette er øyhopping, kajakk og klatring — ikke lange dager i solsengen.',
+        ],
+      },
+      {
+        h: 'Koh Samui — komfort og sommerferie',
+        p: [
+          'Samui har den beste hotellstandarden av øyene i Thailandsbukta og egen flyplass. Det er også svaret for nordmenn som må reise i fellesferien, siden juli og august er fint her mens vestkysten er våt.',
+          'Ulempen er november og desember, som er øyas våteste måneder. Skal du til Thailand i romjulen, dra vestover i stedet.',
+        ],
+      },
+      {
+        h: 'Koh Lanta — den undervurderte',
+        p: [
+          'Lange strender, lavt tempo og betydelig færre folk enn Phuket. Kommer du deg dit — buss og ferge fra Krabi — får du en rolig ferie til lavere pris.',
+          'Passer godt for familier med litt større barn og for par som vil ha strand uten uteliv.',
+        ],
+      },
+      {
+        h: 'Phi Phi — dra på dagstur, ikke bo der',
+        p: [
+          'Maya Bay og kalksteinsformasjonene er verdt å se. Men selve Phi Phi Don er tett bebygd, høylytt om natten og dyrt for det du får.',
+          'Vårt råd: bo på Phuket, Krabi eller Lanta og ta Phi Phi som dagstur. Da får du landskapet uten støyen.',
+        ],
+      },
+      {
+        h: 'Vårt råd',
+        list: [
+          'Første gang i Thailand, med barn, i vinterhalvåret: Phuket, i et rolig område.',
+          'Vil ha natur og opplevelser: Krabi eller Railay.',
+          'Reiser i norsk fellesferie: Koh Samui.',
+          'Vil ha ro og lengre opphold: Koh Lanta.',
+          'Skal dykke: Koh Tao, og sett av minst en uke.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Kan jeg kombinere øyer fra begge kyster?',
+        a: 'Du kan, men det koster deg en hel reisedag hver vei. På under to uker anbefaler vi å velge én kyst.',
+      },
+      {
+        q: 'Hvilken øy er billigst?',
+        a: 'Koh Lanta og Koh Phangan ligger jevnt over lavere enn Phuket og Samui, både på hotell og mat. Forskjellen er størst i høysesong.',
+      },
+      {
+        q: 'Hvilken øy har best strender?',
+        a: 'Spørsmålet har ikke ett svar. Koh Lanta og nordlige Phuket har de lengste sandstrendene, Railay det vakreste landskapet, og Koh Tao det klareste vannet for snorkling.',
+      },
+    ],
+  },
+  {
+    slug: 'pakkeliste-thailand',
+    title: 'Pakkeliste til Thailand — og de fem tingene folk glemmer',
+    excerpt:
+      'Du trenger mindre enn du tror. Men fem små ting gjør større forskjell enn halve kofferten, og de er lette å glemme hjemme.',
+    metaTitle: 'Pakkeliste Thailand — hva du faktisk trenger',
+    metaDescription:
+      'Komplett pakkeliste til Thailand: klær, apotek, dokumenter og elektronikk. Hva du kan kjøpe billigere der, og de fem tingene folk angrer på at de glemte.',
+    published: '2026-08-05',
+    readMinutes: 6,
+    topic: 'Praktisk',
+    related: { destinations: [], categories: [] },
+    sections: [
+      {
+        h: 'Grunnregelen',
+        p: [
+          'Thailand er varmt, billig og har butikker overalt. Glemmer du en t-skjorte, koster den femti kroner på nærmeste marked. Glemmer du reseptmedisinen din, er det verre.',
+          'Pakk lett for klær, nøye for det som ikke kan erstattes.',
+        ],
+      },
+      {
+        h: 'De fem tingene folk glemmer',
+        list: [
+          'Et tynt sjal eller skjorte som dekker skuldrene. Uten det slipper du ikke inn i templene, og du kommer til å besøke templer.',
+          'Myggmiddel med DEET. Det selges der også, men du trenger det den første kvelden, ikke dagen etter.',
+          'Elektrolyttpulver. Du svetter langt mer enn hjemme, og hodepinen dag tre er som regel væskemangel, ikke solstikk.',
+          'Reseptmedisin i originalpakning, med kopi av resepten. Enkelte vanlige legemidler er strengt regulert i Thailand.',
+          'Et par sokker. Du tar av skoene i templer, og steinhellene blir brennende varme midt på dagen.',
+        ],
+      },
+      {
+        h: 'Klær',
+        list: [
+          'Lette, luftige plagg i bomull eller lin. Unngå tettsittende syntetiske stoffer.',
+          'Ett langermet plagg — til templer, til fly, og til kjølige kvelder i Chiang Mai i desember og januar.',
+          'Sandaler du kan gå i, og som tåler vann. Du kommer til å ta dem av og på ti ganger om dagen.',
+          'Badetøy, gjerne to sett. Det ene rekker sjelden å tørke.',
+          'Regnjakke bare hvis du reiser i regntiden — og da en tynn en, ikke en turjakke.',
+        ],
+      },
+      {
+        h: 'Apotek og helse',
+        list: [
+          'Solkrem med høy faktor. Dyrere i Thailand enn hjemme, og mye er tilsatt blekemiddel.',
+          'Myggmiddel og eventuelt et middel mot kløe.',
+          'Reisesyketabletter hvis du skal på båtturer.',
+          'Plaster, smertestillende og noe mot magen.',
+          'Håndsprit til gatemat.',
+        ],
+      },
+      {
+        h: 'Dokumenter og penger',
+        list: [
+          'Pass med god gyldighet igjen — mange land krever seks måneder ved innreise, så sjekk kravene i god tid.',
+          'Reiseforsikring, og skriv ned nødnummeret separat fra telefonen.',
+          'Et kort som ikke tar valutapåslag, pluss et ekstra kort på et annet sted enn lommeboken.',
+          'Litt kontanter. Minibanker i Thailand tar et fast gebyr per uttak, så ta ut større beløp sjeldnere.',
+        ],
+      },
+      {
+        h: 'Hva du kan kjøpe der i stedet',
+        table: {
+          head: ['Ting', 'Hvorfor vente'],
+          rows: [
+            ['Klær', 'Billig overalt, og du kommer uansett til å kjøpe noe'],
+            ['Toalettsaker', 'Samme merker, lavere pris'],
+            ['Strandhåndkle', 'Finnes på hvert eneste marked'],
+            ['Adapter', 'Thailand bruker stort sett samme uttak som Norge — sjekk apparatene dine, mange trenger ingenting'],
+            ['SIM-kort', 'Kjøp på flyplassen, koster lite og virker med en gang'],
+          ],
+        },
+      },
+      {
+        h: 'Vårt råd',
+        p: [
+          'Pakk for én uke, uansett hvor lenge du skal være. Vasking koster nesten ingenting i Thailand og tar en dag.',
+          'Og la det være plass igjen i kofferten. Du skal hjem med mer enn du dro med.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Trenger jeg vaksiner til Thailand?',
+        a: 'Snakk med legen din eller en vaksinasjonsklinikk i god tid før avreise. Anbefalingene avhenger av hvor du skal, hvor lenge og av din egen helse, og de oppdateres jevnlig — vi gir ikke medisinske råd her.',
+      },
+      {
+        q: 'Kan jeg drikke vann fra springen?',
+        a: 'Nei, drikk flaskevann eller filtrert vann. Is på restauranter og barer er derimot vanligvis laget av renset vann og er trygt.',
+      },
+      {
+        q: 'Hvor stor koffert trenger jeg?',
+        a: 'En vanlig håndbagasje pluss en liten ryggsekk holder for de fleste på to til tre uker. Skal du flytte deg mye mellom øyer, blir en stor koffert fort et problem på båtene.',
+      },
+    ],
+  },
+  {
+    slug: 'thailand-i-vinterferien',
+    cta: {
+      h: 'Se det måned for måned',
+      p: 'Værkartet vårt viser alle fire regionene i Thailand for hver eneste måned — og hvorfor de to kystene er speilvendte.',
+      label: 'Åpne værkartet',
+      to: '/naar-reise',
+    },
+    title: 'Thailand i vinterferien og påsken — hva du bør vite',
+    excerpt:
+      'Uke åtte i Thailand er nesten perfekt. Påsken er det ikke — og forskjellen handler om noe folk sjelden nevner: røyken i nord og varmen i april.',
+    metaTitle: 'Thailand i vinterferien — beste steder i februar og påsken',
+    metaDescription:
+      'Skal du til Thailand i vinterferien eller påsken? Slik er været i februar mot april, hvor du bør dra, hvorfor du bør droppe Chiang Mai i påsken, og når du bør booke.',
+    published: '2026-08-05',
+    readMinutes: 6,
+    topic: 'Planlegging',
+    related: { destinations: ['phuket', 'krabi', 'koh-samui'], categories: [] },
+    sections: [
+      {
+        h: 'Det korte svaret',
+        p: [
+          'Vinterferien i februar er noe av det beste Thailand kan by på. Tørt over hele landet, behagelig varme og rolig sjø.',
+          'Påsken er vanskeligere. April er årets varmeste måned, og i nord brennes åkrene — lufta i Chiang Mai er da blant de dårligste i verden.',
+        ],
+      },
+      {
+        h: 'Vinterferie — uke 8 og 9',
+        p: [
+          'Februar er den eneste måneden i året der alle fire regionene i Thailand har godt vær samtidig. Du kan reise hvor som helst uten å tenke på regntid.',
+          'Vestkysten er tørr, Thailandsbukta har begynt sin gode sesong, Bangkok er behagelig, og Chiang Mai er kjølig og klar — men bare første halvdel av måneden, før brenningen starter.',
+        ],
+        list: [
+          'Best for familier: Phuket eller Krabi, gjerne i et rolig område.',
+          'Best for opplevelser: Chiang Mai tidlig i februar, med elefantreservat og fjell.',
+          'Best for ro: Koh Lanta.',
+        ],
+      },
+      {
+        h: 'Påske — vær forsiktig med nord',
+        p: [
+          'I påsken kan det være 38–40 grader i Bangkok, og luftfuktigheten gjør at det oppleves tyngre enn tallet tilsier. Templer og byvandring blir slitsomt.',
+          'Verre er det i nord. Fra slutten av februar til inn i april brennes rismarkene, og røyken legger seg over Chiang Mai i uker. Har du astma, allergi eller små barn, bør du ikke legge påsken dit.',
+          'Kysten er derimot fin. Både vestkysten og Thailandsbukta har godt vær i april, og havet er den eneste stedet varmen faktisk er behagelig.',
+        ],
+      },
+      {
+        h: 'Songkran — thailandsk nyttår',
+        p: [
+          'Midt i april feires Songkran, og hele landet går i vannkrig i tre dager. Det er en av verdens morsomste festivaler hvis du er forberedt, og et mareritt hvis du ikke er det.',
+          'Du blir våt. Det er ikke et spørsmål. Legg vekk alt som ikke tåler vann, og bli med i stedet for å prøve å unngå det.',
+          'Transport og hoteller er utsolgt lenge i forveien i denne perioden. Skal du reise i påsken og påsken faller sammen med Songkran, book tidlig.',
+        ],
+      },
+      {
+        h: 'Når du bør booke',
+        table: {
+          head: ['Reisetidspunkt', 'Book senest', 'Hvorfor'],
+          rows: [
+            ['Jul og romjul', 'August–september', 'Årets dyreste og mest utsolgte periode'],
+            ['Vinterferie (uke 8–9)', 'September–oktober', 'Norske skoleferier presser prisene opp samtidig'],
+            ['Påske', 'Oktober–november', 'Songkran fyller opp transport og hoteller'],
+            ['Mai–oktober', '1–3 måneder før', 'Lavsesong, god plass og lave priser'],
+          ],
+        },
+      },
+      {
+        h: 'Vårt råd',
+        p: [
+          'Kan du velge, ta vinterferien framfor påsken. Er du bundet til påsken, hold deg til kysten og dropp Chiang Mai det året.',
+          'Og book tidlig. Norske skoleferier er de samme for alle, og prisene på fly til Bangkok merker det.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Er det for varmt i Thailand i påsken?',
+        a: 'I innlandet, ja — Bangkok og nord kan være 38–40 grader. Ved kysten er det behagelig, fordi sjøbrisen tar av for varmen.',
+      },
+      {
+        q: 'Bør jeg unngå Songkran?',
+        a: 'Nei, hvis du liker folkefester. Ja, hvis du planlegger lange reisedager eller vil ha ro. Transport er kaotisk de tre dagene.',
+      },
+      {
+        q: 'Hvor mye dyrere er vinterferien?',
+        a: 'Fly i norske skoleferier ligger typisk merkbart over prisene noen uker før eller etter. Kan du reise uken før eller etter uke 8, sparer du ofte betydelig.',
       },
     ],
   },

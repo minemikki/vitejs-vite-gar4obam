@@ -204,6 +204,43 @@ function HowItWorks() {
   );
 }
 
+const TEASER = [4, 4, 4, 3, 2, 2, 2, 2, 1, 1, 3, 4];
+
+function SeasonTeaser() {
+  return (
+    <section className="section seasonteaser">
+      <div className="seasonteaser-inner">
+        <div className="seasonteaser-copy">
+          <span className="kicker">Verktøy</span>
+          <h2>Når bør du egentlig reise?</h2>
+          <p>
+            «November til mars» er svaret alle gir. Det er riktig for Phuket —
+            og feil for Koh Samui, der november er årets våteste måned.
+            Thailand har to kyster med hver sin regntid, og nesten ingen
+            forklarer det på norsk.
+          </p>
+          <p>
+            Velg måneden du kan reise, så sier værkartet vårt hvilken del av
+            landet du bør velge.
+          </p>
+          <Link className="btn btn-primary" to="/naar-reise">
+            Åpne værkartet <Icon.arrow width={17} height={17} />
+          </Link>
+        </div>
+        <ul className="seasonteaser-grid" aria-hidden="true">
+          {['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'].map(
+            (m, i) => (
+              <li key={m} className={`lvl-${TEASER[i]}`}>
+                <span>{m}</span>
+              </li>
+            )
+          )}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 function Promise() {
   const items = [
     'Svar på norsk innen én arbeidsdag — vi sitter i samme tidssone som turene.',
@@ -263,6 +300,7 @@ export default function Home() {
       <WhyUs />
       <Destinations />
       <HowItWorks />
+      <SeasonTeaser />
       <Promise />
       <section className="section"><Newsletter /></section>
       <Cta />

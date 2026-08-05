@@ -1292,3 +1292,177 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 
 .guide-news { margin-top: 44px; }
+
+/* ========================= Værkart (Når reise) ========================= *
+ * Sidens tydeligste særpreg. Skalaen har fire nivåer, og fargene skal kunne
+ * leses i rekkefølge selv av noen som ikke ser forskjell på rødt og grønt —
+ * derfor bærer hver celle også en bokstav, ikke bare en farge.
+ */
+.season { max-width: var(--maxw); margin: 0 auto; padding: 46px 22px 80px; }
+.season-h2 { font-size: 1.42rem; margin-bottom: 6px; }
+.season-sub { color: var(--muted); max-width: 46em; margin-bottom: 20px; }
+.season > section { margin-bottom: 52px; }
+
+/* Nivåfarger */
+.lvl-4 { --lvl: #0d6b4f; --lvl-bg: #dff0e4; }
+.lvl-3 { --lvl: #4a7c1f; --lvl-bg: #e9f1d9; }
+.lvl-2 { --lvl: #a06a12; --lvl-bg: #f8ecd5; }
+.lvl-1 { --lvl: #98402c; --lvl-bg: #f6ddd6; }
+
+/* Månedsvelger */
+.month-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.month-chip {
+  position: relative;
+  padding: 11px 17px; border-radius: 999px;
+  border: 1.5px solid var(--line-strong); background: var(--surface);
+  font-weight: 600; font-size: 0.95rem; color: var(--ink-soft);
+  cursor: pointer; transition: all 0.18s var(--ease);
+}
+.month-chip:hover { border-color: var(--emerald); color: var(--emerald); }
+.month-chip.is-on {
+  background: var(--emerald); border-color: var(--emerald); color: #fff;
+  box-shadow: 0 6px 18px rgba(10, 63, 53, 0.22);
+}
+.month-chip-dot {
+  position: absolute; top: 6px; right: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+}
+.month-chip.is-on .month-chip-dot { background: var(--gold-soft); }
+.season-holiday {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.88rem; color: var(--muted);
+}
+
+/* Svaret — det viktigste på hele siden */
+.season-answer {
+  background: linear-gradient(160deg, var(--emerald-900), var(--emerald));
+  color: #fff; border-radius: var(--radius-lg);
+  padding: 34px 32px; box-shadow: var(--shadow);
+}
+.season-answer-kicker {
+  color: var(--gold-soft); font-weight: 700;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.season-answer h2 { color: #fff; font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 12px; }
+.season-answer-note { color: rgba(255, 255, 255, 0.88); max-width: 48em; font-size: 1.04rem; line-height: 1.6; }
+
+/* Regionkort */
+.region-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.region-card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--lvl);
+  border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-xs);
+}
+.region-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.region-card h3 { font-size: 1.16rem; }
+.lvl-badge {
+  flex: none; font-size: 0.76rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 999px;
+  background: var(--lvl-bg); color: var(--lvl);
+}
+.region-places { font-size: 0.84rem; color: var(--muted); margin-bottom: 12px; }
+.region-text { color: var(--ink-soft); line-height: 1.55; margin-bottom: 12px; }
+.region-links { display: flex; flex-wrap: wrap; gap: 14px; }
+.region-links a { font-weight: 600; color: var(--emerald); font-size: 0.92rem; }
+.region-links a:hover { text-decoration: underline; }
+
+/* Årsmatrisen */
+/* position: relative er ikke kosmetikk her. Cellene inneholder .sr-only-
+   tekst for skjermlesere, og den er absolutt posisjonert. Uten en posisjonert
+   forelder regnes den mot sideroten i stedet for mot rullefeltet, og da drar
+   den hele siden 280 piksler ut i bredden på mobil. */
+.matrix-scroll {
+  position: relative; overflow-x: auto;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+}
+.matrix { border-collapse: collapse; width: 100%; min-width: 680px; }
+.matrix th, .matrix td { text-align: center; }
+.matrix thead th { padding: 0; border-bottom: 1px solid var(--line); }
+.matrix thead th:first-child {
+  text-align: left; padding: 12px 16px;
+  font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.matrix-month {
+  width: 100%; padding: 13px 4px; border: 0; background: none;
+  font: inherit; font-weight: 600; font-size: 0.86rem; color: var(--ink-soft);
+  cursor: pointer; transition: background 0.18s var(--ease);
+}
+.matrix-month:hover { background: var(--emerald-tint); }
+.matrix thead th.is-on .matrix-month { background: var(--emerald); color: #fff; }
+.matrix tbody th {
+  text-align: left; padding: 0 16px; font-size: 0.92rem;
+  font-weight: 600; white-space: nowrap; border-right: 1px solid var(--line);
+}
+.matrix tbody tr + tr th, .matrix tbody tr + tr .cell { border-top: 1px solid var(--line); }
+.cell {
+  height: 46px; background: var(--lvl-bg); color: var(--lvl);
+  font-weight: 800; font-size: 0.82rem;
+}
+.cell.is-on { box-shadow: inset 0 0 0 2px var(--emerald); }
+.matrix-key { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; list-style: none; font-size: 0.88rem; color: var(--ink-soft); }
+.matrix-key li { display: inline-flex; align-items: center; gap: 8px; }
+.key-dot { width: 14px; height: 14px; border-radius: 4px; background: var(--lvl-bg); box-shadow: inset 0 0 0 2px var(--lvl); }
+
+/* Forklaringen */
+.region-explain { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 34px; }
+.region-explain h3 { font-size: 1.04rem; margin-bottom: 6px; color: var(--emerald); }
+.region-explain p { color: var(--ink-soft); line-height: 1.6; }
+
+.season-cta {
+  text-align: center; background: var(--cream-2);
+  border-radius: var(--radius-lg); padding: 38px 26px;
+}
+.season-cta h2 { font-size: 1.5rem; margin-bottom: 8px; }
+.season-cta p { color: var(--ink-soft); margin-bottom: 20px; }
+.season-cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+.season-disclaimer {
+  font-size: 0.86rem; color: var(--muted); max-width: 44em;
+  margin: 0 auto; text-align: center; line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .season { padding: 34px 18px 60px; }
+  .season > section { margin-bottom: 40px; }
+  .region-cards, .region-explain { grid-template-columns: minmax(0, 1fr); }
+  .season-answer { padding: 26px 22px; }
+  .month-chip { padding: 10px 14px; font-size: 0.9rem; }
+}
+
+/* Værkart-teaser på forsiden */
+.seasonteaser { max-width: none; background: linear-gradient(180deg, var(--cream-2), var(--cream)); }
+.seasonteaser-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 48px; align-items: center;
+}
+.seasonteaser-copy h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom: 14px; }
+.seasonteaser-copy p { color: var(--ink-soft); line-height: 1.62; margin-bottom: 14px; max-width: 34em; }
+.seasonteaser-copy .btn { margin-top: 10px; gap: 8px; }
+.seasonteaser-grid {
+  list-style: none; display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;
+}
+.seasonteaser-grid li {
+  aspect-ratio: 1 / 1; border-radius: var(--radius-sm);
+  background: var(--lvl-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem; color: var(--lvl);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--lvl) 22%, transparent);
+}
+@media (max-width: 860px) {
+  .seasonteaser-inner { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .seasonteaser-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* Handlingsboks i en guide — peker videre til verktøyet som svarer bedre */
+.guide-cta {
+  background: linear-gradient(160deg, var(--emerald-900), var(--emerald));
+  color: #fff; border-radius: var(--radius-lg);
+  padding: 28px 30px; margin: 34px 0;
+}
+.guide-cta h2 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+.guide-cta p { color: rgba(255, 255, 255, 0.86); margin-bottom: 18px; max-width: 40em; }
+.guide-cta .btn { gap: 8px; }
