@@ -108,10 +108,12 @@ export default function ExperienceDetail() {
           <div className="detail-facts">
             <span><Icon.pin width={16} height={16} /> {exp.place}</span>
             <span><Icon.clock width={16} height={16} /> {exp.duration}</span>
-            <span className="detail-rating">
-              <Icon.star width={16} height={16} /> {num(exp.rating)}
-              <em>({exp.reviews} anmeldelser)</em>
-            </span>
+            {exp.rating ? (
+              <span className="detail-rating">
+                <Icon.star width={16} height={16} /> {num(exp.rating)}
+                {exp.reviews ? <em>({exp.reviews} anmeldelser)</em> : null}
+              </span>
+            ) : null}
           </div>
         </div>
         <div className="detail-hero-art" aria-hidden="true">

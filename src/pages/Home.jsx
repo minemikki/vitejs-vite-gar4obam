@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { allExperiences, categories, destinations, testimonials } from '../data.js';
+import { allExperiences, categories, destinations } from '../data.js';
 import { Scene, HeroScene, Icon } from '../scenes.jsx';
 import ExperienceCard from '../components/ExperienceCard.jsx';
 import Newsletter from '../components/Newsletter.jsx';
@@ -57,10 +57,9 @@ function Hero() {
         </form>
 
         <div className="hero-trust">
-          <span className="hero-stars" aria-hidden="true">
-            {[0, 1, 2, 3, 4].map((i) => <Icon.star key={i} width={16} height={16} />)}
-          </span>
-          <span><strong>4,8</strong> · 12&nbsp;000+ fornøyde reisende</span>
+          <span><Icon.check width={16} height={16} /> Gratis avbestilling</span>
+          <span className="hero-trust-div" />
+          <span><Icon.chat width={16} height={16} /> Norsk kundeservice</span>
           <span className="hero-trust-div" />
           <span><Icon.shield width={16} height={16} /> Trygg betaling</span>
         </div>
@@ -73,8 +72,8 @@ function Stats() {
   const stats = [
     { n: `${allExperiences.length}`, l: 'Opplevelser' },
     { n: `${destinations.length}`, l: 'Reisemål' },
-    { n: '4,8★', l: 'Snittvurdering' },
-    { n: '100%', l: 'Norsk support' },
+    { n: '24t', l: 'Gratis avbestilling' },
+    { n: 'NOK', l: 'Priser i kroner' },
   ];
   return (
     <div className="stats-wrap">
@@ -205,33 +204,34 @@ function HowItWorks() {
   );
 }
 
-function Testimonials() {
+function Promise() {
+  const items = [
+    'Svar på norsk innen én arbeidsdag — vi sitter i samme tidssone som turene.',
+    'Prisen du ser er prisen du betaler. Ingen valutapåslag i kassen.',
+    'Gratis avbestilling inntil 24 timer før på de aller fleste turene.',
+    'Ingen elefantridning og ingen tigertempler. Det er et redaksjonelt valg.',
+  ];
   return (
-    <section className="section testi">
+    <section className="section promise">
       <div className="section-head center">
-        <span className="kicker">Fra reisende</span>
-        <h2>Nordmenn elsker Sawadee Tours</h2>
+        <span className="kicker">Vårt løfte</span>
+        <h2>Vi er nye. Her er hva du får uansett.</h2>
+        <p className="section-sub center">
+          Vi har ikke tusenvis av anmeldelser å vise fram ennå, og vi tenkte det
+          var bedre å si det enn å finne på noen.
+        </p>
       </div>
-      <div className="testi-grid">
-        {testimonials.map((t) => (
-          <figure className="testi-card" key={t.name}>
-            <div className="testi-stars" aria-hidden="true">
-              {[0, 1, 2, 3, 4].map((i) => <Icon.star key={i} width={16} height={16} />)}
-            </div>
-            <blockquote>“{t.text}”</blockquote>
-            <figcaption>
-              <span className="testi-avatar" aria-hidden="true">{t.initials}</span>
-              <span>
-                <strong>{t.name}, {t.city}</strong>
-                <span className="testi-exp">{t.exp}</span>
-              </span>
-            </figcaption>
-          </figure>
+      <ul className="promise-list">
+        {items.map((t) => (
+          <li key={t}>
+            <Icon.check width={18} height={18} />
+            <span>{t}</span>
+          </li>
         ))}
-      </div>
-      <p className="testi-note">
-        Anmeldelsene over er eksempler mens vi samler inn ekte omtaler fra våre
-        første kunder.
+      </ul>
+      <p className="promise-note">
+        Når de første kundene har vært på tur, står omtalene deres her — med navn
+        og hvilken tur de var på.
       </p>
     </section>
   );
@@ -263,7 +263,7 @@ export default function Home() {
       <WhyUs />
       <Destinations />
       <HowItWorks />
-      <Testimonials />
+      <Promise />
       <section className="section"><Newsletter /></section>
       <Cta />
     </>

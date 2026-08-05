@@ -2,6 +2,19 @@
 // scene: hvilken håndtegnet vektorscene som vises på kortet (se scenes.jsx).
 // bookingUrl: legg inn din affiliate-/booking-lenke (Klook, GetYourGuide, Viator
 // eller egen kontrakt). Er den tom, åpnes forespørselsskjemaet i stedet.
+/*
+ * Felt som med vilje står tomme til det finnes ekte tall bak dem:
+ *
+ *   rating / reviews  vurdering og antall anmeldelser. Hentes fra
+ *                     affiliate-partneren, eller samles inn selv.
+ *   oldPriceNOK       overstrøket førpris. Norsk førprisregel krever at det
+ *                     er den laveste prisen du faktisk har tatt de siste 30
+ *                     dagene — ikke en pris du aldri har solgt til.
+ *   bestseller        merket «Bestselger». Er en påstand om salg.
+ *
+ * Alle tre vises automatisk så snart de får en verdi. Fyll dem ikke inn før
+ * tallet er sant.
+ */
 export const experiences = [
   {
     id: 'elephant-chiangmai',
@@ -10,14 +23,10 @@ export const experiences = [
     category: 'Natur & dyr',
     scene: 'jungle',
     duration: 'Heldag',
-    rating: 4.9,
-    reviews: 1284,
     priceNOK: 890,
-    oldPriceNOK: 1090,
     blurb:
       'Mat og bad elefantene i et sertifisert reservat uten ridning. Henting på hotellet og lunsj inkludert.',
     tags: ['Familievennlig', 'Etisk', 'Henting inkl.'],
-    bestseller: true,
     bookingUrl: '',
   },
   {
@@ -27,14 +36,10 @@ export const experiences = [
     category: 'Øyer & strender',
     scene: 'islands',
     duration: 'Heldag',
-    rating: 4.8,
-    reviews: 2041,
     priceNOK: 1190,
-    oldPriceNOK: 1390,
     blurb:
       'Snorkling, skjulte laguner og lunsj på stranden. Besøk de mest ikoniske øyene i Andamanhavet.',
-    tags: ['Snorkling', 'Lunsj inkl.', 'Bestselger'],
-    bestseller: true,
+    tags: ['Snorkling', 'Lunsj inkl.'],
     bookingUrl: '',
   },
   {
@@ -44,14 +49,10 @@ export const experiences = [
     category: 'Mat & kultur',
     scene: 'city',
     duration: '4 timer',
-    rating: 4.9,
-    reviews: 876,
     priceNOK: 640,
-    oldPriceNOK: null,
     blurb:
       'Handle på et lokalt marked og lag fem klassiske retter med en lokal kokk. Oppskrifter på norsk.',
     tags: ['Liten gruppe', 'Vegetar-mulig'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -61,14 +62,10 @@ export const experiences = [
     category: 'Mat & kultur',
     scene: 'temple',
     duration: 'Halvdag',
-    rating: 4.7,
-    reviews: 1533,
     priceNOK: 550,
-    oldPriceNOK: 650,
     blurb:
       'Norsktalende guide tar deg gjennom byens vakreste templer, med historien bak hvert sted.',
     tags: ['Norsk guide', 'Inngang inkl.'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -78,14 +75,10 @@ export const experiences = [
     category: 'Øyer & strender',
     scene: 'karst',
     duration: 'Heldag',
-    rating: 4.8,
-    reviews: 967,
     priceNOK: 980,
-    oldPriceNOK: null,
     blurb:
       'Padle mellom dramatiske kalksteinsformasjoner i Phang Nga-bukten. Buffélunsj om bord.',
     tags: ['Kajakk', 'Lunsj inkl.'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -95,14 +88,10 @@ export const experiences = [
     category: 'Adrenalin',
     scene: 'arena',
     duration: 'Kveld',
-    rating: 4.6,
-    reviews: 612,
     priceNOK: 490,
-    oldPriceNOK: null,
     blurb:
       'VIP-billetter til ekte Muay Thai på Thailands mest legendariske arena. Ringside-plasser.',
     tags: ['VIP', 'Kveldsaktivitet'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -112,14 +101,10 @@ export const experiences = [
     category: 'Familie',
     scene: 'safari',
     duration: 'Heldag',
-    rating: 4.5,
-    reviews: 1120,
     priceNOK: 720,
-    oldPriceNOK: 860,
     blurb:
       'Kjør safari blant løver og giraffer, og se delfin- og sjøløveshow. Perfekt for barnefamilier.',
     tags: ['Familievennlig', 'Show inkl.'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -129,14 +114,10 @@ export const experiences = [
     category: 'Adrenalin',
     scene: 'canopy',
     duration: 'Halvdag',
-    rating: 4.8,
-    reviews: 734,
     priceNOK: 850,
-    oldPriceNOK: null,
     blurb:
       'Fly gjennom regnskogen på over 30 plattformer. Sertifiserte guider og alt utstyr inkludert.',
     tags: ['Adrenalin', 'Henting inkl.'],
-    bestseller: false,
     bookingUrl: '',
   },
   {
@@ -146,14 +127,10 @@ export const experiences = [
     category: 'Mat & kultur',
     scene: 'market',
     duration: 'Heldag',
-    rating: 4.7,
-    reviews: 903,
     priceNOK: 610,
-    oldPriceNOK: 720,
     blurb:
       'Opplev Damnoen Saduak fra langbåt og det berømte markedet på togskinnene. Fotoparadis.',
     tags: ['Kultur', 'Henting inkl.'],
-    bestseller: false,
     bookingUrl: '',
   },
 ];
@@ -167,38 +144,15 @@ export const categories = [
   'Familie',
 ];
 
-export const destinations = [
-  { name: 'Bangkok', scene: 'temple', count: 24 },
-  { name: 'Phuket', scene: 'islands', count: 19 },
-  { name: 'Chiang Mai', scene: 'jungle', count: 16 },
-  { name: 'Krabi', scene: 'karst', count: 12 },
-  { name: 'Koh Samui', scene: 'canopy', count: 11 },
-  { name: 'Pattaya', scene: 'city', count: 9 },
-];
-
-// PLASSHOLDER-anmeldelser — bytt ut med ekte kundeanmeldelser før lansering.
-export const testimonials = [
-  {
-    name: 'Kari',
-    city: 'Oslo',
-    initials: 'K',
-    text: 'Elefantparken var årets høydepunkt for hele familien. Alt var ordnet på forhånd, og vi fikk svar på norsk innen minutter.',
-    exp: 'Etisk elefantreservat',
-  },
-  {
-    name: 'Ola',
-    city: 'Bergen',
-    initials: 'O',
-    text: 'Matkurset i Bangkok var utrolig gøy. Digg å slippe å tolke engelske oppskrifter — alt kom på norsk.',
-    exp: 'Thai matlagingskurs',
-  },
-  {
-    name: 'Ingrid',
-    city: 'Trondheim',
-    initials: 'I',
-    text: 'Booket Phi Phi-turen kvelden før. Superenkelt, betalte i kroner, og guiden ventet på oss på hotellet.',
-    exp: 'Phi Phi & Maya Bay',
-  },
+// `count` settes ikke her — det telles ut fra opplevelsene lenger nede, så
+// tallet på forsiden alltid stemmer med det som faktisk ligger i utvalget.
+const destinationList = [
+  { name: 'Bangkok', scene: 'temple' },
+  { name: 'Phuket', scene: 'islands' },
+  { name: 'Chiang Mai', scene: 'jungle' },
+  { name: 'Krabi', scene: 'karst' },
+  { name: 'Koh Samui', scene: 'canopy' },
+  { name: 'Pattaya', scene: 'city' },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -342,6 +296,11 @@ export const allExperiences = experiences.map((e) => ({
   ...(details[e.id] || {}),
   // Stripe Payment Link per opplevelse. Tom = forespørselsmodus.
   paymentUrl: '',
+}));
+
+export const destinations = destinationList.map((d) => ({
+  ...d,
+  count: allExperiences.filter((e) => e.place === d.name).length,
 }));
 
 export const getExperience = (slug) =>

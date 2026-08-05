@@ -33,9 +33,14 @@ Gå gjennom denne før du tar imot ekte bestillinger.
 - [ ] **Avklar overføring av persondata til Thailand.** Bestillingsdetaljer må
       deles med operatørene der, og Thailand er utenfor EØS. Se avsnittet i
       personvernerklæringen.
-- [ ] **Bytt ut plassholder-innhold:** anmeldelsene i `src/data.js` og tallene i
-      «Snittvurdering» / «12 000+ reisende» er eksempler. Fjern eller erstatt dem
-      med ekte tall før lansering.
+- [ ] **Legg inn ekte tall etter hvert som de finnes.** Siden viser med vilje
+      ingen vurderinger, ingen anmeldelser, ingen overstrøkne førpriser og ingen
+      «Bestselger»-merker — fordi ingen av delene er sanne ennå. Feltene finnes
+      i `src/data.js` og slår seg på av seg selv når de får en verdi:
+      `rating`, `reviews`, `oldPriceNOK`, `bestseller`.
+      Førpris må være den laveste prisen du faktisk har tatt de siste 30 dagene
+      (markedsføringsloven § 10 og prisopplysningsforskriften) — ikke en pris du
+      aldri har solgt til.
 - [ ] **Sett riktig domene** i `site.url` (`src/config.js`) og i
       `public/robots.txt`.
 - [ ] **Koble på betaling** (se under) eller behold forespørselsmodus.

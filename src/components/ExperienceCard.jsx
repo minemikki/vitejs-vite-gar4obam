@@ -29,10 +29,12 @@ export default function ExperienceCard({ exp, saved, onSave }) {
       <div className="card-body">
         <div className="card-head">
           <span className="card-cat">{exp.category}</span>
-          <span className="card-rating">
-            <Icon.star width={14} height={14} /> {num(exp.rating)}
-            <span className="card-reviews">({exp.reviews})</span>
-          </span>
+          {exp.rating ? (
+            <span className="card-rating">
+              <Icon.star width={14} height={14} /> {num(exp.rating)}
+              {exp.reviews ? <span className="card-reviews">({exp.reviews})</span> : null}
+            </span>
+          ) : null}
         </div>
 
         <h3 className="card-title">

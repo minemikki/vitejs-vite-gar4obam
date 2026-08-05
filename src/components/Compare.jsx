@@ -43,7 +43,9 @@ export default function Compare({ items, onRemove, onClear }) {
     { label: 'Pris per person', get: (e) => nok(e.priceNOK), strong: true },
     { label: 'Sted', get: (e) => e.place },
     { label: 'Varighet', get: (e) => e.duration },
-    { label: 'Vurdering', get: (e) => `${num(e.rating)} (${e.reviews})` },
+    ...(items.some((e) => e.rating)
+      ? [{ label: 'Vurdering', get: (e) => (e.rating ? `${num(e.rating)}${e.reviews ? ` (${e.reviews})` : ''}` : '—') }]
+      : []),
     { label: 'Gruppestørrelse', get: (e) => e.groupSize },
     { label: 'Språk', get: (e) => e.languages.join(', ') },
     { label: 'Inkludert', get: (e) => e.included.join(' · ') },

@@ -7,11 +7,13 @@ import { Icon } from '../scenes.jsx';
 import { read, write, KEYS } from '../lib/storage.js';
 import { nok } from '../lib/format.js';
 
+// «Best vurdert» dukker opp av seg selv den dagen opplevelsene har ekte
+// vurderinger. Å sortere på et tomt felt gir bare en tilfeldig rekkefølge.
 const SORTS = [
-  { id: 'popular', label: 'Mest populære' },
+  { id: 'popular', label: 'Vår anbefaling' },
   { id: 'price-asc', label: 'Lavest pris' },
   { id: 'price-desc', label: 'Høyest pris' },
-  { id: 'rating', label: 'Best vurdert' },
+  ...(allExperiences.some((e) => e.rating) ? [{ id: 'rating', label: 'Best vurdert' }] : []),
 ];
 
 const DURATIONS = ['Alle', 'Halvdag', 'Heldag', 'Kveld'];
@@ -80,7 +82,7 @@ export default function Experiences() {
     );
     if (sort === 'price-asc') out = [...out].sort((a, b) => a.priceNOK - b.priceNOK);
     else if (sort === 'price-desc') out = [...out].sort((a, b) => b.priceNOK - a.priceNOK);
-    else if (sort === 'rating') out = [...out].sort((a, b) => b.rating - a.rating);
+    else if (sort === 'rating') out = [...out].sort((a, b) => (b.rating || 0) - (a.rating || 0));
     else out = [...out].sort((a, b) => Number(b.bestseller) - Number(a.bestseller));
     return out;
   }, [kategori, sted, sort, varighet, maks, familie]);
