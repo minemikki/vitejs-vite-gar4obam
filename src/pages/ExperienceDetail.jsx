@@ -9,6 +9,54 @@ import { track } from '../lib/analytics.js';
 import { read, write, KEYS } from '../lib/storage.js';
 import NotFound from './NotFound.jsx';
 
+/*
+ * Bestillingsboks for turer vi selger gjennom en partner.
+ *
+ * Vi tar ikke imot dato og antall her, for vi behandler ikke bestillingen —
+ * det gjør partneren. Å samle inn opplysninger vi likevel kaster, og så
+ * sende kunden til et skjema hun må fylle ut på nytt, er bare irriterende.
+ *
+ * Lenken er merket `rel="sponsored"` fordi Google krever det av betalte
+ * lenker, og vi sier rett ut at vi får provisjon. Markedsføringsloven
+ * krever at kommersielle forbindelser er tydelige — og en kunde som
+ * oppdager det selv, stoler mindre på resten av siden.
+ */
+function PartnerBox({ exp }) {
+  return (
+    <aside className="bookbox" aria-label="Bestilling">
+      <div className="bookbox-price">
+        <span className="bookbox-from">Fra</span>
+        <strong>{nok(exp.priceNOK)}</strong>
+        <span>per person</span>
+      </div>
+
+      <a
+        className="btn btn-gold btn-block btn-lg"
+        href={exp.bookingUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        onClick={() => track('partner_click', { id: exp.id, partner: exp.partner })}
+      >
+        Sjekk ledige datoer <Icon.arrow width={18} height={18} />
+      </a>
+
+      <p className="bookbox-partner">
+        Bestillingen fullføres hos {exp.partner}, som står for betaling,
+        bekreftelse og avbestilling. Vi får provisjon hvis du booker — det
+        koster deg ingenting ekstra.
+      </p>
+
+      <TripButton exp={exp} variant="block" />
+
+      <ul className="bookbox-perks">
+        <li><Icon.check width={16} height={16} /> Gratis avbestilling på de fleste turer</li>
+        <li><Icon.check width={16} height={16} /> Bekreftelse umiddelbart</li>
+        <li><Icon.check width={16} height={16} /> Norsk kundeservice fra oss</li>
+      </ul>
+    </aside>
+  );
+}
+
 function BookingBox({ exp }) {
   const navigate = useNavigate();
   const [date, setDate] = useState('');
@@ -111,7 +159,11 @@ export default function ExperienceDetail() {
             {exp.rating ? (
               <span className="detail-rating">
                 <Icon.star width={16} height={16} /> {num(exp.rating)}
-                {exp.reviews ? <em>({exp.reviews} anmeldelser)</em> : null}
+                {exp.reviews ? (
+                  <em>
+                    ({exp.reviews} anmeldelser{exp.partner ? ` hos ${exp.partner}` : ''})
+                  </em>
+                ) : null}
               </span>
             ) : null}
           </div>
@@ -187,7 +239,7 @@ export default function ExperienceDetail() {
           </section>
         </div>
 
-        <BookingBox exp={exp} />
+        {exp.bookingUrl ? <PartnerBox exp={exp} /> : <BookingBox exp={exp} />}
       </div>
 
       {related.length > 0 && (

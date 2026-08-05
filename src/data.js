@@ -18,16 +18,23 @@
 export const experiences = [
   {
     id: 'elephant-chiangmai',
-    title: 'Etisk elefantreservat',
+    title: 'Etisk elefantreservat og foss',
     place: 'Chiang Mai',
     category: 'Natur & dyr',
     scene: 'jungle',
-    duration: 'Heldag',
-    priceNOK: 890,
+    duration: '7 timer',
+    priceNOK: 516,
+    // Tallene under er GetYourGuides egne for produktet, ikke våre. Derfor
+    // står kilden på siden — en vurdering uten kilde er verdiløs.
+    rating: 4.9,
+    reviews: 682,
+    partner: 'GetYourGuide',
+    partnerTitle: 'Chiang Mai: Ethical Half Day Elephant Sanctuary & Waterfall',
     blurb:
-      'Mat og bad elefantene i et sertifisert reservat uten ridning. Henting på hotellet og lunsj inkludert.',
-    tags: ['Familievennlig', 'Etisk', 'Henting inkl.'],
-    bookingUrl: '',
+      'Mat og stell elefantene i et reservat uten ridning, og bad i fossen etterpå. Sju timer med henting fra Chiang Mai.',
+    tags: ['Familievennlig', 'Etisk', 'Foss', 'Henting inkl.'],
+    bookingUrl:
+      'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4&utm_medium=online_publisher',
   },
   {
     id: 'phiphi-maya',

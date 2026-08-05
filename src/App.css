@@ -1576,3 +1576,12 @@ body.has-comparebar { padding-bottom: 78px; }
 /* Logofilen. object-fit hindrer at den strekkes hvis noen setter ulik
    bredde og høyde. */
 .logomark { display: block; object-fit: contain; flex: none; }
+
+/* Bestillingsboks for partnerturer */
+.bookbox-from { font-size: 0.9rem; color: var(--muted); margin-right: 2px; }
+.bookbox .btn-lg { gap: 8px; margin-bottom: 14px; }
+.bookbox-partner {
+  font-size: 0.85rem; line-height: 1.5; color: var(--muted);
+  padding-bottom: 16px; margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
