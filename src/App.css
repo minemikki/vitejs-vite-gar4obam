@@ -1572,3 +1572,7 @@ body.has-comparebar { padding-bottom: 78px; }
   .budget { padding: 32px 18px 60px; }
   .budget-form, .budget-result { padding: 22px 20px; }
 }
+
+/* Logofilen. object-fit hindrer at den strekkes hvis noen setter ulik
+   bredde og høyde. */
+.logomark { display: block; object-fit: contain; flex: none; }

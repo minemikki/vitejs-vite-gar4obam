@@ -563,35 +563,26 @@ export const Icon = {
 };
 
 /* ------------------------------------------------------------------ *
- * Merkevaremerke — lotusknopp
+ * Merkevaremerke
  *
- * Lotus er det mest brukte symbolet i thai-merkevarer, og nesten alltid
- * tegnet som en åpen blomst. Den varianten eies av spa og massasjesalonger,
- * og en reiseside som bruker den blir lest som nettopp det.
+ * Logoen er en ekte fil, ikke tegnet i kode. Kilden ligger i
+ * public/logoo.png; public/logo-*.png er beskårne utsnitt i faste
+ * størrelser, laget ut fra der pikslene faktisk er.
  *
- * Denne er tegnet som arkitektur i stedet: den spisse knoppen som kroner
- * thailandske tempeltårn, med to sidepetaler som gir den varme. Samme
- * strekspråk som motivene på kortene, og den holder seg lesbar ned i 24 px.
+ * `plain` finnes for steder som trenger merket i én farge. Et bilde kan
+ * ikke farges om, så da vises samme fil — kall den bare på lys bakgrunn.
  * ------------------------------------------------------------------ */
 
-export function LogoMark({ size = 38, plain = false }) {
-  const stroke = plain ? 'currentColor' : 'var(--gold-soft)';
+export function LogoMark({ size = 38 }) {
   return (
-    <svg
+    <img
+      className="logomark"
+      src="/logo-192.png"
       width={size}
       height={size}
-      viewBox="0 0 48 48"
-      xmlns="http://www.w3.org/2000/svg"
+      alt=""
       aria-hidden="true"
-      focusable="false"
-    >
-      {!plain && <rect width="48" height="48" rx="13" fill="var(--emerald-900)" />}
-      <g fill="none" stroke={stroke} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M24 7.7 C30.4 17.1 31.5 25.3 24 34.7 C16.5 25.3 17.6 17.1 24 7.7 Z" />
-        <path d="M14.6 34.7 C11.1 27.4 12 21 15.9 16.3 C18 21.4 18.4 28.3 17.6 34.7 Z" />
-        <path d="M33.4 34.7 C36.9 27.4 36 21 32.1 16.3 C30 21.4 29.6 28.3 30.4 34.7 Z" />
-        <path d="M16.7 39.4 H31.3" />
-      </g>
-    </svg>
+      decoding="async"
+    />
   );
 }
