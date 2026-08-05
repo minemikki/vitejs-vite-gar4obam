@@ -1,12 +1,49 @@
-# React + Vite
+# Sawadee Tours 🌴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En norsk-språklig markedsplass for Thailand-opplevelser. Book turer, elefantparker,
+øyeventyr og matkurs — på norsk, betalt i kroner. Bygget med **React 19 + Vite**.
 
-Currently, two official plugins are available:
+> **Forretningsidé:** Selg billetter/opplevelser til norske turister som reiser til
+> Thailand, og tjen provisjon (affiliate 5–10 %, eller egne kontrakter 20–30 %).
+> Din fordel: du er både norsk og thai statsborger — du eier både språket/tilliten
+> mot Norge og lovligheten (TAT-lisens) i Thailand.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Kom i gang
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev      # start utviklingsserver
+npm run build    # bygg for produksjon
+npm run preview  # forhåndsvis produksjonsbygg
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Slik er den bygd
+
+| Fil | Innhold |
+| --- | --- |
+| `src/data.js` | Alle opplevelser, kategorier, reisemål og anmeldelser |
+| `src/App.jsx` | Hele siden (nav, hero, kort, booking-modal, footer) |
+| `src/App.css` | Stil og responsivt design |
+
+## Neste steg for å tjene penger
+
+1. **Koble på booking-lenker.** Hver opplevelse i `src/data.js` har et felt
+   `bookingUrl`. Legg inn din affiliate-lenke (Klook, GetYourGuide, Viator) eller
+   egen booking-URL. Da sender «Bestill»-knappen kunden rett videre.
+2. **Fang forespørsler.** Uten `bookingUrl` viser modalen et forespørselsskjema.
+   Koble `submit`-funksjonen i `App.jsx` til e-post/CRM (f.eks. Formspree, Resend)
+   eller Stripe Payment Link for ekte betaling.
+3. **Publiser.** Deploy gratis på Vercel/Netlify og koble til et `.no`-domene.
+4. **Skaff trafikk** (den egentlige jobben): SEO på norske søk («ting å gjøre i
+   Phuket»), Facebook-grupper for nordmenn i Thailand, Google Ads.
+
+## Viktige merknader
+
+- **Anmeldelsene i `src/data.js` er plassholdere** — bytt til ekte kundeomtaler før
+  lansering.
+- Statistikk i toppseksjonen (antall reisende osv.) er også plassholder.
+- Sjekk TAT-lisens og selskapsregistrering før du selger som fullverdig reisebyrå.
+
+---
+
+Demo/MVP — laget som et startpunkt, klar til å utvides.
