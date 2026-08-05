@@ -18,12 +18,16 @@ const expired = (c) => {
 };
 
 /**
- * GetYourGuides analyseskript. Viser i partnerdashbordet hvilke turer folk
- * klikker seg videre på — altså hva de faktisk vurderer, ikke bare hva de
- * ser på. GetYourGuide ber deg legge det i <head> på hver side; det gjør vi
- * ikke, fordi det setter sporing fra tredjepart før brukeren har sagt ja.
+ * GetYourGuides skript. Ett og samme skript driver både statistikken
+ * (hvilke turer folk klikker på) og bestillingswidgetene (kalenderen som
+ * lar kunden booke på vår egen side). GetYourGuide ber deg legge det i
+ * <head> på hver side; det gjør vi ikke, fordi det setter sporing og
+ * innhold fra tredjepart før brukeren har sagt ja.
+ *
+ * Eksportert fordi bestillingswidgeten på turdetaljsiden også må kunne be om
+ * det, ikke bare samtykkebanneret.
  */
-function loadPartnerAnalytics() {
+export function loadPartnerAnalytics() {
   const id = partners.gygPartnerId;
   if (!id || document.getElementById('gyg-analytics')) return;
   const s = document.createElement('script');
@@ -73,11 +77,46 @@ export function useConsent() {
       loadAnalytics();
       loadPartnerAnalytics();
     }
+    // Andre komponenter (som bestillingswidgeten) må få vite at valget endret
+    // seg, uten å dele React-state med banneret.
+    window.dispatchEvent(new Event('st-consent'));
   }, []);
 
   const reopen = useCallback(() => setOpen(true), []);
 
+  // Lar hvilken som helst komponent be om at samtykkevalget vises igjen, uten
+  // å måtte tre reopen gjennom hele treet.
+  useEffect(() => {
+    const onAsk = () => setOpen(true);
+    window.addEventListener('st-open-consent', onAsk);
+    return () => window.removeEventListener('st-open-consent', onAsk);
+  }, []);
+
   return { consent, open, decide, reopen };
+}
+
+/**
+ * Lettvekts avlesning av statistikk-samtykket for komponenter som bare trenger
+ * ja/nei — og som må oppdatere seg hvis brukeren endrer valget. Deler ikke
+ * state med banneret; lytter på hendelsen banneret sender.
+ */
+export function useAnalyticsConsent() {
+  // Starter på false — samme som forhåndsrenderingen, der localStorage ikke
+  // finnes. Leser vi det ekte valget allerede ved første render, tegner
+  // server og nettleser ulikt, og React kaster markupen (hydreringsfeil).
+  // Vi leser det først etter montering, i effekten under.
+  const [ok, setOk] = useState(false);
+  useEffect(() => {
+    const update = () => setOk(!!read(KEYS.consent, null)?.analytics);
+    update();
+    window.addEventListener('st-consent', update);
+    window.addEventListener('storage', update);
+    return () => {
+      window.removeEventListener('st-consent', update);
+      window.removeEventListener('storage', update);
+    };
+  }, []);
+  return ok;
 }
 
 export default function CookieBanner({ open, decide }) {

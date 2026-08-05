@@ -1654,3 +1654,18 @@ body.has-comparebar { padding-bottom: 78px; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
 }
+
+/* GetYourGuide bestillingswidget i bestillingsboksen */
+.gyg-widget { min-height: 300px; margin-bottom: 14px; }
+.gyg-widget span { font-size: 0.8rem; color: var(--muted); }
+.bookbox-consent { margin-bottom: 4px; }
+.bookbox-consent .btn-lg { gap: 8px; margin-bottom: 12px; }
+.bookbox-consent-note {
+  font-size: 0.85rem; line-height: 1.5; color: var(--muted);
+  padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--line);
+}
+.linklike {
+  border: 0; background: none; padding: 0; font: inherit; cursor: pointer;
+  color: var(--emerald); font-weight: 600; text-decoration: underline;
+}
+.linklike:hover { color: var(--emerald-600); }

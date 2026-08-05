@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getExperience, allExperiences } from '../data.js';
 import { Scene, Icon } from '../scenes.jsx';
+import { useAnalyticsConsent, loadPartnerAnalytics } from '../components/CookieBanner.jsx';
+import { partners } from '../config.js';
 import ExperienceCard from '../components/ExperienceCard.jsx';
 import { nok, num, todayISO } from '../lib/format.js';
 import TripButton from '../components/TripButton.jsx';
@@ -44,6 +46,92 @@ function PartnerBox({ exp }) {
         Bestillingen fullføres hos {exp.partner}, som står for betaling,
         bekreftelse og avbestilling. Vi får provisjon hvis du booker — det
         koster deg ingenting ekstra.
+      </p>
+
+      <TripButton exp={exp} variant="block" />
+
+      <ul className="bookbox-perks">
+        <li><Icon.check width={16} height={16} /> Gratis avbestilling på de fleste turer</li>
+        <li><Icon.check width={16} height={16} /> Bekreftelse umiddelbart</li>
+        <li><Icon.check width={16} height={16} /> Norsk kundeservice fra oss</li>
+      </ul>
+    </aside>
+  );
+}
+
+/*
+ * Bestillingswidget fra GetYourGuide — kalenderen som lar kunden velge dato
+ * og booke uten å forlate siden vår.
+ *
+ * Widgeten er en tredjeparts-innbygging: den laster en iframe fra
+ * GetYourGuide og setter informasjonskapsler. Derfor vises den bare etter
+ * samtykke. Har brukeren sagt nei, faller vi tilbake til lenken — da kan hen
+ * fortsatt booke, bare via omdirigering i stedet for på siden.
+ *
+ * Markup-en injiseres via en ref i stedet for i JSX, slik at React ikke rører
+ * innholdet GetYourGuides skript legger inn. Skriptet oppdager widgeten selv
+ * og bytter <div>-en ut med kalenderen.
+ */
+function gygWidgetHtml(tourId, partnerId) {
+  return (
+    `<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" ` +
+    `data-gyg-tour-id="${tourId}" data-gyg-locale-code="no-NO" data-gyg-currency="NOK" ` +
+    `data-gyg-widget="availability" data-gyg-variant="vertical" ` +
+    `data-gyg-partner-id="${partnerId}">` +
+    `<span>Bestilling levert av GetYourGuide</span></div>`
+  );
+}
+
+function BookingWidget({ exp }) {
+  const consented = useAnalyticsConsent();
+  const host = useRef(null);
+
+  useEffect(() => {
+    const el = host.current;
+    if (!consented || !el || el.dataset.mounted) return;
+    el.dataset.mounted = '1';
+    el.innerHTML = gygWidgetHtml(exp.gygTourId, partners.gygPartnerId);
+    loadPartnerAnalytics();
+  }, [consented, exp.gygTourId]);
+
+  return (
+    <aside className="bookbox" aria-label="Bestilling">
+      <div className="bookbox-price">
+        <span className="bookbox-from">Fra</span>
+        <strong>{nok(exp.priceNOK)}</strong>
+        <span>per person</span>
+      </div>
+
+      {consented ? (
+        <div className="gyg-widget" ref={host} />
+      ) : (
+        <div className="bookbox-consent">
+          <a
+            className="btn btn-gold btn-block btn-lg"
+            href={exp.bookingUrl}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            onClick={() => track('partner_click', { id: exp.id, partner: exp.partner })}
+          >
+            Sjekk ledige datoer <Icon.arrow width={18} height={18} />
+          </a>
+          <p className="bookbox-consent-note">
+            Vil du velge dato og booke direkte her på siden?{' '}
+            <button
+              type="button"
+              className="linklike"
+              onClick={() => window.dispatchEvent(new Event('st-open-consent'))}
+            >
+              Godta informasjonskapsler fra {exp.partner}
+            </button>
+            , så vises bestillingskalenderen her.
+          </p>
+        </div>
+      )}
+
+      <p className="bookbox-partner">
+        Bestilling og betaling håndteres av {exp.partner}. Vi får provisjon hvis
+        du booker — det koster deg ingenting ekstra.
       </p>
 
       <TripButton exp={exp} variant="block" />
@@ -343,7 +431,13 @@ export default function ExperienceDetail() {
           </section>
         </div>
 
-        {exp.bookingUrl ? <PartnerBox exp={exp} /> : <BookingBox exp={exp} />}
+        {exp.gygTourId ? (
+          <BookingWidget exp={exp} />
+        ) : exp.bookingUrl ? (
+          <PartnerBox exp={exp} />
+        ) : (
+          <BookingBox exp={exp} />
+        )}
       </div>
 
       {related.length > 0 && (

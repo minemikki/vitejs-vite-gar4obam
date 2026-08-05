@@ -37,6 +37,8 @@ export const experiences = [
       'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4&utm_medium=online_publisher',
     // Ekte bilder fra turen, via GetYourGuide-partnerskapet. Første bilde er
     // kortbildet; hele lista vises som galleri på detaljsiden.
+    // GetYourGuide bestillingswidget — kalenderen vises inne på detaljsiden.
+    gygTourId: '895033',
     image: '/bilder/elefant-01.avif',
     gallery: [
       { src: '/bilder/elefant-01.avif', alt: 'To elefanter ved fossen i reservatet' },
