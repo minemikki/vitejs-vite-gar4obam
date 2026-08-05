@@ -21,7 +21,7 @@ export const regions = [
     name: 'Andamanhavet',
     places: 'Phuket · Krabi · Koh Lanta · Phi Phi · Khao Lak',
     scene: 'karst',
-    destinations: ['phuket', 'krabi'],
+    destinations: ['phuket', 'krabi', 'koh-lanta', 'khao-lak'],
     summary:
       'Vestkysten. Tørt fra november til april, vått fra mai til oktober. Dette er kysten folk mener når de sier at Thailand er best om vinteren.',
   },
@@ -30,7 +30,7 @@ export const regions = [
     name: 'Thailandsbukta',
     places: 'Koh Samui · Koh Phangan · Koh Tao',
     scene: 'islands',
-    destinations: ['koh-samui'],
+    destinations: ['koh-samui', 'koh-tao'],
     summary:
       'Østkysten, og den store fellen. Her er regntiden forskjøvet: oktober til desember er våtest, mens februar til august er fint. Reiser du i november, bør du ikke hit.',
   },
@@ -48,7 +48,7 @@ export const regions = [
     name: 'Bangkok og sentralt',
     places: 'Bangkok · Ayutthaya · Kanchanaburi',
     scene: 'temple',
-    destinations: ['bangkok'],
+    destinations: ['bangkok', 'hua-hin'],
     summary:
       'Innlandet. Behagelig fra november til februar, kvelende varmt i april, og vått fra mai til oktober med september på topp.',
   },

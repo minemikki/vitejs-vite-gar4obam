@@ -310,6 +310,214 @@ export const destinations = [
     ],
     verify: 'Sjekk båtavganger til Koh Larn og åpningstider for de store parkene.',
   },
+  {
+    slug: 'koh-lanta',
+    name: 'Koh Lanta',
+    region: 'Andamanhavet',
+    scene: 'islands',
+    tagline: 'Lange strender, lavt tempo og ingen som maser',
+    metaTitle: 'Koh Lanta — guide på norsk til Thailands roligste øy',
+    metaDescription:
+      'Alt om Koh Lanta: hvilken strand du bør velge, når du bør reise, hvordan du kommer deg dit fra Krabi, og hvorfor øya passer bedre for familier enn Phuket.',
+    intro: [
+      'Koh Lanta er svaret for deg som vil ha strand uten uteliv. Øya er lang og smal, med sandstrender nesten hele vestsiden, og et tempo som er merkbart lavere enn på Phuket. Ingen står i veikanten og selger deg noe.',
+      'Skandinaver har funnet veien hit i mange år, og du hører norsk, svensk og dansk på strendene i høysesong. Det gjør øya lettere å reise til enn folketallet skulle tilsi — mange restauranter og dykkesentre er vant til nordiske gjester.',
+    ],
+    bestTime: {
+      summary: 'November til april. Store deler av øya stenger i lavsesong.',
+      detail:
+        'Koh Lanta følger vestkysten: tørt fra november til april, vått fra mai til oktober. Forskjellen fra Phuket er at Lanta faktisk går i dvale utenfor sesongen — mange hoteller, restauranter og fergeruter stenger helt fra rundt mai til oktober. Reiser du i regntiden, sjekk at stedet du booker faktisk har åpent.',
+    },
+    gettingAround: [
+      'Leiescooter er det vanligste. Øya har én hovedvei langs vestsiden, og den er lett å kjøre.',
+      'Songthaew — ombygde pickuper — går mellom strendene og er billig, men går sjelden etter mørkets frembrudd.',
+      'Avstandene er større enn de ser ut. Fra ferga i nord til Kantiang Bay i sør tar det rundt førti minutter.',
+    ],
+    highlights: [
+      { t: 'Long Beach (Phra Ae)', d: 'Den lengste stranda, med flest spisesteder innen gangavstand. Best for førstegangsbesøk.' },
+      { t: 'Kantiang Bay', d: 'Lengst sør, mest dramatisk, minst folk. Her bor du hvis du vil være i fred.' },
+      { t: 'Gamlebyen på østsiden', d: 'Trehus på påler over vannet, sjømatrestauranter og en helt annen stemning enn strandsiden.' },
+      { t: 'Fireøyersturen', d: 'Koh Chuek, Koh Ma, Koh Kradan og Emerald Cave — en av de beste båtturene i hele Thailand.' },
+      { t: 'Mu Koh Lanta nasjonalpark', d: 'Fyrtårnet lengst sør, med apekatter og utsikt over Andamanhavet.' },
+    ],
+    practical: [
+      { k: 'Hvordan komme dit', v: 'Fly til Krabi, deretter buss og ferge eller minibuss over broene. Regn tre til fire timer fra flyplassen.' },
+      { k: 'Minibank', v: 'Finnes langs hovedveien, men ta ut på Krabi flyplass så du har kontanter fra start.' },
+      { k: 'Med barn', v: 'Long Beach har slakt fall i vannet og rolige bølger i høysesong.' },
+      { k: 'Nattliv', v: 'Beskjedent. Strandbarer og musikk, men ingen klubbscene. Det er poenget med Lanta.' },
+    ],
+    faq: [
+      {
+        q: 'Koh Lanta eller Phuket?',
+        a: 'Phuket hvis du vil ha kort reisevei, mange restauranter og uteliv. Koh Lanta hvis du vil ha ro, lengre strender og lavere priser — men regn med en halv dag ekstra på veien.',
+      },
+      {
+        q: 'Hvor mange dager bør jeg ha på Koh Lanta?',
+        a: 'Minst fem. Øya belønner den som blir værende, og med tre dager bruker du to av dem på transport.',
+      },
+      {
+        q: 'Er Koh Lanta åpent hele året?',
+        a: 'Nei. Mange steder stenger fra rundt mai til oktober, og fergerutene reduseres. Skal du dit i lavsesong, bekreft åpningstider før du booker.',
+      },
+    ],
+    verify: 'Bekreft fergeruter og sesongåpning hos operatøren før publisering — dette endrer seg årlig.',
+  },
+  {
+    slug: 'khao-lak',
+    name: 'Khao Lak',
+    region: 'Andamanhavet',
+    scene: 'canopy',
+    tagline: 'Skandinavenes strand, og porten til Similanøyene',
+    metaTitle: 'Khao Lak — norsk guide til strender, dykking og Similan',
+    metaDescription:
+      'Khao Lak forklart på norsk: hvilke strandområder som passer for hvem, når Similanøyene er åpne, hvordan du kommer deg dit fra Phuket, og hva som er verdt tiden.',
+    intro: [
+      'Khao Lak er ikke en by, men en rekke strandområder langs kysten nord for Phuket. Det finnes ingen sentrum å snakke om, og det er nettopp derfor folk drar hit: lange, brede strender, palmer helt ned til vannkanten, og ingen høyhus.',
+      'Stedet er kjent blant skandinaver, og mange kommer tilbake år etter år. Det er også det naturlige utgangspunktet for Similanøyene, som er noe av det beste snorkling- og dykkevannet i Thailand.',
+    ],
+    bestTime: {
+      summary: 'November til april. Similanøyene er stengt utenfor sesongen.',
+      detail:
+        'Khao Lak følger vestkysten, med tørrsesong fra november til april. Similanøyene er en nasjonalpark som stenges i regntiden — vanligvis fra midten av mai til midten av oktober. Er Similan hele grunnen til at du drar, må reisen legges innenfor åpningssesongen. Sjekk gjeldende datoer, de settes av parkmyndighetene hvert år.',
+    },
+    gettingAround: [
+      'De fleste hotellene har egen strand, og du trenger sjelden transport i det daglige.',
+      'Leiescooter eller taxi mellom strandområdene. Avstandene langs kysten er lengre enn de ser ut på kart.',
+      'Fra Phuket flyplass tar det rundt halvannen time med bil nordover.',
+    ],
+    highlights: [
+      { t: 'Similanøyene', d: 'Hvit sand, klart vann og noe av den beste snorklingen i landet. Heldagstur med hurtigbåt.' },
+      { t: 'Nang Thong Beach', d: 'Mest liv og flest restauranter innen gangavstand. Bra førstevalg.' },
+      { t: 'Bang Niang', d: 'Roligere, med det lokale markedet noen kvelder i uka.' },
+      { t: 'Khao Sok nasjonalpark', d: 'To timer innover i landet. Kalksteinsfjell, innsjø og flytende bungalower — en av Thailands mest undervurderte opplevelser.' },
+      { t: 'Tsunamimuseet', d: 'Om katastrofen i 2004, som rammet dette området hardest. Nøkternt og verdt en time.' },
+    ],
+    practical: [
+      { k: 'Hvordan komme dit', v: 'Fly til Phuket, deretter rundt halvannen time med bil nordover. De fleste hoteller ordner transport.' },
+      { k: 'Strømninger', v: 'Havet her kan ha kraftig understrøm i lavsesong. Følg flaggene på stranda.' },
+      { k: 'Med barn', v: 'Bredde strender og grunt vann i høysesong gjør området godt egnet for familier.' },
+      { k: 'Nattliv', v: 'Rolig. Restauranter og barer, men ingen klubber.' },
+    ],
+    faq: [
+      {
+        q: 'Er Khao Lak bedre enn Phuket?',
+        a: 'Annerledes. Khao Lak har roligere og bredere strender og færre folk, men også langt færre restauranter og nesten ikke uteliv. Vil du kombinere, er de bare halvannen time fra hverandre.',
+      },
+      {
+        q: 'Når er Similanøyene åpne?',
+        a: 'Vanligvis fra midten av oktober til midten av mai, men de eksakte datoene settes av parkmyndighetene hvert år. Bekreft før du booker flybilletter rundt akkurat den turen.',
+      },
+      {
+        q: 'Kan jeg kombinere Khao Lak og Khao Sok?',
+        a: 'Ja, og det er en av de beste kombinasjonene i Thailand. To netter ved innsjøen i Khao Sok gir deg en helt annen opplevelse enn stranda, og turen tar rundt to timer hver vei.',
+      },
+    ],
+    verify: 'Similanøyenes åpningssesong fastsettes årlig — bekreft datoene før publisering.',
+  },
+  {
+    slug: 'hua-hin',
+    name: 'Hua Hin',
+    region: 'Thailandsbukta',
+    scene: 'market',
+    tagline: 'Kongefamiliens badeby, og den enkleste å reise til',
+    metaTitle: 'Hua Hin — norsk guide til badebyen sør for Bangkok',
+    metaDescription:
+      'Hua Hin på norsk: hvorfor byen passer for familier og eldre reisende, hva du gjør der, når du bør reise, og hvordan du kommer deg dit fra Bangkok uten å fly.',
+    intro: [
+      'Hua Hin er Thailands eldste badeby, og den eneste av betydning du kan kjøre til fra Bangkok på et par timer. Den thailandske kongefamilien har hatt sommerresidens her siden 1920-tallet, og det preger byen: velstelt, trygg og betydelig mindre turistdrevet enn øyene i sør.',
+      'Dette er stedet for deg som vil ha strand og komfort uten en eneste flytur innenlands. Byen har golfbaner, gode markeder, og en strandpromenade det faktisk går an å gå på.',
+    ],
+    bestTime: {
+      summary: 'November til april. Tørrere enn øyene i sør hele året.',
+      detail:
+        'Hua Hin ligger på vestsiden av Thailandsbukta og får mindre nedbør enn både Phuket og Koh Samui. November til april er tørrest og mest behagelig. Mai til oktober gir ettermiddagsbyger, men sjelden hele regnværsdager. Byen fungerer derfor bedre enn de fleste andre strandmål i skuldersesongen.',
+    },
+    gettingAround: [
+      'Byen er kompakt, og det meste ligger i gangavstand fra stranda.',
+      'Songthaew går langs hovedgata for noen kroner.',
+      'Leiescooter eller taxi til vingårdene og nasjonalparken utenfor byen.',
+    ],
+    highlights: [
+      { t: 'Stranda og promenaden', d: 'Fem kilometer sand, og en promenade du faktisk kan spasere langs om kvelden.' },
+      { t: 'Cicada Market', d: 'Kunst, håndverk og mat i helgene. Betydelig hyggeligere enn de fleste turistmarkeder.' },
+      { t: 'Khao Sam Roi Yot nasjonalpark', d: 'En time sørover. Phraya Nakhon-hulen med kongepaviljongen i lyskjegla er et av Thailands mest fotograferte steder.' },
+      { t: 'Vingårdene', d: 'Ja, Thailand lager vin. Monsoon Valley ligger en halvtime utenfor byen.' },
+      { t: 'Nattmarkedet', d: 'Sjømat, gatemat og suvenirer i sentrum hver kveld.' },
+    ],
+    practical: [
+      { k: 'Hvordan komme dit', v: 'Tre til fire timer med bil, buss eller tog fra Bangkok. Ingen innenriksflyvning nødvendig.' },
+      { k: 'Med barn', v: 'Godt egnet — rolig sjø, korte avstander og flere vannparker.' },
+      { k: 'Eldre reisende', v: 'Blant de enkleste stedene i Thailand: flat by, god infrastruktur, private sykehus i nærheten.' },
+      { k: 'Bading', v: 'Sjøen er grunn langt ut. Fint for barn, mindre fint hvis du vil svømme langt.' },
+    ],
+    faq: [
+      {
+        q: 'Er Hua Hin verdt turen framfor øyene?',
+        a: 'Hvis du vil unngå innenriksfly, reiser med små barn eller eldre, eller bare har en uke — ja. Vil du ha turkis vann og kalksteinsklipper, dra sørover i stedet.',
+      },
+      {
+        q: 'Hvor lang tid tar det fra Bangkok?',
+        a: 'Tre til fire timer avhengig av transport og trafikk. Toget er tregest men mest behagelig, minibuss raskest.',
+      },
+      {
+        q: 'Hvordan er stranda i Hua Hin?',
+        a: 'Lang og fin å gå på, men vannet er grunnere og mindre klart enn på øyene i sør. Byen handler mer om komfort og ro enn om drømmestrand.',
+      },
+    ],
+    verify: 'Bekreft åpningstider for Phraya Nakhon-hulen og vingårdene før publisering.',
+  },
+  {
+    slug: 'koh-tao',
+    name: 'Koh Tao',
+    region: 'Thailandsbukta',
+    scene: 'karst',
+    tagline: 'Der halve verden tar dykkersertifikatet sitt',
+    metaTitle: 'Koh Tao — norsk guide til dykking og snorkling',
+    metaDescription:
+      'Koh Tao forklart på norsk: hvorfor øya er verdens billigste sted å ta dykkersertifikat, når du bør reise, hvordan du kommer deg dit, og hva du gjør hvis du ikke dykker.',
+    intro: [
+      'Koh Tao er liten — du kjører rundt den på en time — og har likevel blitt et av verdens mest kjente dykkersteder. Grunnen er enkel: varmt, klart og rolig vann året rundt, korte avstander til dykkestedene, og så mange dykkesentre som konkurrerer at prisene er blant de laveste noe sted.',
+      'Dykker du ikke, er øya fortsatt verdt turen for snorklingen alene. Men vær ærlig med deg selv: kommer du hit uten interesse for det som skjer under vann, finnes det roligere strender andre steder.',
+    ],
+    bestTime: {
+      summary: 'Februar til september. Unngå oktober til desember.',
+      detail:
+        'Koh Tao følger Thailandsbukta, der regntiden kommer sent på året. Februar til september er den lange gode perioden, med best sikt under vann fra mars til mai og igjen i august. Oktober til desember er vått, og da kan ferger bli innstilt i flere dager i strekk.',
+    },
+    gettingAround: [
+      'Øya er liten, men veiene er bratte og dårlige flere steder. Leier du scooter, kjør forsiktig og fotografer skadene før du drar.',
+      'Vannbåttaxi mellom bukene er ofte enklere enn vei.',
+      'Til fots kommer du langt i Sairee, som er hovedområdet.',
+    ],
+    highlights: [
+      { t: 'Dykkersertifikat', d: 'Open Water tar tre til fire dager. Sammenlign sentrene på gruppestørrelse, ikke bare pris.' },
+      { t: 'Snorkling i Shark Bay', d: 'Svartfinnet revhai er vanlig her. Ufarlige, og en av de beste opplevelsene på øya.' },
+      { t: 'Koh Nang Yuan', d: 'Tre småøyer forbundet med en sandtange rett nord for Koh Tao. Best tidlig på dagen.' },
+      { t: 'Utsiktspunktene', d: 'John-Suwan og Mango Viewpoint. Bratt oppstigning, men utsikten er verdt svetten.' },
+      { t: 'Sairee Beach ved solnedgang', d: 'Øyas sosiale midtpunkt, med barer og restauranter langs hele stranda.' },
+    ],
+    practical: [
+      { k: 'Hvordan komme dit', v: 'Fly til Koh Samui eller Surat Thani, deretter ferge. Regn en hel reisedag fra Bangkok.' },
+      { k: 'Sjøsyke', v: 'Fergeturen kan være urolig. Ta tabletter i god tid før avgang hvis du er utsatt.' },
+      { k: 'Minibank', v: 'Finnes, men gebyrene er høye. Ta med kontanter fra fastlandet.' },
+      { k: 'Scooterleie', v: 'Vanlig kilde til konflikt om skader. Ta bilder av kjøretøyet før du kjører, og bruk hjelm.' },
+    ],
+    faq: [
+      {
+        q: 'Må jeg kunne dykke for å dra til Koh Tao?',
+        a: 'Nei, snorklingen alene er verdt turen, og øya har fine utsiktspunkter og strender. Men uten interesse for havet finnes det roligere og penere strender på Koh Lanta eller Koh Samui.',
+      },
+      {
+        q: 'Hvor lang tid tar det å ta dykkersertifikat?',
+        a: 'Et Open Water-kurs tar vanligvis tre til fire dager. Sett av minst en uke på øya hvis du skal ta det, så har du dager igjen til å dykke etterpå.',
+      },
+      {
+        q: 'Er Koh Tao trygt?',
+        a: 'Ja, for reisende flest. Det klart vanligste problemet er scooterulykker og tvister om skader på leide kjøretøy. Kjør forsiktig, bruk hjelm, og dokumenter skader før du kjører av gårde.',
+      },
+    ],
+    verify: 'Sjekk gjeldende fergeruter og sesongdrift før publisering.',
+  },
 ];
 
 export const getDestination = (slug) =>

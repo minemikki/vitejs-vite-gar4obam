@@ -6,6 +6,7 @@ import { Scene, Icon } from '../scenes.jsx';
 import ExperienceCard from '../components/ExperienceCard.jsx';
 import Accordion from '../components/Accordion.jsx';
 import NotFound from './NotFound.jsx';
+import { site } from '../config.js';
 
 export default function Destination() {
   const { slug } = useParams();
@@ -31,7 +32,9 @@ export default function Destination() {
           <h1>Ting å gjøre i {d.name}</h1>
           <p className="detail-tagline">{d.tagline}</p>
           <div className="detail-facts">
-            <span><Icon.ticket width={16} height={16} /> {experiences.length} opplevelser</span>
+            {experiences.length > 0 && (
+              <span><Icon.ticket width={16} height={16} /> {experiences.length} opplevelser</span>
+            )}
             <span><Icon.calendar width={16} height={16} /> Best: {d.bestTime.summary.split('—')[0].trim()}</span>
           </div>
         </div>
@@ -61,14 +64,34 @@ export default function Destination() {
             </ol>
           </section>
 
-          {experiences.length > 0 && (
-            <section className="dest-block">
-              <h2>Våre opplevelser i {d.name}</h2>
+          <section className="dest-block">
+            <h2>Våre opplevelser i {d.name}</h2>
+            {experiences.length > 0 ? (
               <div className="grid grid--2">
                 {experiences.map((e) => <ExperienceCard key={e.id} exp={e} />)}
               </div>
-            </section>
-          )}
+            ) : (
+              <div className="dest-empty">
+                <p>
+                  Vi har ikke turer i {d.name} i utvalget ennå. Vi tar bare inn
+                  opplevelser vi selv har sjekket, og det tar tid — heller for få
+                  enn noen vi ikke står inne for.
+                </p>
+                <p>
+                  Si fra hva du leter etter, så finner vi det. Eller se hva vi har
+                  i resten av landet.
+                </p>
+                <div className="dest-empty-row">
+                  <Link className="btn btn-primary" to="/opplevelser">
+                    Se alle opplevelser
+                  </Link>
+                  <a className="btn btn-outline" href={`mailto:${site.email}?subject=${encodeURIComponent(`Turer i ${d.name}`)}`}>
+                    Spør oss om {d.name}
+                  </a>
+                </div>
+              </div>
+            )}
+          </section>
 
           <section className="dest-block">
             <h2>Når bør du reise?</h2>

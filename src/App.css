@@ -1466,3 +1466,11 @@ body.has-comparebar { padding-bottom: 78px; }
 .guide-cta h2 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
 .guide-cta p { color: rgba(255, 255, 255, 0.86); margin-bottom: 18px; max-width: 40em; }
 .guide-cta .btn { gap: 8px; }
+
+/* Reisemål vi ennå ikke har turer i — ærlig i stedet for tomt */
+.dest-empty {
+  background: var(--cream-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 26px 24px;
+}
+.dest-empty p { color: var(--ink-soft); line-height: 1.6; margin-bottom: 12px; max-width: 42em; }
+.dest-empty-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
