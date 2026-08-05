@@ -99,6 +99,23 @@ writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 );
 
+/* ------------------------------ robots ------------------------------- */
+// Genereres her i stedet for å ligge statisk i public/, så sitemap-adressen
+// aldri kan komme i utakt med `site.url`.
+writeFileSync(
+  join(dist, 'robots.txt'),
+  [
+    'User-agent: *',
+    'Allow: /',
+    '',
+    '# Checkout har ikke noe i søkeresultatene å gjøre',
+    'Disallow: /bestill/',
+    '',
+    `Sitemap: ${site.url}/sitemap.xml`,
+    '',
+  ].join('\n')
+);
+
 // Mellombygget trengs ikke i det som deployes.
 rmSync(join(root, 'dist-ssr'), { recursive: true, force: true });
 

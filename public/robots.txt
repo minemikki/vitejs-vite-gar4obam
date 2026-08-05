@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-# Checkout har ikke noe i søkeresultatene å gjøre
-Disallow: /bestill/
-
-Sitemap: https://sawadeetours.no/sitemap.xml

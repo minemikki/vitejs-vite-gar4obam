@@ -10,8 +10,11 @@ export const site = {
   name: 'Sawadee Tours',
   tagline: 'Kuraterte Thailand-opplevelser — booket på norsk',
 
-  // Bytt til ditt ekte domene når du har koblet det i Vercel.
-  url: 'https://sawadeetours.no',
+  // Adressen siden FAKTISK ligger på. Denne styrer canonical-taggen på hver
+  // side, Open Graph-lenkene og sitemap.xml — så den må stemme, ellers ber vi
+  // Google indeksere en adresse som ikke finnes, og da rangerer vi ingen steder.
+  // Bytt den dagen du kobler på eget domene i Vercel. Ingen skråstrek til slutt.
+  url: 'https://vitejs-vite-gar4obam.vercel.app',
 
   // TODO: ekte kontaktopplysninger
   email: 'hei@sawadeetours.no',
