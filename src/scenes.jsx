@@ -35,9 +35,9 @@ const svgProps = {
 
 /* ---------------- Individual scenes ---------------- */
 
-function Islands({ uid }) {
+function Islands({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Tropiske øyer og hav">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Tropiske øyer og hav">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ffd69e" />
@@ -77,9 +77,9 @@ function Islands({ uid }) {
   );
 }
 
-function Karst({ uid }) {
+function Karst({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Kalksteinsformasjoner i Phang Nga">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Kalksteinsformasjoner i Phang Nga">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#bfe6ea" />
@@ -115,9 +115,9 @@ function Karst({ uid }) {
   );
 }
 
-function Temple({ uid }) {
+function Temple({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Tempel i solnedgang">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Tempel i solnedgang">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ff9e7a" />
@@ -154,9 +154,9 @@ function Temple({ uid }) {
   );
 }
 
-function Jungle({ uid }) {
+function Jungle({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Jungel med elefant">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Jungel med elefant">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#dff1d6" />
@@ -209,9 +209,9 @@ function Jungle({ uid }) {
   );
 }
 
-function Canopy({ uid }) {
+function Canopy({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Zipline over regnskogen">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Zipline over regnskogen">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#c9ecd6" />
@@ -239,9 +239,9 @@ function Canopy({ uid }) {
   );
 }
 
-function City({ uid }) {
+function City({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Bangkok i skumring">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Bangkok i skumring">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#3b2a63" />
@@ -292,9 +292,9 @@ function City({ uid }) {
   );
 }
 
-function Arena({ uid }) {
+function Arena({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Muay Thai-arena">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Muay Thai-arena">
       <defs>
         <radialGradient id={`${uid}-spot`} cx="0.5" cy="0.1" r="0.9">
           <stop offset="0" stopColor="#3a4a55" />
@@ -335,9 +335,9 @@ function Arena({ uid }) {
   );
 }
 
-function Safari({ uid }) {
+function Safari({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Safari i solnedgang">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Safari i solnedgang">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ffb24d" />
@@ -370,9 +370,9 @@ function Safari({ uid }) {
   );
 }
 
-function Market({ uid }) {
+function Market({ uid, pAR }) {
   return (
-    <svg {...svgProps} className="scene" aria-label="Flytende marked">
+    <svg {...svgProps} preserveAspectRatio={pAR} className="scene" aria-label="Flytende marked">
       <defs>
         <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ffe0b0" />
@@ -421,9 +421,16 @@ const SCENES = {
   market: Market,
 };
 
-export function Scene({ name, uid }) {
+/*
+ * align styrer hvilken del av motivet som overlever beskjæringen.
+ * I brede, lave flater (som toppbildet på detaljsiden) forsvinner bunnen —
+ * og det er nettopp der elefanten, båten og templet står. 'bottom' holder
+ * dem i bildet.
+ */
+export function Scene({ name, uid, align = 'center' }) {
   const Cmp = SCENES[name] || Islands;
-  return <Cmp uid={uid || name} />;
+  const pAR = align === 'bottom' ? 'xMidYMax slice' : 'xMidYMid slice';
+  return <Cmp uid={uid || name} pAR={pAR} />;
 }
 
 /* ---------------- Wide hero scene ---------------- */
@@ -563,23 +570,110 @@ export const Icon = {
       <path d="M20 20l-3.5-3.5" />
     </svg>
   ),
+  chevron: (p) => (
+    <svg {...ic} {...p}>
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  ),
+  back: (p) => (
+    <svg {...ic} {...p}>
+      <path d="M19 12H5M11 18l-6-6 6-6" />
+    </svg>
+  ),
+  mail: (p) => (
+    <svg {...ic} {...p}>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="M3.5 7l8.5 6 8.5-6" />
+    </svg>
+  ),
+  lock: (p) => (
+    <svg {...ic} {...p}>
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2.5" />
+      <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" />
+    </svg>
+  ),
+  calendar: (p) => (
+    <svg {...ic} {...p}>
+      <rect x="3.5" y="5" width="17" height="16" rx="2.5" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </svg>
+  ),
+  users: (p) => (
+    <svg {...ic} {...p}>
+      <circle cx="9" cy="9" r="3.2" />
+      <path d="M3.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" />
+      <path d="M16 6.5a3 3 0 0 1 0 5.6M17.5 14.8c2 .7 3.2 2.4 3.2 4.7" />
+    </svg>
+  ),
+  card: (p) => (
+    <svg {...ic} {...p}>
+      <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" />
+      <path d="M2.5 10h19M6 14.5h3" />
+    </svg>
+  ),
+  globe: (p) => (
+    <svg {...ic} {...p}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3.2 9.5h17.6M3.2 14.5h17.6" />
+      <path d="M12 3c-2.4 2.4-3.6 5.4-3.6 9s1.2 6.6 3.6 9c2.4-2.4 3.6-5.4 3.6-9S14.4 5.4 12 3z" />
+    </svg>
+  ),
+  info: (p) => (
+    <svg {...ic} {...p}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 7.8h.02" />
+    </svg>
+  ),
+  x: (p) => (
+    <svg {...ic} {...p}>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  ),
+  ticket: (p) => (
+    <svg {...ic} {...p}>
+      <path d="M3 9.5V7a1.5 1.5 0 0 1 1.5-1.5h15A1.5 1.5 0 0 1 21 7v2.5a2.5 2.5 0 0 0 0 5V17a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17v-2.5a2.5 2.5 0 0 0 0-5z" />
+      <path d="M14 6.5v11" strokeDasharray="2 2.5" />
+    </svg>
+  ),
 };
 
 /* ---------------- Brand mark ---------------- */
 
-export function LogoMark({ size = 34 }) {
+/* Merkevaremerke: elefant tegnet i én tynn gullstrek, i emerald-flate.
+   Holdt bevisst nedstrippet — det skal lese like tydelig på 24 px som på 200. */
+export function LogoMark({ size = 38, plain = false }) {
+  const stroke = plain ? 'currentColor' : 'var(--gold-soft)';
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#0e7c67" />
-          <stop offset="1" stopColor="#08463a" />
-        </linearGradient>
-      </defs>
-      <rect width="40" height="40" rx="12" fill="url(#logo-g)" />
-      <circle cx="20" cy="16" r="7.5" fill="#f6b500" />
-      <path d="M7 27c4.5-5 21.5-5 26 0" fill="none" stroke="#ff6a3d" strokeWidth="3" strokeLinecap="round" />
-      <path d="M9 31c4-4 18-4 22 0" fill="none" stroke="#ffd6a0" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {!plain && <rect width="48" height="48" rx="13" fill="var(--emerald-900)" />}
+      <g
+        fill="none"
+        stroke={stroke}
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* rygg, panne og snabel i én sammenhengende bevegelse */}
+        <path d="M13.5 33.5c-1.2-6.4 2.2-11.6 8.4-12.4 5.6-.7 9.8 2.2 11 6.6" />
+        <path d="M13.5 33.5c-2.4-1-3.4-3.3-2.6-5.6.7-2 2.5-3 4.3-2.6" />
+        <path d="M11.2 27.6c-1.7 1.7-2.3 4-1.6 6.2.5 1.6 1.9 2.5 3.2 2" />
+        {/* øre */}
+        <path d="M19.6 22.2c2.4.6 3.8 2.8 3.3 5.2-.4 2-2 3.3-3.8 3.2" />
+        {/* bakpart og hale */}
+        <path d="M32.9 27.7c1.9 1 3 2.9 3 5.1" />
+        <path d="M35.9 32.8c1.5-.3 2.6-1.5 2.7-3" />
+        {/* bein */}
+        <path d="M17.4 33.9v3.8M23.6 34.6v3.4M29.4 34.4v3.6M34.4 34.2v3.5" />
+        {/* øye */}
+        <path d="M16.4 28.2h.02" strokeWidth="2.6" />
+      </g>
     </svg>
   );
 }

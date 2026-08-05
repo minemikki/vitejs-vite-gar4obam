@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Mellombygg for forhåndsrendering
+dist-ssr

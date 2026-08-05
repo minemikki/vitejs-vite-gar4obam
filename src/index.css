@@ -1,43 +1,53 @@
 :root {
-  /* ---- Committed bright, sunlit theme (deliberate single visual world) ---- */
-  /* Neutrals carry a faint jade bias so they read as chosen, not default grey. */
-  --bg: #f3f6f4;
-  --bg-2: #eef3f0;
-  --surface: #ffffff;
-  --ink: #0f231d;
-  --ink-soft: #34473f;
-  --muted: #61736b;
-  --line: #e2eae5;
-  --line-strong: #d4ded8;
+  /* ---- Premium tropisk palett ----
+     Dyp emerald som base, antikk gull som eneste luksus-aksent, varm krem
+     som grunn. Ingen skrikende oransje — det er det som får reisesider til
+     å se ut som billige tilbudssider. */
+  --cream: #f7f3ea;
+  --cream-2: #efe8da;
+  --surface: #fffdf9;
+  --ink: #10241d;
+  --ink-soft: #33463e;
+  --muted: #64756c;
+  --line: #e4dccb;
+  --line-strong: #d3c8b1;
 
-  /* Primary: deep jade — calm, trustworthy chrome */
-  --jade: #0e7c67;
-  --jade-700: #0b5f50;
-  --jade-900: #073b32;
+  --emerald: #0d4f42;
+  --emerald-600: #0a3f35;
+  --emerald-900: #062a23;
+  --emerald-tint: rgba(13, 79, 66, 0.08);
 
-  /* Accent: sunset — where we spend boldness (CTAs, price) */
-  --sun: #ff6a3d;
-  --sun-600: #ec4a1f;
+  /* Antikk gull — brukes sparsomt: stjerner, tall, tynne detaljer */
+  --gold: #c9a227;
+  --gold-soft: #e3c05a;
+  --gold-tint: rgba(201, 162, 39, 0.12);
 
-  /* Secondary highlight: turmeric gold — stars, tiny accents only */
-  --gold: #f6b500;
-  --gold-soft: #ffcf45;
+  /* Terrakotta, kun til «tilbud»-signal — aldri som hovedknapp */
+  --clay: #b4512f;
 
-  --radius: 16px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
+  /* Semantiske farger (uavhengig av merkevare-aksenten) */
+  --ok: #2f6f4f;
+  --warn: #8a6a1f;
+  --err: #a33a2a;
 
-  --shadow-xs: 0 1px 2px rgba(7, 59, 50, 0.06);
-  --shadow-sm: 0 4px 14px rgba(7, 59, 50, 0.07);
-  --shadow: 0 16px 40px rgba(7, 59, 50, 0.12);
-  --shadow-lg: 0 30px 70px rgba(7, 59, 50, 0.2);
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
-  /* System-font stacks — no webfont downloads, so nothing silently falls back.
-     Personality comes from weight, tracking and scale, not a novelty face. */
+  --shadow-xs: 0 1px 2px rgba(6, 42, 35, 0.06);
+  --shadow-sm: 0 4px 14px rgba(6, 42, 35, 0.07);
+  --shadow: 0 16px 40px rgba(6, 42, 35, 0.12);
+  --shadow-lg: 0 30px 70px rgba(6, 42, 35, 0.22);
+
+  /* Systemfonter: ingen webfont-nedlasting, så ingenting faller stille tilbake. */
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, 'Apple Color Emoji', sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
+    'Times New Roman', serif;
 
   --maxw: 1200px;
+  --nav-h: 74px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -54,7 +64,7 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--ink);
-  background: var(--bg);
+  background: var(--cream);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -80,26 +90,62 @@ button {
   color: inherit;
 }
 
+/* Display-typografi i serif gir reisemerket et redaksjonelt, dyrt preg.
+   Brødtekst holdes i sans for lesbarhet. */
 h1,
 h2,
-h3,
-h4 {
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
   color: var(--ink);
   text-wrap: balance;
 }
 
+h4,
+h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
 :focus-visible {
-  outline: 3px solid var(--jade);
+  outline: 3px solid var(--emerald);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
 ::selection {
-  background: var(--sun);
+  background: var(--gold);
+  color: var(--emerald-900);
+}
+
+/* Skjult, men lesbart for skjermlesere */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--emerald);
   color: #fff;
+  padding: 12px 18px;
+  border-radius: 0 0 10px 0;
+  font-weight: 700;
+}
+.skip-link:focus {
+  left: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
