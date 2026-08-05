@@ -35,6 +35,23 @@ export const experiences = [
     tags: ['Familievennlig', 'Etisk', 'Foss', 'Henting inkl.'],
     bookingUrl:
       'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4&utm_medium=online_publisher',
+    // Ekte bilder fra turen, via GetYourGuide-partnerskapet. Første bilde er
+    // kortbildet; hele lista vises som galleri på detaljsiden.
+    image: '/bilder/elefant-01.avif',
+    gallery: [
+      { src: '/bilder/elefant-01.avif', alt: 'To elefanter ved fossen i reservatet' },
+      { src: '/bilder/elefant-02.avif', alt: 'Gjest mater en elefant i morgensol' },
+      { src: '/bilder/elefant-03.avif', alt: 'Bad i fossen etter besøket' },
+      { src: '/bilder/elefant-04.avif', alt: 'På tur gjennom jungelen med elefantene' },
+      { src: '/bilder/elefant-05.avif', alt: 'Lage elefantmat av banan og sukkerrør' },
+      { src: '/bilder/elefant-06.avif', alt: 'Solnedgang over elven ved reservatet' },
+      { src: '/bilder/elefant-07.avif', alt: 'Gjester fotograferer elefantene på avstand' },
+      { src: '/bilder/elefant-08.avif', alt: 'Ved velkomstskiltet til reservatet' },
+      { src: '/bilder/elefant-09.avif', alt: 'Felles matlaging med gruppen' },
+      { src: '/bilder/elefant-10.avif', alt: 'Par foran elefantene i bakgrunnen' },
+      { src: '/bilder/elefant-11.avif', alt: 'Elefant i skogen under vandringen' },
+      { src: '/bilder/elefant-12.avif', alt: 'Gruppen samlet i lyststuen ved elven' },
+    ],
   },
   {
     id: 'phiphi-maya',

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 /*
  * Bildespråk — tredje og siste retning.
  *
@@ -417,8 +419,24 @@ const SCENES = {
 export function Scene({ name, uid, image, alt }) {
   // Sett `image` på opplevelsen eller reisemålet, så tar fotoet over. Det er
   // hele bytteveien til ekte bilder: én linje i data.js, ingen kodeendring.
-  if (image) {
-    return <img className="scene" src={image} alt={alt || ''} loading="lazy" decoding="async" />;
+  //
+  // Laster bildet ikke — feil filnavn, eller en gammel nettleser uten
+  // AVIF-støtte — faller vi tilbake til den tegnede platen i stedet for å
+  // vise et knust bilde-ikon. `key` på bildet sørger for at feiltilstanden
+  // nullstilles hvis kortet bytter bilde.
+  const [failed, setFailed] = useState(false);
+  if (image && !failed) {
+    return (
+      <img
+        key={image}
+        className="scene"
+        src={image}
+        alt={alt || ''}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+      />
+    );
   }
   const Cmp = SCENES[name] || Islands;
   // Motivene er komponert rundt midten, så platen skal alltid beskjæres

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getExperience, allExperiences } from '../data.js';
 import { Scene, Icon } from '../scenes.jsx';
@@ -122,6 +122,101 @@ function BookingBox({ exp }) {
   );
 }
 
+/*
+ * Bildegalleri for turer som har ekte foto.
+ *
+ * Stort ledebilde med en rad miniatyrer under. Klikk åpner en lysboks der
+ * piltaster og Escape fungerer, og bakgrunnen låses mens den er åpen. Alt
+ * har alt-tekst, og lysboksen er en ekte dialog for skjermlesere.
+ */
+function Gallery({ items, title }) {
+  const [active, setActive] = useState(0);
+  const [box, setBox] = useState(false);
+
+  const go = useCallback(
+    (d) => setActive((i) => (i + d + items.length) % items.length),
+    [items.length],
+  );
+
+  useEffect(() => {
+    if (!box) return undefined;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => {
+      if (e.key === 'Escape') setBox(false);
+      else if (e.key === 'ArrowRight') go(1);
+      else if (e.key === 'ArrowLeft') go(-1);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [box, go]);
+
+  return (
+    <section className="gallery" aria-label={`Bilder fra ${title}`}>
+      <button
+        type="button"
+        className="gallery-lead"
+        onClick={() => setBox(true)}
+        aria-label="Åpne bildet i full størrelse"
+      >
+        <img src={items[active].src} alt={items[active].alt} decoding="async" />
+        <span className="gallery-count">
+          <Icon.search width={15} height={15} /> {active + 1} / {items.length}
+        </span>
+      </button>
+
+      <div className="gallery-thumbs" role="tablist" aria-label="Velg bilde">
+        {items.map((im, i) => (
+          <button
+            key={im.src}
+            type="button"
+            role="tab"
+            aria-selected={i === active}
+            className={`gallery-thumb ${i === active ? 'is-on' : ''}`}
+            onClick={() => setActive(i)}
+          >
+            <img src={im.src} alt="" loading="lazy" decoding="async" />
+          </button>
+        ))}
+      </div>
+
+      {box && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={items[active].alt}
+          onClick={() => setBox(false)}
+        >
+          <button className="lightbox-close" aria-label="Lukk" onClick={() => setBox(false)}>
+            <Icon.x width={26} height={26} />
+          </button>
+          <button
+            className="lightbox-nav lightbox-prev"
+            aria-label="Forrige bilde"
+            onClick={(e) => { e.stopPropagation(); go(-1); }}
+          >
+            <Icon.back width={26} height={26} />
+          </button>
+          <figure className="lightbox-fig" onClick={(e) => e.stopPropagation()}>
+            <img src={items[active].src} alt={items[active].alt} />
+            <figcaption>{items[active].alt} · {active + 1} / {items.length}</figcaption>
+          </figure>
+          <button
+            className="lightbox-nav lightbox-next"
+            aria-label="Neste bilde"
+            onClick={(e) => { e.stopPropagation(); go(1); }}
+          >
+            <Icon.arrow width={26} height={26} />
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function ExperienceDetail() {
   const { slug } = useParams();
   const exp = getExperience(slug);
@@ -172,6 +267,15 @@ export default function ExperienceDetail() {
           <Scene name={exp.scene} uid={`hero-${exp.id}`} image={exp.image} alt={exp.title} />
         </div>
       </div>
+
+      {exp.gallery?.length > 0 && (
+        <div className="detail-gallery-wrap">
+          <Gallery items={exp.gallery} title={exp.title} />
+          {exp.partner && (
+            <p className="gallery-credit">Foto: {exp.partner}</p>
+          )}
+        </div>
+      )}
 
       <div className="detail-wrap">
         <div className="detail-main">
