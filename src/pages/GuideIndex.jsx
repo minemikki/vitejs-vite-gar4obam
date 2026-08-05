@@ -23,7 +23,7 @@ export function DestinationIndex() {
           {destinations.map((d) => (
             <Link className="destbig" key={d.slug} to={`/reisemal/${d.slug}`}>
               <span className="destbig-media">
-                <Scene name={d.scene} uid={`di-${d.slug}`} align="bottom" />
+                <Scene name={d.scene} uid={`di-${d.slug}`} image={d.image} alt={d.name} />
               </span>
               <span className="destbig-body">
                 <span className="destbig-region">{d.region}</span>

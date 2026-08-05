@@ -42,7 +42,7 @@ function Summary({ exp, form, total }) {
   return (
     <aside className="sumbox" aria-label="Oppsummering">
       <div className="sumbox-media">
-        <Scene name={exp.scene} uid={`co-${exp.id}`} align="bottom" />
+        <Scene name={exp.scene} uid={`co-${exp.id}`} image={exp.image} alt="" />
       </div>
       <div className="sumbox-body">
         <h2>{exp.title}</h2>

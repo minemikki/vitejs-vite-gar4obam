@@ -36,7 +36,7 @@ export default function Destination() {
           </div>
         </div>
         <div className="detail-hero-art" aria-hidden="true">
-          <Scene name={d.scene} uid={`dest-hero-${d.slug}`} align="bottom" />
+          <Scene name={d.scene} uid={`dest-hero-${d.slug}`} image={d.image} alt={d.name} />
         </div>
       </div>
 

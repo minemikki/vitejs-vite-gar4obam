@@ -8,7 +8,7 @@ export default function ExperienceCard({ exp, saved, onSave }) {
   return (
     <article className="card">
       <Link to={href} className="card-media" aria-label={exp.title}>
-        <Scene name={exp.scene} uid={exp.id} />
+        <Scene name={exp.scene} uid={exp.id} image={exp.image} alt={exp.title} />
         {exp.bestseller && <span className="card-badge">Bestselger</span>}
         <span className="card-duration">
           <Icon.clock width={13} height={13} /> {exp.duration}

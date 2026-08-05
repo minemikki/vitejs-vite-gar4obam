@@ -1,384 +1,405 @@
 /*
- * Bildespråk: filmatisk, ikke illustrert.
+ * Bildespråk — tredje og siste retning.
  *
- * Første versjon tegnet små scener med sol, båt og palme. Det så ut som
- * clipart, og clipart får en reiseside til å se billig ut uansett hvor god
- * typografien er.
+ * To forsøk feilet, og de feilet av samme grunn: begge prøvde å *late som*
+ * de var fotografi. Tegnede scener med sol og palme ble clipart. Malte
+ * gradienter med silhuetter ble et uskarpt fotografi. Et halvgodt fotografi
+ * ser billig ut. Det finnes ingen vei rundt det.
  *
- * Denne versjonen etterligner i stedet det som gjør et reisefoto vakkert:
- *   - én lyskilde lavt i bildet, med glød rundt seg
- *   - flere lag silhuetter som blir lysere og mattere bakover (luftperspektiv)
- *   - fargegradering — kald himmel mot varm horisont
- *   - vignett, så øyet trekkes mot midten
+ * Denne versjonen slutter å konkurrere med kameraet. I stedet bruker den
+ * språket til merkevarer som ikke har foto å vise fram, og som likevel ser
+ * dyre ut: dype, mettede fargeflater, ett stort strektegnet motiv lagt på
+ * som vannmerke, fin korning, og typografi som gjør jobben.
  *
- * Ingen ansikter, ingen gjenkjennelige detaljer — bare stemning og dybde.
- * Det leser som et fotografi i øyekroken, og det er hele poenget.
+ * Motivet ligger på ~20 % dekkevne med vilje. Da leses det som merkevare,
+ * ikke som en tegning man kan vurdere strek for strek — og det er nettopp
+ * derfor det tåler å bli sett på.
+ *
+ * Når ekte foto kommer på plass (fra affiliate-partnernes egne bildebanker),
+ * settes `image` på opplevelsen, og platen blir liggende som fallback.
  */
-
-/* ------------------------------------------------------------------ *
- * Byggeklosser
- * ------------------------------------------------------------------ */
 
 const W = 400;
 const H = 300;
 
-/** Himmel med to til tre stopp: kjølig oppe, varmt mot horisonten. */
-function Sky({ id, stops }) {
-  return (
-    <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-      {stops.map((s) => (
-        <stop key={s.o} offset={s.o} stopColor={s.c} />
-      ))}
-    </linearGradient>
-  );
-}
+/* ------------------------------------------------------------------ *
+ * Byggeklosser — deterministisk geometri, ingen tilfeldighet
+ * ------------------------------------------------------------------ */
 
-/** Lyskilden. Myk glød som faller av til ingenting. */
-function Glow({ id, color }) {
-  return (
-    <radialGradient id={id} cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stopColor={color} stopOpacity="0.95" />
-      <stop offset="0.35" stopColor={color} stopOpacity="0.45" />
-      <stop offset="1" stopColor={color} stopOpacity="0" />
-    </radialGradient>
-  );
+const r1 = (n) => Math.round(n * 10) / 10;
+
+/**
+ * Høydekurver. Ligger bakerst på hver plate og gir flaten dybde uten å
+ * forestille noe. Rent deterministisk, så forhåndsrendering og hydrering
+ * gir nøyaktig samme markup.
+ */
+function contours(seed, count, box) {
+  const { x0, x1, y0, step } = box;
+  const out = [];
+  for (let i = 0; i < count; i += 1) {
+    const s = i + seed;
+    const y = y0 + i * step;
+    const a = 14 + Math.sin(s * 0.9) * 10;
+    const b = 12 + Math.cos(s * 1.31) * 11;
+    const mid = (x0 + x1) / 2;
+    out.push(
+      `M ${x0} ${r1(y)} C ${r1(x0 + (mid - x0) * 0.5)} ${r1(y - a)} ` +
+        `${r1(mid - (mid - x0) * 0.3)} ${r1(y + b)} ${r1(mid)} ${r1(y - b * 0.4)} ` +
+        `S ${r1(x1 - (x1 - mid) * 0.35)} ${r1(y + a * 0.7)} ${x1} ${r1(y - 4)}`,
+    );
+  }
+  return out;
 }
 
 /**
- * Ett lag i landskapet. Lagene lengst bak er lysest og mattest — det er
- * dis som gjør at avstand leses som avstand.
+ * Et stort tropeblad, tegnet stående og rotert på plass. Midtribbe med
+ * sidenerver som følger bredden, og tre rifter i kanten — det er riftene
+ * som gjør at det leser som et blad og ikke som et skjelett.
  */
-function Ridge({ d, fill, opacity }) {
-  return <path d={d} fill={fill} opacity={opacity} />;
+function leaf(n) {
+  const out = [
+    'M 200 286 C 150 250 120 200 120 150 C 120 92 156 40 200 14 C 244 40 280 92 280 150 C 280 200 250 250 200 286 Z',
+    'M 200 284 L 200 18',
+  ];
+  for (let i = 1; i <= n; i += 1) {
+    const t = i / (n + 1);
+    const y = 286 - t * 268;
+    const hw = 78 * Math.sin(Math.PI * t) ** 0.62;
+    for (const s of [1, -1]) {
+      out.push(
+        `M 200 ${r1(y)} Q ${r1(200 + s * hw * 0.6)} ${r1(y - hw * 0.14)} ` +
+          `${r1(200 + s * hw * 0.93)} ${r1(y - hw * 0.36)}`,
+      );
+    }
+  }
+  return out;
 }
 
+/** En papirlykt — kropp, meridianer, lokk og dusk. */
+function lantern(cx, cy, s) {
+  const rx = 30 * s;
+  const ry = 36 * s;
+  const cap = rx * 0.42;
+  return [
+    `M ${r1(cx)} ${r1(cy - ry)} C ${r1(cx + rx)} ${r1(cy - ry * 0.5)} ${r1(cx + rx)} ${r1(cy + ry * 0.5)} ${r1(cx)} ${r1(cy + ry)} C ${r1(cx - rx)} ${r1(cy + ry * 0.5)} ${r1(cx - rx)} ${r1(cy - ry * 0.5)} ${r1(cx)} ${r1(cy - ry)}`,
+    `M ${r1(cx)} ${r1(cy - ry)} C ${r1(cx + rx * 0.44)} ${r1(cy - ry * 0.45)} ${r1(cx + rx * 0.44)} ${r1(cy + ry * 0.45)} ${r1(cx)} ${r1(cy + ry)}`,
+    `M ${r1(cx)} ${r1(cy - ry)} C ${r1(cx - rx * 0.44)} ${r1(cy - ry * 0.45)} ${r1(cx - rx * 0.44)} ${r1(cy + ry * 0.45)} ${r1(cx)} ${r1(cy + ry)}`,
+    `M ${r1(cx - cap)} ${r1(cy - ry)} H ${r1(cx + cap)}`,
+    `M ${r1(cx - cap)} ${r1(cy + ry)} H ${r1(cx + cap)}`,
+    `M ${r1(cx)} ${r1(cy + ry)} v ${r1(15 * s)}`,
+  ];
+}
+
+/* ------------------------------------------------------------------ *
+ * Platen — samme oppskrift for alle kort
+ * ------------------------------------------------------------------ */
+
 /**
- * En atmosfærisk scene.
- * Alle scenene deler samme oppbygning, kun fargegradering og silhuetter
- * skiller dem. Det gjør at de ser ut som bilder fra samme fotograf.
+ * Plasserer motivet: skalerer det om sitt eget tyngdepunkt og setter det midt
+ * i platen. Uten dette blir motivene små og skjeve i forhold til hverandre.
  */
-function Atmos({ uid, pAR, label, sky, light, ridges, extras, vignette = 0.5 }) {
+function fit(cx, cy, s) {
+  return `translate(${r1(W / 2 - cx * s)} ${r1(H / 2 - cy * s)}) scale(${s})`;
+}
+
+function Plate({ uid, pAR, label, from, to, glow, gx, gy, seed, mt, children }) {
   const g = (n) => `${uid}-${n}`;
   return (
     <svg
+      className="scene"
       viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio={pAR}
-      xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label={label}
-      className="scene"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <Sky id={g('sky')} stops={sky} />
-        <Glow id={g('glow')} color={light.color} />
-        <radialGradient id={g('vig')} cx="0.5" cy="0.46" r="0.78">
-          <stop offset="0.45" stopColor="#000" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity={vignette} />
-        </radialGradient>
-        <linearGradient id={g('base')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#000" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity="0.55" />
+        <linearGradient id={g('f')} x1="0" y1="0" x2="0.35" y2="1">
+          <stop offset="0" stopColor={to} />
+          <stop offset="1" stopColor={from} />
         </linearGradient>
+        <radialGradient id={g('gl')} cx={gx / W} cy={gy / H} r="0.85">
+          <stop offset="0" stopColor={glow} stopOpacity="0.5" />
+          <stop offset="0.42" stopColor={glow} stopOpacity="0.14" />
+          <stop offset="1" stopColor={glow} stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id={g('sc')} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#000" stopOpacity="0.3" />
+          <stop offset="0.32" stopColor="#000" stopOpacity="0" />
+          <stop offset="0.68" stopColor="#000" stopOpacity="0" />
+          <stop offset="1" stopColor="#000" stopOpacity="0.46" />
+        </linearGradient>
+        <pattern id={g('gr')} width="4" height="4" patternUnits="userSpaceOnUse">
+          <circle cx="0.6" cy="0.8" r="0.55" fill="#fff" opacity="0.055" />
+          <circle cx="2.7" cy="2.4" r="0.5" fill="#000" opacity="0.075" />
+        </pattern>
       </defs>
 
-      <rect width={W} height={H} fill={`url(#${g('sky')})`} />
+      <rect width={W} height={H} fill={`url(#${g('f')})`} />
+      <rect width={W} height={H} fill={`url(#${g('gl')})`} />
 
-      {/* Lyskilden ligger bak landskapet, så silhuettene kutter den. */}
-      <ellipse
-        cx={light.x}
-        cy={light.y}
-        rx={light.r * 1.9}
-        ry={light.r * 1.5}
-        fill={`url(#${g('glow')})`}
-      />
-      {light.disc !== false && (
-        <circle cx={light.x} cy={light.y} r={light.r * 0.32} fill={light.core} opacity="0.9" />
-      )}
+      {/* Høydekurver — dybde, ikke motiv */}
+      <g fill="none" stroke="#fff" strokeWidth="1" opacity="0.11">
+        {contours(seed, 11, { x0: -20, x1: 420, y0: 26, step: 27 }).map((d) => (
+          <path key={d} d={d} />
+        ))}
+      </g>
 
-      {ridges.map((r, i) => (
-        <Ridge key={`${r.d.slice(0, 12)}-${i}`} {...r} />
-      ))}
+      {/* Motivet — vannmerke, ikke illustrasjon */}
+      <g
+        fill="none"
+        stroke="#fff"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity="0.24"
+        transform={mt}
+      >
+        {children}
+      </g>
 
-      {extras}
-
-      {/* Mørkere mot bunnen, så tekst oppå alltid er lesbar. */}
-      <rect y={H * 0.5} width={W} height={H * 0.5} fill={`url(#${g('base')})`} />
-      <rect width={W} height={H} fill={`url(#${g('vig')})`} />
+      <rect width={W} height={H} fill={`url(#${g('sc')})`} />
+      <rect width={W} height={H} fill={`url(#${g('gr')})`} />
     </svg>
   );
 }
 
+const P = (props) => <path {...props} />;
+const paths = (list) => list.map((d) => <path key={d} d={d} />);
+
 /* ------------------------------------------------------------------ *
- * Scenene
+ * Motivene
  * ------------------------------------------------------------------ */
 
 const Islands = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Solnedgang over øyer i Andamanhavet"
-    sky={[
-      { o: '0', c: '#0d2438' },
-      { o: '0.42', c: '#3f4a5c' },
-      { o: '0.68', c: '#b5765c' },
-      { o: '0.86', c: '#e8a76d' },
-      { o: '1', c: '#f2c288' },
-    ]}
-    light={{ x: 268, y: 196, r: 58, color: '#ffcf8a', core: '#fff0cd' }}
-    ridges={[
-      { d: 'M-10 206 q80 -34 168 -6 q70 22 132 -8 q60 -28 120 4 l0 120 -420 0z', fill: '#8d7f86', opacity: 0.34 },
-      { d: 'M-10 220 q64 -30 130 -4 q54 20 108 -10 q52 -26 102 6 l0 100 -340 0z', fill: '#4c4a5e', opacity: 0.55 },
-      { d: 'M300 214 q26 -46 56 -4 q18 22 40 6 l0 92 -120 0z', fill: '#22293a', opacity: 0.9 },
-      { d: 'M-10 236 q52 -20 106 2 q46 16 92 -6 q44 -20 88 8 l0 70 -286 0z', fill: '#131a26', opacity: 0.95 },
-      { d: 'M-10 262 q90 -14 180 4 q90 16 240 -6 l0 50 -420 0z', fill: '#080d14' },
-    ]}
-  />
+    label="Øyer og longtailbåt"
+    mt={fit(190, 152, 1.1)}
+    from="#04222a"
+    to="#0b4954"
+    glow="#ffd08a"
+    gx={306}
+    gy={74}
+    seed={0.4}
+  >
+    <circle cx="306" cy="74" r="27" />
+    <circle cx="306" cy="74" r="41" opacity="0.55" />
+    <P d="M 2 180 C 38 130 80 128 114 180" />
+    <P d="M 244 182 C 280 140 320 138 354 182" opacity="0.7" />
+    <P d="M 112 200 C 148 224 244 224 282 200" />
+    <P d="M 112 200 L 282 200" />
+    <P d="M 282 200 L 306 172" />
+    <P d="M 300 178 l 13 -15 M 294 174 l 7 -17" />
+    <P d="M 156 200 L 162 178 L 232 178 L 238 200" />
+    <P d="M 162 178 L 162 200 M 232 178 L 232 200" />
+    <P d="M 114 206 L 68 232 l -11 6" />
+    <P d="M 22 228 C 88 238 152 238 216 230" opacity="0.6" />
+    <P d="M 96 250 C 160 260 232 258 302 248" opacity="0.45" />
+  </Plate>
 );
 
 const Karst = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Kalksteinsformasjoner i morgendis"
-    sky={[
-      { o: '0', c: '#16394a' },
-      { o: '0.45', c: '#5c7f8a' },
-      { o: '0.75', c: '#adc4c2' },
-      { o: '1', c: '#d8e0d4' },
-    ]}
-    light={{ x: 132, y: 176, r: 52, color: '#ffe6c0', core: '#fff8e6', disc: false }}
-    ridges={[
-      { d: 'M-10 198 q70 -60 118 -4 q30 34 66 -18 q40 -56 84 10 q34 50 82 -6 q40 -46 80 12 l0 110 -430 0z', fill: '#8fa7a8', opacity: 0.3 },
-      { d: 'M40 212 q22 -76 48 -4 q14 40 34 -22 q22 -68 48 8 q18 56 44 0 l0 92 -190 0z', fill: '#4d6570', opacity: 0.5 },
-      { d: 'M196 210 q30 -104 62 -6 q20 62 48 -8 q26 -66 56 14 l0 96 -178 0z', fill: '#24333d', opacity: 0.82 },
-      { d: 'M-10 244 q66 -26 134 2 q64 24 130 -4 q60 -24 122 8 l0 66 -396 0z', fill: '#101a21', opacity: 0.94 },
-      { d: 'M-10 272 q110 -12 220 4 q100 14 210 -6 l0 40 -430 0z', fill: '#070d11' },
-    ]}
-  />
+    label="Kalksteinsformasjoner i havet"
+    mt={fit(203, 148, 1.14)}
+    from="#0c1a30"
+    to="#264674"
+    glow="#a9d3ff"
+    gx={318}
+    gy={62}
+    seed={1.1}
+  >
+    <circle cx="318" cy="62" r="22" />
+    {/* Ulik bredde, ulik høyde og litt slagside. Tre like søyler leser som
+        kjegler; tre ulike leser som stein. */}
+    {/* Kalksteinstårnene i Phang Nga er smalest ved vannflaten og bredest
+        et stykke opp. Det underkuttet er hele silhuetten. */}
+    <P d="M 96 216 C 88 202 82 184 81 158 C 79 128 92 106 110 106 C 128 106 140 126 139 154 C 138 180 132 200 126 216" />
+    <P d="M 186 218 C 176 200 168 176 166 140 C 163 96 180 56 202 56 C 226 56 242 92 240 134 C 238 172 232 198 222 218" />
+    <P d="M 292 218 C 286 208 282 194 281 174 C 280 152 290 136 304 136 C 318 136 327 152 326 174 C 325 194 321 208 316 218" />
+    <P d="M 84 158 C 100 150 122 152 138 160 M 88 186 C 104 180 122 182 134 188" opacity="0.5" />
+    <P d="M 168 128 C 188 116 216 118 238 128 M 170 168 C 190 158 216 160 236 170" opacity="0.5" />
+    <P d="M 282 168 C 296 160 312 162 325 168" opacity="0.5" />
+    <P d="M 100 106 l -7 -11 M 111 104 l 2 -13 M 122 108 l 9 -10" opacity="0.8" />
+    <P d="M 190 58 l -8 -12 M 202 53 l 1 -14 M 214 59 l 10 -11" opacity="0.8" />
+    <P d="M 298 136 l -6 -10 M 308 135 l 1 -11" opacity="0.8" />
+    <P d="M 26 218 C 120 230 274 230 372 216" />
+    <P d="M 58 238 C 140 248 262 248 342 236" opacity="0.6" />
+    <P d="M 100 258 C 164 266 240 266 302 256" opacity="0.4" />
+  </Plate>
 );
 
 const Temple = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Tempelsilhuett i gyllen time"
-    sky={[
-      { o: '0', c: '#2a1630' },
-      { o: '0.38', c: '#6d2f3c' },
-      { o: '0.64', c: '#c2603f' },
-      { o: '0.85', c: '#e79a55' },
-      { o: '1', c: '#f0bb78' },
-    ]}
-    light={{ x: 296, y: 206, r: 62, color: '#ffbe72', core: '#ffeac2' }}
-    ridges={[
-      { d: 'M-10 224 q90 -16 190 2 q100 16 240 -8 l0 92 -430 0z', fill: '#7a4a52', opacity: 0.34 },
-      { d: 'M-10 238 q80 -12 168 4 q92 14 262 -8 l0 76 -430 0z', fill: '#3d2431', opacity: 0.6 },
-    ]}
-    extras={
-      <g fill="#0b0a12">
-        {/* Prang — spissen som gjør Wat Arun gjenkjennelig, sterkt forenklet */}
-        <path d="M118 236 L130 132 L142 236z" opacity="0.95" />
-        <path d="M126 148 L130 128 L134 148z" opacity="0.95" />
-        <path d="M96 238 L104 176 L112 238z" opacity="0.9" />
-        <path d="M148 238 L156 172 L164 238z" opacity="0.9" />
-        <rect x="92" y="232" width="76" height="8" opacity="0.95" />
-        <path d="M-10 250 q84 -12 176 4 q96 14 264 -8 l0 60 -430 0z" />
-      </g>
-    }
-  />
+    label="Tempeltårn ved elven"
+    mt={fit(200, 166, 1.02)}
+    from="#25102a"
+    to="#7d3527"
+    glow="#ffc98a"
+    gx={300}
+    gy={86}
+    seed={2.3}
+  >
+    <circle cx="300" cy="86" r="24" opacity="0.7" />
+    <P d="M 138 240 L 150 240 L 154 202 L 164 202 L 168 168 L 176 168 L 182 124 L 190 124 L 200 54 L 210 124 L 218 124 L 224 168 L 232 168 L 236 202 L 246 202 L 250 240 L 262 240" />
+    <P d="M 154 202 H 246 M 168 168 H 232 M 182 124 H 218" opacity="0.75" />
+    <P d="M 74 246 L 82 246 L 85 218 L 92 218 L 96 192 L 104 150 L 112 192 L 116 218 L 123 218 L 126 246 L 134 246" opacity="0.8" />
+    <P d="M 266 246 L 274 246 L 277 218 L 284 218 L 288 192 L 296 150 L 304 192 L 308 218 L 315 218 L 318 246 L 326 246" opacity="0.8" />
+    <P d="M 56 256 H 344" />
+    <P d="M 24 272 C 120 282 282 282 378 270" opacity="0.55" />
+  </Plate>
 );
 
 const Jungle = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Jungelåser i morgendis"
-    sky={[
-      { o: '0', c: '#0f2a22' },
-      { o: '0.4', c: '#3d5c46' },
-      { o: '0.7', c: '#9ab08a' },
-      { o: '1', c: '#dfe3c6' },
-    ]}
-    light={{ x: 282, y: 168, r: 54, color: '#fff0c4', core: '#fffbe8', disc: false }}
-    ridges={[
-      { d: 'M-10 186 q72 -46 144 -8 q66 34 130 -12 q60 -42 126 8 l0 130 -420 0z', fill: '#93a98c', opacity: 0.3 },
-      { d: 'M-10 210 q66 -40 132 -6 q62 30 124 -14 q58 -38 118 10 l0 108 -420 0z', fill: '#4e6a52', opacity: 0.52 },
-      { d: 'M-10 236 q60 -32 122 -4 q58 26 116 -10 q56 -32 112 8 l0 84 -420 0z', fill: '#21362a', opacity: 0.82 },
-      { d: 'M-10 262 q78 -20 158 2 q78 20 162 -6 l0 56 -420 0z', fill: '#0d1a14' },
-    ]}
-    extras={
-      /* Elefant kun som antydning i forgrunnen — ikke en figur man studerer */
-      <g fill="#04120c">
-        <ellipse cx="214" cy="264" rx="42" ry="21" />
-        <circle cx="174" cy="258" r="16" />
-        <path d="M162 266 q-10 13 -5 23 q3 6 8 3" stroke="#04120c" strokeWidth="7.5" fill="none" strokeLinecap="round" />
-        <ellipse cx="186" cy="256" rx="10" ry="12" fill="#020b07" />
-        <rect x="192" y="278" width="9" height="18" rx="3.5" />
-        <rect x="212" y="280" width="9" height="16" rx="3.5" />
-        <rect x="232" y="278" width="9" height="18" rx="3.5" />
-        <path d="M254 254 q9 7 8 19" stroke="#04120c" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-      </g>
-    }
-  />
+    label="Elefant i reservat"
+    mt={fit(213, 176, 1.26)}
+    from="#07241a"
+    to="#1a6247"
+    glow="#ffe6a8"
+    gx={300}
+    gy={72}
+    seed={3.7}
+  >
+    {/* Panne, snabel og kjeve i ett drag — det er linjen som gjør at et dyr
+        blir lest som et dyr, ikke summen av delene. */}
+    <P d="M 186 116 C 158 122 144 142 142 166 C 140 186 134 204 138 222 C 141 234 153 239 161 232 C 166 227 164 219 158 216 C 168 210 172 198 172 186" />
+    <P d="M 186 116 C 216 110 250 118 266 140 C 280 158 282 190 274 214" />
+    <P d="M 172 186 C 186 210 210 218 236 216 C 254 214 268 210 274 214" />
+    <P d="M 190 118 C 172 124 164 146 168 170 C 172 190 188 200 202 194 C 214 188 216 168 210 148 C 205 130 200 120 190 118 Z" />
+    <P d="M 182 206 L 180 238 M 206 214 L 206 240 M 244 216 L 244 240 M 268 210 L 268 238" />
+    <P d="M 150 192 C 143 200 142 210 145 218" opacity="0.7" />
+    <P d="M 274 160 C 288 176 288 200 280 214" opacity="0.8" />
+    <circle cx="164" cy="152" r="2.8" fill="#fff" stroke="none" opacity="0.9" />
+    <P d="M 40 248 C 140 258 272 258 370 244" opacity="0.55" />
+  </Plate>
 );
 
 const Canopy = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Regnskog i dis"
-    sky={[
-      { o: '0', c: '#0a2620' },
-      { o: '0.42', c: '#2f5c4a' },
-      { o: '0.74', c: '#8fb896' },
-      { o: '1', c: '#d5e6cf' },
-    ]}
-    light={{ x: 124, y: 158, r: 50, color: '#e9ffd8', core: '#fbfff0', disc: false }}
-    ridges={[
-      { d: 'M-10 190 q54 -34 108 -4 q50 28 100 -10 q48 -34 96 6 q46 30 96 -8 l0 130 -420 0z', fill: '#8db894', opacity: 0.28 },
-      { d: 'M-10 216 q48 -30 96 -2 q46 26 92 -12 q44 -30 88 8 q44 26 92 -6 l0 108 -420 0z', fill: '#3f6b52', opacity: 0.55 },
-      { d: 'M-10 244 q44 -26 88 0 q42 22 84 -10 q42 -26 84 6 q40 24 88 -4 l0 82 -420 0z', fill: '#17372a', opacity: 0.86 },
-      { d: 'M-10 270 q70 -16 142 2 q72 18 150 -4 l0 48 -420 0z', fill: '#071410' },
-    ]}
-  />
+    label="Palmeblad i regnskogen"
+    mt={fit(200, 150, 1.0)}
+    from="#04201a"
+    to="#12574b"
+    glow="#a9f2d4"
+    gx={312}
+    gy={64}
+    seed={4.9}
+  >
+    <g transform="rotate(-27 200 150)">
+      {paths(leaf(9))}
+      <P d="M 278 116 L 246 130" />
+      <P d="M 122 178 L 154 190" />
+      <P d="M 272 206 L 240 212" />
+    </g>
+  </Plate>
 );
 
 const City = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Storbyskyline i skumring"
-    sky={[
-      { o: '0', c: '#120f2c' },
-      { o: '0.4', c: '#3a2050' },
-      { o: '0.68', c: '#8c3355' },
-      { o: '0.88', c: '#cf6a4c' },
-      { o: '1', c: '#e79a63' },
-    ]}
-    light={{ x: 316, y: 214, r: 54, color: '#ff9f66', core: '#ffd9a8' }}
-    ridges={[
-      { d: 'M-10 232 q88 -14 184 4 q96 16 246 -8 l0 84 -430 0z', fill: '#5e3a56', opacity: 0.34 },
-    ]}
-    extras={
-      <g fill="#080716">
-        <rect x="14" y="206" width="22" height="94" />
-        <rect x="42" y="182" width="17" height="118" />
-        <rect x="64" y="220" width="26" height="80" />
-        <rect x="96" y="164" width="20" height="136" />
-        <path d="M104 164 l2 -22 2 22z" />
-        <rect x="124" y="212" width="24" height="88" />
-        <rect x="156" y="192" width="18" height="108" />
-        <rect x="182" y="226" width="30" height="74" />
-        <rect x="220" y="204" width="20" height="96" />
-        <rect x="248" y="176" width="17" height="124" />
-        <rect x="272" y="218" width="26" height="82" />
-        <rect x="306" y="198" width="19" height="102" />
-        <rect x="332" y="228" width="28" height="72" />
-        <rect x="368" y="208" width="22" height="92" />
-        {/* Noen få opplyste vinduer gir liv uten å bli mønster */}
-        <g fill="#ffca85" opacity="0.7">
-          <rect x="47" y="196" width="2.5" height="3.5" />
-          <rect x="52" y="212" width="2.5" height="3.5" />
-          <rect x="101" y="182" width="2.5" height="3.5" />
-          <rect x="107" y="206" width="2.5" height="3.5" />
-          <rect x="252" y="192" width="2.5" height="3.5" />
-          <rect x="258" y="220" width="2.5" height="3.5" />
-          <rect x="311" y="216" width="2.5" height="3.5" />
-        </g>
-      </g>
-    }
-  />
+    label="Bysilhuett om kvelden"
+    mt={fit(200, 174, 1.06)}
+    from="#160e2c"
+    to="#5d2153"
+    glow="#ffa8d6"
+    gx={300}
+    gy={76}
+    seed={5.5}
+  >
+    <circle cx="300" cy="76" r="20" opacity="0.65" />
+    <P d="M -12 232 L 30 232 L 30 170 L 62 170 L 62 200 L 92 200 L 92 138 L 104 138 L 104 112 L 118 112 L 118 138 L 132 138 L 132 196 L 168 196 L 168 154 L 196 154 L 196 210 L 226 210 L 226 126 L 240 126 L 240 92 L 252 92 L 252 126 L 268 126 L 268 186 L 306 186 L 306 148 L 340 148 L 340 214 L 412 214" />
+    <P d="M 38 184 h 16 M 38 198 h 16 M 100 152 h 12 M 100 168 h 12 M 176 168 h 12 M 176 182 h 12 M 232 140 h 6 M 232 156 h 6 M 232 172 h 6 M 314 162 h 18 M 314 178 h 18" opacity="0.55" />
+    <P d="M 20 252 C 130 262 274 262 384 248" opacity="0.4" />
+  </Plate>
 );
 
 const Arena = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    vignette={0.72}
-    label="Boksering under spotlys"
-    sky={[
-      { o: '0', c: '#0a0d10' },
-      { o: '0.5', c: '#1a2228' },
-      { o: '1', c: '#0c1114' },
-    ]}
-    light={{ x: 200, y: 96, r: 74, color: '#ffe2a8', core: '#fff6dc', disc: false }}
-    ridges={[]}
-    extras={
-      <>
-        {/* Lyskjegle ned mot ringen */}
-        <path d="M200 -10 L108 230 L292 230z" fill="#ffe2a8" opacity="0.11" />
-        <path d="M56 236 L344 236 L378 300 L22 300z" fill="#151d23" />
-        <rect x="56" y="236" width="288" height="3" fill="#c9a227" opacity="0.7" />
-        <g stroke="#3b4a54" strokeWidth="1.6">
-          <line x1="56" y1="212" x2="344" y2="212" />
-          <line x1="56" y1="224" x2="344" y2="224" />
-        </g>
-        <rect x="54" y="198" width="4" height="42" fill="#2c3841" />
-        <rect x="342" y="198" width="4" height="42" fill="#2c3841" />
-        <g fill="#07090b">
-          <g transform="translate(172 236)">
-            <circle cx="0" cy="-42" r="7" />
-            <path d="M-6 -37 q6 26 3 37 l-7 0 q-2 -20 4 -37z" />
-            <path d="M5 -37 q9 7 14 2 l-2 -6 q-7 2 -12 -2z" />
-          </g>
-          <g transform="translate(228 236) scale(-1 1)">
-            <circle cx="0" cy="-42" r="7" />
-            <path d="M-6 -37 q6 26 3 37 l-7 0 q-2 -20 4 -37z" />
-            <path d="M5 -37 q9 7 14 2 l-2 -6 q-7 2 -12 -2z" />
-          </g>
-        </g>
-      </>
-    }
-  />
+    label="Muay Thai"
+    mt={fit(200, 182, 1.3)}
+    from="#150a11"
+    to="#70202f"
+    glow="#ffb094"
+    gx={286}
+    gy={70}
+    seed={6.2}
+  >
+    <P d="M 186 136 C 154 136 136 158 136 186 C 136 214 158 234 190 234 L 218 234 C 236 234 246 222 246 206 L 246 164 C 246 148 236 136 218 136 Z" />
+    <P d="M 138 198 C 122 196 112 206 114 220 C 116 232 130 236 140 230" />
+    <P d="M 246 164 L 278 164 C 286 164 290 170 290 178 L 290 216 C 290 224 286 230 278 230 L 246 230" />
+    <P d="M 262 164 L 262 230" opacity="0.6" />
+    <P d="M 146 172 C 176 164 210 164 242 170" opacity="0.7" />
+    <P d="M 158 154 l 15 11 M 173 149 l 15 11 M 188 146 l 15 11" opacity="0.75" />
+    <P d="M 44 254 C 140 264 268 264 358 250" opacity="0.4" />
+  </Plate>
 );
 
 const Safari = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Savanne i solnedgang"
-    sky={[
-      { o: '0', c: '#2b1a2e' },
-      { o: '0.36', c: '#7a3a35' },
-      { o: '0.62', c: '#c9713d' },
-      { o: '0.85', c: '#e8a45f' },
-      { o: '1', c: '#f3c884' },
-    ]}
-    light={{ x: 190, y: 200, r: 66, color: '#ffb262', core: '#ffe3ab' }}
-    ridges={[
-      { d: 'M-10 226 q92 -14 190 2 q98 16 250 -6 l0 90 -430 0z', fill: '#8a5340', opacity: 0.32 },
-      { d: 'M-10 244 q86 -12 178 4 q92 14 252 -8 l0 70 -430 0z', fill: '#432a26', opacity: 0.6 },
-      { d: 'M-10 264 q100 -10 202 4 q102 12 228 -6 l0 48 -430 0z', fill: '#160e10' },
-    ]}
-    extras={
-      <g fill="#100a0c">
-        {/* Akasie — den ene formen som sier «savanne» */}
-        <path d="M64 250 q-3 -30 1 -46" stroke="#100a0c" strokeWidth="4" fill="none" strokeLinecap="round" />
-        <ellipse cx="65" cy="200" rx="36" ry="11" />
-        <path d="M300 250 l0 -30 q0 -22 11 -30 l4 3 q-8 9 -6 25 l5 0 0 32z" opacity="0.94" />
-        <path d="M300 250 l19 0 0 -22 -19 0z" opacity="0.94" />
-      </g>
-    }
-  />
+    label="Sjiraff i safaripark"
+    mt={fit(204, 148, 0.94)}
+    from="#0f2016"
+    to="#4f5c1e"
+    glow="#ffe294"
+    gx={296}
+    gy={74}
+    seed={7.8}
+  >
+    <circle cx="308" cy="70" r="23" opacity="0.6" />
+    {/* Halsen er hele silhuetten — den er det ingen andre dyr som har. */}
+    <P d="M 162 62 L 136 66 C 122 66 112 58 114 48 C 116 38 128 34 140 38 C 152 42 158 50 162 62 Z" />
+    <P d="M 130 37 L 127 25 M 144 39 L 145 26" />
+    <circle cx="126" cy="23" r="3.4" />
+    <circle cx="146" cy="24" r="3.4" />
+    <P d="M 158 47 L 173 41" opacity="0.8" />
+    <circle cx="133" cy="47" r="2.2" fill="#fff" stroke="none" opacity="0.9" />
+    <P d="M 136 66 C 150 104 172 150 192 184" />
+    <P d="M 162 62 C 180 100 202 146 218 180" />
+    <P d="M 192 184 C 204 168 232 162 258 166 C 284 170 298 186 296 206 C 295 218 288 224 278 224 L 208 222 C 196 218 190 202 192 184 Z" />
+    <P d="M 212 222 L 208 268 M 228 222 L 226 268 M 274 224 L 278 268 M 288 222 L 290 268" />
+    <P d="M 202 268 h 12 M 220 268 h 12 M 272 268 h 12 M 284 268 h 12" opacity="0.8" />
+    <P d="M 296 200 C 308 210 310 228 303 240" opacity="0.85" />
+    <g opacity="0.55">
+      <circle cx="158" cy="98" r="7" />
+      <circle cx="176" cy="132" r="7.5" />
+      <circle cx="196" cy="166" r="7" />
+      <circle cx="224" cy="182" r="9" />
+      <circle cx="252" cy="180" r="8.5" />
+      <circle cx="276" cy="192" r="8" />
+      <circle cx="232" cy="206" r="8" />
+      <circle cx="262" cy="208" r="7.5" />
+    </g>
+    <P d="M 40 276 C 150 288 282 288 380 272" opacity="0.5" />
+  </Plate>
 );
 
 const Market = (p) => (
-  <Atmos
+  <Plate
     {...p}
-    label="Kanal i morgenlys"
-    sky={[
-      { o: '0', c: '#152b26' },
-      { o: '0.42', c: '#4a6b4a' },
-      { o: '0.72', c: '#b09a5e' },
-      { o: '1', c: '#e2d29a' },
-    ]}
-    light={{ x: 250, y: 184, r: 52, color: '#ffe9a8', core: '#fffae0', disc: false }}
-    ridges={[
-      { d: 'M-10 192 q66 -32 132 -6 q62 24 124 -10 q58 -30 118 8 l0 122 -420 0z', fill: '#7f9270', opacity: 0.3 },
-      { d: 'M-10 218 q60 -26 120 -2 q56 20 112 -10 q54 -24 110 8 l0 100 -420 0z', fill: '#3c5440', opacity: 0.56 },
-      { d: 'M-10 242 q56 -18 112 0 q54 16 108 -8 q52 -18 106 6 l0 78 -420 0z', fill: '#182b20', opacity: 0.86 },
-      { d: 'M-10 268 q80 -12 162 2 q80 14 168 -4 l0 46 -420 0z', fill: '#0a150f' },
-    ]}
-    extras={
-      /* To longtailbåter som mørke former i forgrunnen */
-      <g fill="#050d09">
-        <path d="M96 272 q34 15 74 0 l-9 11 q-28 8 -56 0z" />
-        <path d="M232 280 q28 12 60 0 l-7 9 q-23 7 -46 0z" opacity="0.9" />
-      </g>
-    }
-  />
+    label="Lykter over et nattmarked"
+    mt={fit(200, 128, 1.16)}
+    from="#231206"
+    to="#8d5015"
+    glow="#ffc76b"
+    gx={296}
+    gy={70}
+    seed={8.6}
+  >
+    <P d="M -12 42 C 110 78 292 78 412 42" />
+    <P d="M 108 60 L 108 88 M 206 66 L 206 122 M 306 58 L 306 90" opacity="0.7" />
+    {paths(lantern(108, 124, 1))}
+    {paths(lantern(206, 158, 1.25))}
+    {paths(lantern(306, 122, 0.9))}
+    <P d="M 20 250 C 130 262 274 262 384 246" opacity="0.35" />
+  </Plate>
 );
 
 const SCENES = {
@@ -393,14 +414,20 @@ const SCENES = {
   market: Market,
 };
 
-export function Scene({ name, uid, align = 'center' }) {
+export function Scene({ name, uid, image, alt }) {
+  // Sett `image` på opplevelsen eller reisemålet, så tar fotoet over. Det er
+  // hele bytteveien til ekte bilder: én linje i data.js, ingen kodeendring.
+  if (image) {
+    return <img className="scene" src={image} alt={alt || ''} loading="lazy" decoding="async" />;
+  }
   const Cmp = SCENES[name] || Islands;
-  const pAR = align === 'bottom' ? 'xMidYMax slice' : 'xMidYMid slice';
-  return <Cmp uid={uid || name} pAR={pAR} />;
+  // Motivene er komponert rundt midten, så platen skal alltid beskjæres
+  // symmetrisk — uansett om rammen er et kort, en hero eller en miniatyr.
+  return <Cmp uid={uid || name} pAR="xMidYMid slice" />;
 }
 
 /* ------------------------------------------------------------------ *
- * Hero — bred, mørk, filmatisk
+ * Hero — samme språk, men i stort format
  * ------------------------------------------------------------------ */
 
 export function HeroScene() {
@@ -411,109 +438,85 @@ export function HeroScene() {
       className="hero-scene"
       viewBox="0 0 1600 900"
       preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      focusable="false"
       xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Solnedgang over øyer i Andamanhavet"
     >
       <defs>
-        <linearGradient id={g('sky')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#071021" />
-          <stop offset="0.18" stopColor="#152740" />
-          <stop offset="0.34" stopColor="#3c4360" />
-          <stop offset="0.46" stopColor="#8a5a62" />
-          <stop offset="0.54" stopColor="#c67a55" />
-          <stop offset="0.6" stopColor="#e8a86c" />
-          <stop offset="0.66" stopColor="#f5cf95" />
-          <stop offset="1" stopColor="#2a2438" />
+        <linearGradient id={g('base')} x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0" stopColor="#06131d" />
+          <stop offset="0.46" stopColor="#0a2b2a" />
+          <stop offset="1" stopColor="#04120f" />
         </linearGradient>
-
-        <radialGradient id={g('glow')} cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0" stopColor="#ffd9a0" stopOpacity="0.95" />
-          <stop offset="0.3" stopColor="#ffb877" stopOpacity="0.5" />
-          <stop offset="1" stopColor="#ff9d5c" stopOpacity="0" />
+        <radialGradient id={g('sun')} cx="0.74" cy="0.5" r="0.62">
+          <stop offset="0" stopColor="#ffb04d" stopOpacity="0.52" />
+          <stop offset="0.3" stopColor="#f0803c" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#f0803c" stopOpacity="0" />
         </radialGradient>
-
-        <linearGradient id={g('water')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#4a3f45" />
-          <stop offset="0.4" stopColor="#241f2b" />
-          <stop offset="1" stopColor="#0b0d14" />
-        </linearGradient>
-
-        <linearGradient id={g('shimmer')} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ffd39a" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#ffd39a" stopOpacity="0" />
-        </linearGradient>
-
-        <radialGradient id={g('vig')} cx="0.5" cy="0.44" r="0.8">
-          <stop offset="0.4" stopColor="#000" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity="0.62" />
+        <radialGradient id={g('jade')} cx="0.1" cy="1" r="0.85">
+          <stop offset="0" stopColor="#0f7a5f" stopOpacity="0.42" />
+          <stop offset="1" stopColor="#0f7a5f" stopOpacity="0" />
         </radialGradient>
-
-        {/* Filmkorn. Én instans i hele appen — nok til å gi tekstur,
-            billig nok til at scrollingen forblir jevn. */}
-        <filter id={g('blur')} x="-40%" y="-20%" width="180%" height="140%">
-          <feGaussianBlur stdDeviation="7" />
-        </filter>
-
+        <linearGradient id={g('vig')} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#020a09" stopOpacity="0.5" />
+          <stop offset="0.34" stopColor="#020a09" stopOpacity="0" />
+          <stop offset="0.72" stopColor="#020a09" stopOpacity="0.16" />
+          <stop offset="1" stopColor="#020a09" stopOpacity="0.55" />
+        </linearGradient>
+        <linearGradient id={g('side')} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#020a09" stopOpacity="0.52" />
+          <stop offset="0.46" stopColor="#020a09" stopOpacity="0.08" />
+          <stop offset="1" stopColor="#020a09" stopOpacity="0" />
+        </linearGradient>
         <filter id={g('grain')} x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" stitchTiles="stitch" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
         </filter>
       </defs>
 
-      <rect width="1600" height="900" fill={`url(#${g('sky')})`} />
+      <rect width="1600" height="900" fill={`url(#${g('base')})`} />
+      <rect width="1600" height="900" fill={`url(#${g('jade')})`} />
+      <rect width="1600" height="900" fill={`url(#${g('sun')})`} />
 
-      {/* Horisonten ligger midt i bildet, ikke nede i hjørnet. Da fyller
-          solnedgangen flaten i stedet for å etterlate en mørk, tom topp. */}
-      <ellipse cx="1330" cy="514" rx="480" ry="340" fill={`url(#${g('glow')})`} />
-      <circle cx="1330" cy="524" r="52" fill="#ffeec9" opacity="0.95" />
-
-      {/* Fjerne åser — nesten oppløst i dis */}
-      <path
-        d="M-20 452 q210 -96 420 -20 q176 64 366 -16 q192 -80 404 24 q136 62 386 -6 l0 480 -1640 0z"
-        fill="#a2909a"
-        opacity="0.24"
-      />
-      <path
-        d="M-20 486 q196 -76 392 -12 q166 56 344 -14 q186 -72 382 20 q146 54 372 -4 l0 440 -1640 0z"
-        fill="#63596c"
-        opacity="0.42"
-      />
-
-      {/* Nære øyer, med solen bak seg */}
-      <path d="M1104 500 q56 -104 118 -8 q30 46 76 12 l0 400 -296 0z" fill="#1e2431" opacity="0.9" />
-      <path d="M120 500 q80 -92 164 -6 q48 50 112 8 l0 396 -336 0z" fill="#1a202c" opacity="0.94" />
-
-      {/* Vann */}
-      <rect y="512" width="1600" height="388" fill={`url(#${g('water')})`} />
-      {/* Speilingen brytes opp av bølger. Én sammenhengende form leste som
-          et objekt i vannet; flere flate striper leser som lys. */}
-      <g fill="#ffd9a2" filter={`url(#${g('blur')})`}>
-        <ellipse cx="1330" cy="536" rx="58" ry="6" opacity="0.42" />
-        <ellipse cx="1320" cy="552" rx="44" ry="5" opacity="0.34" />
-        <ellipse cx="1342" cy="568" rx="62" ry="5" opacity="0.28" />
-        <ellipse cx="1316" cy="586" rx="36" ry="4" opacity="0.22" />
-        <ellipse cx="1346" cy="604" rx="54" ry="4" opacity="0.17" />
-        <ellipse cx="1324" cy="624" rx="32" ry="4" opacity="0.13" />
-        <ellipse cx="1348" cy="646" rx="46" ry="3" opacity="0.1" />
-        <ellipse cx="1330" cy="670" rx="28" ry="3" opacity="0.07" />
+      {/* Høydekurver over hele flaten — så vidt merkbare */}
+      <g fill="none" stroke="#fff" strokeWidth="1.4" opacity="0.055">
+        {contours(0.6, 14, { x0: -40, x1: 1640, y0: 90, step: 58 }).map((d) => (
+          <path key={d} d={d} />
+        ))}
       </g>
 
-      {/* Longtailbåt — gir målestokk og et menneskelig spor */}
-      <g fill="#04060b" opacity="0.95">
-        <path d="M330 668 q74 29 184 0 l-23 24 q-69 17 -138 0z" />
-        <rect x="416" y="620" width="6" height="48" />
-        <path d="M422 623 l70 -24 -64 40z" fill="#8a3626" opacity="0.85" />
+      {/* Motiv — få og store elementer, langt til høyre. Et travelt motiv
+          bak en overskrift blir støy; et rolig blir stemning. */}
+      <g
+        fill="none"
+        stroke="#fff"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity="0.2"
+      >
+        <circle cx="1298" cy="424" r="62" />
+        <circle cx="1298" cy="424" r="97" opacity="0.5" />
+        <circle cx="1298" cy="424" r="134" opacity="0.22" />
+        <path d="M 840 566 H 1640" opacity="0.7" />
+        <path d="M 946 566 C 962 512 992 486 1024 486 C 1058 486 1084 514 1098 566" opacity="0.75" />
+        <path d="M 1186 566 C 1196 528 1214 510 1234 510 C 1256 510 1272 530 1280 566" opacity="0.5" />
+        <path d="M 1418 566 C 1434 502 1468 472 1504 472 C 1542 472 1572 504 1586 566" opacity="0.6" />
+        {/* Longtailbåt gir målestokk til resten */}
+        <path d="M 1054 676 C 1104 712 1236 712 1288 676" />
+        <path d="M 1054 676 L 1288 676" />
+        <path d="M 1288 676 L 1322 638" />
+        <path d="M 1314 646 l 18 -21 M 1306 640 l 10 -24" />
+        <path d="M 1114 676 L 1122 644 L 1220 644 L 1228 676" />
+        <path d="M 1122 644 L 1122 676 M 1220 644 L 1220 676" />
+        <path d="M 1056 684 L 992 720 l -16 9" />
+        <path d="M 900 726 C 1010 744 1150 744 1258 730" opacity="0.45" />
+        <path d="M 980 782 C 1084 798 1208 796 1308 784" opacity="0.3" />
       </g>
 
-      {/* Forgrunn — mørkest og skarpest, det er slik dybde leses */}
-      <path
-        d="M-20 700 q240 -40 480 -8 q250 34 520 -10 q240 -38 640 12 l0 216 -1640 0z"
-        fill="#060910"
-      />
-
+      <rect width="1600" height="900" fill={`url(#${g('side')})`} />
       <rect width="1600" height="900" fill={`url(#${g('vig')})`} />
-      <rect width="1600" height="900" filter={`url(#${g('grain')})`} opacity="0.055" />
+      <rect width="1600" height="900" filter={`url(#${g('grain')})`} opacity="0.05" />
     </svg>
   );
 }

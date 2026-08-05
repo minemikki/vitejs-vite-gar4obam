@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { metaForPath } from './meta.js';
 import { site } from '../config.js';
@@ -64,11 +64,24 @@ export function useSeo() {
   }, [pathname]);
 }
 
-/** Ruller til toppen ved navigering — men respekterer #anker. */
+/**
+ * Ruller til toppen ved navigering — men respekterer #anker.
+ *
+ * Effekten hopper over aller første kjøring med vilje. Sidene er
+ * forhåndsrendret, så de er lesbare og rullbare før JavaScript er lastet.
+ * Uten dette hoppet ville en bruker som begynner å bla med én gang bli
+ * kastet tilbake til toppen i det hydreringen blir ferdig — og nettleserens
+ * egen gjenoppretting av posisjon ved «tilbake» ville blitt overstyrt.
+ */
 export function useScrollToTop() {
   const { pathname, hash } = useLocation();
+  const first = useRef(true);
   useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
     if (hash) return;
-    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname, hash]);
 }

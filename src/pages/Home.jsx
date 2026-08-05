@@ -166,7 +166,7 @@ function Destinations() {
             to={`/opplevelser?sted=${encodeURIComponent(d.name)}`}
           >
             <span className="dest-media">
-              <Scene name={d.scene} uid={`dest-${d.name}`} />
+              <Scene name={d.scene} uid={`dest-${d.name}`} image={d.image} alt={d.name} />
             </span>
             <span className="dest-body">
               <span className="dest-name">{d.name}</span>

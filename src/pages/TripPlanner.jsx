@@ -59,7 +59,7 @@ function DayCard({ day, onMove, onRemove }) {
         {day.items.map((e) => (
           <li className="dayitem" key={e.id}>
             <Link className="dayitem-media" to={`/opplevelser/${e.slug}`} aria-label={e.title}>
-              <Scene name={e.scene} uid={`trip-${e.id}`} align="bottom" />
+              <Scene name={e.scene} uid={`trip-${e.id}`} image={e.image} alt="" />
             </Link>
             <div className="dayitem-body">
               <h3><Link to={`/opplevelser/${e.slug}`}>{e.title}</Link></h3>

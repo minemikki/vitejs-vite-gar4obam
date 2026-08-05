@@ -165,10 +165,27 @@ samme `id` i `details`-objektet lenger nede i samme fil.
 
 ## Om bildene
 
-Scenene på kortene er håndtegnet vektorgrafikk (SVG) laget for dette
-prosjektet — de laster umiddelbart og er skarpe på alle skjermer.
+Kortene bruker et eget bildespråk: dype fargeflater med ett stort strektegnet
+motiv lagt oppå som vannmerke, fin korning og kraftig typografi. Det er laget
+sånn med vilje. Halvgode «nesten-fotografier» får en reiseside til å se billig
+ut; en tydelig grafisk flate gjør ikke det. Alt er SVG, så det laster
+umiddelbart og er skarpt på alle skjermer.
 
-Vil du bytte til ekte foto senere: bruk bilder du har rett til å bruke —
-affiliate-programmenes egne bildebanker, bilder du får tillatelse til av
-operatøren, eller bilder du tar selv. Å laste ned bilder fra andres nettsider
-er opphavsrettsbrudd.
+### Bytte til ekte foto
+
+Sett `image` på opplevelsen i `src/data.js` eller på reisemålet i
+`src/content/destinations.js`:
+
+```js
+{ id: 'elefant', title: 'Etisk elefantreservat', image: '/bilder/elefant.jpg', … }
+```
+
+Da tar fotoet over, og fargeflaten blir liggende som fallback for alt som
+ennå ikke har bilde. Du trenger ikke røre noe annet — verken CSS eller
+komponenter. Legg filene i `public/bilder/`.
+
+**Bruk bare bilder du har rett til.** Affiliate-programmenes egne bildebanker
+(GetYourGuide og Viator gir deg tilgang når du er godkjent), bilder du får
+skriftlig tillatelse til av operatøren, eller bilder du tar selv. Å laste ned
+bilder fra andres nettsider er opphavsrettsbrudd, og det er reisebransjen
+kjent for å følge opp.

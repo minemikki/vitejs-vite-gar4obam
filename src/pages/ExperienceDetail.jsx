@@ -115,7 +115,7 @@ export default function ExperienceDetail() {
           </div>
         </div>
         <div className="detail-hero-art" aria-hidden="true">
-          <Scene name={exp.scene} uid={`hero-${exp.id}`} align="bottom" />
+          <Scene name={exp.scene} uid={`hero-${exp.id}`} image={exp.image} alt={exp.title} />
         </div>
       </div>
 
