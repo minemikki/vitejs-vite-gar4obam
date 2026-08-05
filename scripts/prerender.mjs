@@ -41,6 +41,15 @@ function headFor(meta) {
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     `<meta property="og:url" content="${esc(meta.canonical)}" />`,
+    // Uten bilde vises en delt lenke som en blank boks i Facebook og
+    // Messenger, og klikkraten faller kraftig. Bildet ligger i public/ og
+    // lages på nytt med `npm run og`.
+    `<meta property="og:image" content="${esc(site.url)}/og.png" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="${esc(site.name)} — ${esc(site.tagline)}" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:image" content="${esc(site.url)}/og.png" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(meta.title)}" />`,
     `<meta name="twitter:description" content="${esc(meta.description)}" />`,

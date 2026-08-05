@@ -1,0 +1,69 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  Mal for delingsbildet (Open Graph). Rendres til public/og.png med
+  `npm run og`. Ligger i repoet så bildet kan lages på nytt når merket
+  eller teksten endrer seg — ikke fordi det bygges automatisk.
+-->
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; position: relative;
+    background: linear-gradient(150deg, #04120f 0%, #0a2b26 46%, #062a23 100%);
+    font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #fff;
+  }
+  .glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(52% 62% at 82% 40%, rgba(255,176,77,.34), transparent 70%),
+      radial-gradient(60% 70% at 6% 108%, rgba(15,122,95,.36), transparent 70%);
+  }
+  .art { position: absolute; right: -70px; top: 50%; transform: translateY(-50%); opacity: .15; }
+  .inner { position: relative; padding: 58px 72px; height: 100%; display: flex; flex-direction: column; }
+  .brand { display: flex; align-items: center; gap: 15px; margin-bottom: auto; }
+  .brand .name { font-family: Georgia, "Times New Roman", serif; font-size: 31px; font-weight: 700; letter-spacing: -.01em; }
+  .brand .name i { color: #e3c05a; font-style: normal; }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 60px; line-height: 1.06; font-weight: 700;
+    letter-spacing: -.02em; max-width: 15ch; margin-bottom: 18px;
+  }
+  h1 em { color: #e3c05a; font-style: italic; }
+  p { font-size: 23px; line-height: 1.45; color: rgba(255,255,255,.84); max-width: 26ch; }
+  .row { display: flex; gap: 24px; margin-top: 28px; font-size: 18px; color: rgba(255,255,255,.76); }
+  .row span { display: inline-flex; align-items: center; gap: 9px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #e3c05a; }
+</style>
+<div class="glow"></div>
+
+<svg class="art" width="500" height="500" viewBox="0 0 48 48" fill="none"
+     stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M24 7.7 C30.4 17.1 31.5 25.3 24 34.7 C16.5 25.3 17.6 17.1 24 7.7 Z"/>
+  <path d="M14.6 34.7 C11.1 27.4 12 21 15.9 16.3 C18 21.4 18.4 28.3 17.6 34.7 Z"/>
+  <path d="M33.4 34.7 C36.9 27.4 36 21 32.1 16.3 C30 21.4 29.6 28.3 30.4 34.7 Z"/>
+  <path d="M16.7 39.4 H31.3"/>
+</svg>
+
+<div class="inner">
+  <div class="brand">
+    <svg width="54" height="54" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="13" fill="rgba(255,255,255,.08)"/>
+      <g fill="none" stroke="#e3c05a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 7.7 C30.4 17.1 31.5 25.3 24 34.7 C16.5 25.3 17.6 17.1 24 7.7 Z"/>
+        <path d="M14.6 34.7 C11.1 27.4 12 21 15.9 16.3 C18 21.4 18.4 28.3 17.6 34.7 Z"/>
+        <path d="M33.4 34.7 C36.9 27.4 36 21 32.1 16.3 C30 21.4 29.6 28.3 30.4 34.7 Z"/>
+        <path d="M16.7 39.4 H31.3"/>
+      </g>
+    </svg>
+    <span class="name">Sawadee<i>Tours</i></span>
+  </div>
+
+  <h1>Opplev det ekte Thailand. <em>Booket på norsk.</em></h1>
+  <p>Kuraterte turer, priser i kroner og norsk kundeservice.</p>
+  <div class="row">
+    <span><i class="dot"></i> Gratis avbestilling</span>
+    <span><i class="dot"></i> Norsk kundeservice</span>
+    <span><i class="dot"></i> Trygg betaling</span>
+  </div>
+</div>
