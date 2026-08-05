@@ -24,13 +24,19 @@
 .btn-block { width: 100%; }
 
 /* ============================ Nav ============================ */
+/* Fast toppmeny som ligger OVER hero-bildet — derfor er teksten hvit
+   før man scroller, og menyen blir lys og ugjennomsiktig etterpå. */
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   transition: background 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s;
   border-bottom: 1px solid transparent;
 }
+/* Ankerlenker skal ikke havne under den faste menyen. */
+[id] { scroll-margin-top: 86px; }
 .nav.is-solid {
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: saturate(160%) blur(14px);
@@ -89,17 +95,22 @@
 }
 .hero-scene-wrap { position: absolute; inset: 0; z-index: -1; }
 .hero-scene { width: 100%; height: 100%; object-fit: cover; }
+/* To lag: ett som mørkner topp+bunn (meny og søkefelt), og ett som mørkner
+   venstre side der teksten står — slik at solnedgangen til høyre beholdes. */
 .hero-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 45, 39, 0.32) 0%, rgba(6, 45, 39, 0) 26%, rgba(6, 45, 39, 0.12) 55%, rgba(4, 32, 28, 0.82) 100%);
+  background:
+    linear-gradient(180deg, rgba(4, 32, 28, 0.5) 0%, rgba(4, 32, 28, 0.16) 20%,
+      rgba(4, 32, 28, 0.08) 42%, rgba(4, 32, 28, 0.55) 82%, rgba(4, 32, 28, 0.84) 100%),
+    linear-gradient(90deg, rgba(4, 32, 28, 0.6) 0%, rgba(4, 32, 28, 0.26) 46%, rgba(4, 32, 28, 0) 76%);
 }
 .hero-inner {
   position: relative;
   max-width: var(--maxw);
   width: 100%;
   margin: 0 auto;
-  padding: 0 22px 54px;
+  padding: 104px 22px 54px;
   color: #fff;
 }
 .hero-eyebrow {
@@ -598,9 +609,22 @@
   .nav-links a { padding: 13px 0; border-bottom: 1px solid var(--line); }
   .nav:not(.is-solid) .nav-links a { color: #fff; border-color: rgba(255, 255, 255, 0.12); }
   .nav-burger { display: flex; }
-  .searchbar { flex-direction: column; align-items: stretch; }
+  /* Toppraden må få plass på smale skjermer: valutamerket vises i footeren
+     og i prisene uansett, så det ryker først. */
+  .nav-nok { display: none; }
+  .nav-inner { gap: 12px; padding-left: 16px; padding-right: 16px; }
+  .nav-right { gap: 8px; }
+  .logo { gap: 8px; }
+  .logo-text { font-size: 1.1rem; }
+  .searchbar { flex-direction: column; align-items: stretch; gap: 2px; padding: 6px; }
+  .searchbar-field { padding: 7px 12px; }
   .searchbar-div { width: auto; height: 1px; margin: 0 8px; }
-  .searchbar-btn { justify-content: center; padding: 13px; }
+  .searchbar-btn { justify-content: center; padding: 12px; margin-top: 4px; }
+  .hero { min-height: auto; }
+  .hero-inner { padding-top: 96px; padding-bottom: 42px; }
+  .hero-title { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .hero-lead { font-size: 0.99rem; margin-bottom: 20px; }
+  .hero-eyebrow { margin-bottom: 14px; font-size: 0.78rem; }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .how-grid { grid-template-columns: 1fr; gap: 26px; }
   .section { padding: 62px 22px; }
@@ -609,5 +633,7 @@
   .grid, .testi-grid, .why-grid { grid-template-columns: 1fr; }
   .dest-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; }
-  .hero-trust { font-size: 0.86rem; }
+  .hero-trust { font-size: 0.86rem; gap: 8px 10px; }
+  /* Skillestreken blir hengende alene når raden brytes — dropp den. */
+  .hero-trust-div { display: none; }
 }

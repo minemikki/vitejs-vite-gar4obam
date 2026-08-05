@@ -4,44 +4,25 @@
  * laster umiddelbart. Lisensfritt fordi vi har tegnet det selv.
  *
  * Hver scene deler samme språk: himmelgradient, sol/lys-glød, lagdelte
- * silhuetter for dybde, en forgrunnsform, fin kornstruktur og en myk
+ * silhuetter for dybde, en forgrunnsform og en myk
  * bunn-gradient som gjør tekst lesbar oppå.
  */
 
-function Grain({ id, opacity = 0.06 }) {
+/* Myk mørkning nederst så tekst oppå alltid er lesbar.
+   Gradienten defineres per scene (unik id) så den aldri forsvinner
+   når kortene filtreres bort. */
+function Scrim({ uid, from = 0.34 }) {
+  const id = `${uid}-scrim`;
   return (
     <>
-      <filter id={id}>
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.9"
-          numOctaves="2"
-          stitchTiles="stitch"
-        />
-        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0" />
-      </filter>
-      <rect
-        x="0"
-        y="0"
-        width="400"
-        height="300"
-        filter={`url(#${id})`}
-        opacity={opacity}
-      />
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#052722" stopOpacity="0" />
+          <stop offset="1" stopColor="#052722" />
+        </linearGradient>
+      </defs>
+      <rect x="0" y="150" width="400" height="150" fill={`url(#${id})`} opacity={from} />
     </>
-  );
-}
-
-function Scrim({ from = 0.34 }) {
-  return (
-    <rect
-      x="0"
-      y="150"
-      width="400"
-      height="150"
-      fill="url(#scrim-grad)"
-      opacity={from}
-    />
   );
 }
 
@@ -72,10 +53,6 @@ function Islands({ uid }) {
           <stop offset="0.5" stopColor="#ffd27a" />
           <stop offset="1" stopColor="#ffd27a" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="scrim-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#052722" stopOpacity="0" />
-          <stop offset="1" stopColor="#052722" />
-        </linearGradient>
       </defs>
       <rect width="400" height="300" fill={`url(#${uid}-sky)`} />
       <circle cx="300" cy="92" r="80" fill={`url(#${uid}-sun)`} />
@@ -95,8 +72,7 @@ function Islands({ uid }) {
         <rect x="186" y="226" width="3" height="26" />
         <path d="M189 228 l34 -12 -30 20z" fill="#ff6a3d" />
       </g>
-      <Grain id={`${uid}-g`} />
-      <Scrim />
+      <Scrim uid={uid} />
     </svg>
   );
 }
@@ -134,8 +110,7 @@ function Karst({ uid }) {
         <rect x="150" y="230" width="4" height="14" opacity="0.9" />
       </g>
       <path d="M150 232 l-18 -6 18 -2z" fill="#ff6a3d" />
-      <Grain id={`${uid}-g`} />
-      <Scrim />
+      <Scrim uid={uid} />
     </svg>
   );
 }
@@ -174,8 +149,7 @@ function Temple({ uid }) {
       <rect y="216" width="400" height="84" fill={`url(#${uid}-river)`} />
       {/* reflection */}
       <path d="M242 216 L262 300 L282 216z" fill="#b98f56" opacity="0.5" />
-      <Grain id={`${uid}-g`} opacity="0.05" />
-      <Scrim from="0.4" />
+      <Scrim uid={uid} from="0.4" />
     </svg>
   );
 }
@@ -199,22 +173,38 @@ function Jungle({ uid }) {
       <path d="M-10 150 q100 -46 200 0 t220 0 l0 160 -420 0z" fill="#bfe3ab" opacity="0.7" />
       <path d="M-10 186 q120 -52 240 0 t200 0 l0 130 -430 0z" fill="#8ccf8b" opacity="0.85" />
       <path d="M-10 220 q140 -40 260 0 t180 0 l0 90 -440 0z" fill={`url(#${uid}-h1)`} />
-      {/* elephant silhouette */}
-      <g fill="#0c4b39">
-        <path d="M150 268 q-6 -40 30 -44 q40 -6 52 16 q16 2 18 18 l-2 12 -6 0 -2 -10 -10 0 -2 10 -8 0 -1 -10 -30 0 -2 10 -8 0 -1 -10 q-8 -2 -8 -10z" />
-        <path d="M180 244 q-14 6 -12 22 l4 0 q0 -12 10 -16z" fill="#0a3f30" />
+      {/* elefant i silhuett, vendt mot venstre */}
+      <g fill="#0a4534">
+        {/* bein */}
+        <rect x="176" y="248" width="15" height="26" rx="5" />
+        <rect x="199" y="250" width="14" height="24" rx="5" />
+        <rect x="226" y="248" width="15" height="26" rx="5" />
+        <rect x="246" y="250" width="13" height="24" rx="5" />
+        {/* kropp */}
+        <ellipse cx="212" cy="236" rx="52" ry="31" />
+        {/* hale */}
+        <path d="M262 226 q12 10 9 28" stroke="#0a4534" strokeWidth="4" fill="none" strokeLinecap="round" />
+        {/* hode */}
+        <circle cx="160" cy="234" r="26" />
+        {/* snabel */}
+        <path d="M141 246 q-13 15 -7 28 q2 6 8 4" stroke="#0a4534" strokeWidth="11" fill="none" strokeLinecap="round" />
+        {/* støttann */}
+        <path d="M150 252 q-8 8 -12 16" stroke="#e9f2e4" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.9" />
+        {/* øre */}
+        <ellipse cx="172" cy="230" rx="16" ry="19" fill="#08382b" />
       </g>
-      {/* palm */}
-      <g stroke="#0c4b39" strokeWidth="4" fill="none" strokeLinecap="round">
-        <path d="M60 270 q-4 -34 6 -54" />
+      {/* palme */}
+      <g stroke="#0a4534" strokeWidth="5" fill="none" strokeLinecap="round">
+        <path d="M58 274 q-10 -44 4 -74" />
       </g>
-      <g fill="#0c4b39">
-        <path d="M66 214 q-30 -12 -40 2 q26 -4 40 6z" />
-        <path d="M66 214 q30 -12 40 2 q-26 -4 -40 6z" />
-        <path d="M66 214 q-14 -30 -2 -42 q10 22 2 42z" />
+      <g fill="#0a4534">
+        <path d="M62 200 q-34 -16 -46 0 q28 -6 46 8z" />
+        <path d="M62 200 q34 -16 46 0 q-28 -6 -46 8z" />
+        <path d="M62 200 q-26 -30 -12 -44 q6 24 12 44z" />
+        <path d="M62 200 q26 -28 42 -20 q-24 4 -42 20z" />
+        <path d="M62 200 q-8 -32 4 -44 q4 24 -4 44z" />
       </g>
-      <Grain id={`${uid}-g`} />
-      <Scrim />
+      <Scrim uid={uid} />
     </svg>
   );
 }
@@ -244,8 +234,7 @@ function Canopy({ uid }) {
       {/* layered treetops */}
       <path d="M-10 210 q40 -40 80 0 q40 -44 90 0 q44 -40 90 0 q44 -44 96 0 l0 100 -456 0z" fill="#7bc38a" opacity="0.75" />
       <path d="M-10 240 q46 -40 96 0 q46 -44 100 0 q46 -40 100 0 q46 -44 100 0 l0 70 -496 0z" fill={`url(#${uid}-canopy)`} />
-      <Grain id={`${uid}-g`} />
-      <Scrim />
+      <Scrim uid={uid} />
     </svg>
   );
 }
@@ -298,8 +287,7 @@ function City({ uid }) {
         <circle cx="170" cy="132" r="3.4" />
         <circle cx="250" cy="128" r="3.4" />
       </g>
-      <Grain id={`${uid}-g`} opacity="0.05" />
-      <Scrim from="0.2" />
+      <Scrim uid={uid} from="0.2" />
     </svg>
   );
 }
@@ -343,7 +331,6 @@ function Arena({ uid }) {
           <path d="M6 -40 q10 8 16 2 l-3 -6 q-8 2 -13 -2z" />
         </g>
       </g>
-      <Grain id={`${uid}-g`} opacity="0.08" />
     </svg>
   );
 }
@@ -378,8 +365,7 @@ function Safari({ uid }) {
         <rect x="302" y="188" width="4" height="8" />
         <rect x="318" y="188" width="4" height="8" />
       </g>
-      <Grain id={`${uid}-g`} opacity="0.05" />
-      <Scrim from="0.3" />
+      <Scrim uid={uid} from="0.3" />
     </svg>
   );
 }
@@ -418,8 +404,7 @@ function Market({ uid }) {
           <circle cx="18" cy="-3" r="5" fill="#ff6a3d" />
         </g>
       </g>
-      <Grain id={`${uid}-g`} />
-      <Scrim from="0.28" />
+      <Scrim uid={uid} from="0.28" />
     </svg>
   );
 }
@@ -470,14 +455,12 @@ export function HeroScene() {
           <stop offset="0.45" stopColor="#ffd074" />
           <stop offset="1" stopColor="#ffd074" stopOpacity="0" />
         </radialGradient>
-        <filter id={`${u}-grain`}>
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" />
-        </filter>
       </defs>
       <rect width="1440" height="820" fill={`url(#${u}-sky)`} />
-      <circle cx="1050" cy="300" r="260" fill={`url(#${u}-sun)`} />
-      <circle cx="1050" cy="300" r="92" fill="#fff4d6" />
+      {/* Motivet er lagt mot midten: på mobil beskjæres sidene bort, og
+          sol, øyer og båt må fortsatt være synlige. */}
+      <circle cx="880" cy="300" r="260" fill={`url(#${u}-sun)`} />
+      <circle cx="880" cy="300" r="92" fill="#fff4d6" />
       {/* birds */}
       <g stroke="#0b4a41" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.6">
         <path d="M300 190 q14 -12 28 0 q14 -12 28 0" />
@@ -487,18 +470,18 @@ export function HeroScene() {
       <path d="M-20 560 q220 -120 470 -20 q200 80 460 -20 q220 -84 540 20 l0 300 -1930 0z" fill="#8fd8cd" opacity="0.5" />
       <rect y="548" width="1440" height="272" fill={`url(#${u}-sea)`} />
       {/* sun reflection */}
-      <rect x="1006" y="552" width="88" height="250" fill="#ffe7ad" opacity="0.45" />
+      <rect x="836" y="552" width="88" height="250" fill="#ffe7ad" opacity="0.45" />
       {/* islands */}
       <path d="M120 548 q90 -220 200 -6z" fill="#0f6d63" />
-      <path d="M980 548 q150 -300 320 -6z" fill="#0f6d63" />
-      <path d="M1120 548 q80 -150 170 -6z" fill="#0b574f" />
+      <path d="M470 548 q70 -150 150 -6z" fill="#0d6157" opacity="0.9" />
+      <path d="M840 548 q150 -300 320 -6z" fill="#0f6d63" />
+      <path d="M980 548 q80 -150 170 -6z" fill="#0b574f" />
       {/* longtail boat */}
       <g fill="#07332d">
-        <path d="M520 690 q110 60 280 0 l-36 44 q-100 30 -208 0z" />
-        <rect x="648" y="596" width="10" height="96" />
-        <path d="M658 600 l120 -44 -108 72z" fill="#ff6a3d" />
+        <path d="M560 690 q110 60 280 0 l-36 44 q-100 30 -208 0z" />
+        <rect x="688" y="596" width="10" height="96" />
+        <path d="M698 600 l120 -44 -108 72z" fill="#ff6a3d" />
       </g>
-      <rect width="1440" height="820" filter={`url(#${u}-grain)`} opacity="0.05" />
     </svg>
   );
 }

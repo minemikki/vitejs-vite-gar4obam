@@ -387,7 +387,10 @@ function Footer() {
 function BookingModal({ exp, onClose }) {
   const [form, setForm] = useState({ name: '', email: '', date: '', people: 2 });
   const [sent, setSent] = useState(false);
+
+  // Lås kun bakgrunnsscrollingen mens modalen faktisk er åpen.
   useEffect(() => {
+    if (!exp) return undefined;
     const onKey = (e) => e.key === 'Escape' && onClose();
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -395,7 +398,13 @@ function BookingModal({ exp, onClose }) {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [onClose]);
+  }, [exp, onClose]);
+
+  // Start med blankt skjema hver gang en ny opplevelse åpnes.
+  useEffect(() => {
+    if (exp) setSent(false);
+  }, [exp]);
+
   if (!exp) return null;
   const total = exp.priceNOK * Number(form.people || 1);
   const submit = (e) => {
