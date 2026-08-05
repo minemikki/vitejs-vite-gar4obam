@@ -21,7 +21,7 @@ const root = resolve(here, '..');
 const dist = join(root, 'dist');
 const ssrEntry = join(root, 'dist-ssr', 'entry-server.js');
 
-const { render, metaForPath, allRoutes, sitemapRoutes, site } = await import(
+const { render, metaForPath, allRoutes, sitemapRoutes, site, newsletter } = await import(
   pathToFileURL(ssrEntry).href
 );
 
@@ -125,6 +125,9 @@ const siteDomain = site.url.replace(/^https?:\/\//, '');
 const warnings = [];
 if (siteDomain.endsWith('.vercel.app')) {
   warnings.push(`site.url peker fortsatt på ${siteDomain} — bytt til eget domene når det er koblet.`);
+}
+if (!newsletter.endpoint) {
+  warnings.push('newsletter.endpoint er tom — påmeldinger går via kundens eget e-postprogram i stedet for rett inn i en liste.');
 }
 if (emailDomain && !siteDomain.endsWith(emailDomain)) {
   warnings.push(`site.email (${site.email}) ligger ikke på ${siteDomain} — sjekk at adressen finnes.`);

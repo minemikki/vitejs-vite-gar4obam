@@ -44,6 +44,11 @@ Gå gjennom denne før du tar imot ekte bestillinger.
 - [ ] **Sett riktig domene** i `site.url` (`src/config.js`) og i
       `public/robots.txt`.
 - [ ] **Koble på betaling** (se under) eller behold forespørselsmodus.
+- [ ] **Koble på e-postlisten.** `newsletter.endpoint` i `src/config.js`. Står
+      den tom, åpner skjemaet kundens eget e-postprogram med en ferdig melding
+      til deg i stedet — adressen går ikke tapt, men det koster påmeldinger.
+- [ ] **Sjekk prisene på opplevelsene** i `src/data.js` mot det partneren
+      faktisk tar. Prisene som ligger der nå er satt for å vise fram siden.
 - [ ] **Sjekk TAT-lisens** hvis du skal selge turer i eget navn fra Thailand.
 
 ---
@@ -166,6 +171,20 @@ samme `id` i `details`-objektet lenger nede i samme fil.
 - **Instant søk** — Ctrl/Cmd+K, tastaturnavigering, tåler æøå.
 - **Filtre i URL-en** — et filtrert søk kan bokmerkes og deles.
 - **Kuratert utvalg med redaksjonell linje** — ingen elefantridning.
+
+## Verktøyene som skiller oss ut
+
+To sider er verktøy, ikke tekst. De er der fordi folk deler verktøy, lenker
+til dem og kommer tilbake til dem — det gjør ingen med en artikkel.
+
+- **`/naar-reise` — værkartet.** Alle svarer «november til mars» på når du bør
+  reise til Thailand. Det er riktig for Phuket og feil for Koh Samui, der
+  november er årets våteste måned. Kystene ligger på hver sin side av halvøya
+  og får monsunen til ulik tid. Tallene ligger i `src/content/season.js`.
+- **`/reisebudsjett` — kalkulatoren.** Regner ut hva turen koster ut fra dager,
+  antall reisende, reisestil og sesong. Alle satsene vises på siden, så folk
+  kan justere dem mot sin egen ferie. Satsene ligger i `src/content/budget.js`
+  og bør gås gjennom før hver sesong.
 
 ## SEO
 

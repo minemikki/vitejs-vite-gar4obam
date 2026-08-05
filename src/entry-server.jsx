@@ -23,4 +23,4 @@ export async function render(url) {
 }
 
 export { metaForPath, allRoutes, sitemapRoutes } from './lib/meta.js';
-export { site } from './config.js';
+export { site, newsletter } from './config.js';

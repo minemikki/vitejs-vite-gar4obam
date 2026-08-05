@@ -23,6 +23,7 @@ const DestinationIndex = lazy(() =>
 );
 const Guide = lazy(() => import('./pages/Guide.jsx'));
 const Season = lazy(() => import('./pages/Season.jsx'));
+const Budget = lazy(() => import('./pages/Budget.jsx'));
 const TripPlanner = lazy(() => import('./pages/TripPlanner.jsx'));
 const Faq = lazy(() => import('./pages/Faq.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -72,6 +73,7 @@ export default function App() {
         <Route path="/guider" element={<GuideIndex />} />
         <Route path="/guider/:slug" element={<Guide />} />
         <Route path="/naar-reise" element={<Season />} />
+        <Route path="/reisebudsjett" element={<Budget />} />
         <Route path="/min-reise" element={<TripPlanner />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/om-oss" element={<About />} />

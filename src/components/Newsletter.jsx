@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '../scenes.jsx';
 import { read, write, KEYS } from '../lib/storage.js';
 import { track } from '../lib/analytics.js';
+import { newsletter, site } from '../config.js';
 
 /*
  * E-postliste.
@@ -17,29 +18,65 @@ import { track } from '../lib/analytics.js';
  */
 export default function Newsletter({ compact = false }) {
   const [email, setEmail] = useState('');
-  const [done, setDone] = useState(() => !!read(KEYS.newsletter, null));
+  const [state, setState] = useState(() => (read(KEYS.newsletter, null) ? 'sendt' : 'klar'));
   const [error, setError] = useState('');
 
-  const submit = (e) => {
+  const source = compact ? 'footer' : 'inline';
+
+  const submit = async (e) => {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
       setError('Skriv inn en gyldig e-postadresse.');
       return;
     }
     setError('');
-    // TODO ved lansering: send til e-postverktøyet ditt (Mailchimp, Brevo,
-    // Resend eller liknende). Nå lagres den kun lokalt som en bekreftelse.
+    setState('sender');
+
+    if (newsletter.endpoint) {
+      try {
+        const res = await fetch(newsletter.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+      } catch {
+        setState('klar');
+        setError('Noe gikk galt hos oss. Prøv igjen, eller send oss en e-post.');
+        return;
+      }
+      write(KEYS.newsletter, { email, at: Date.now() });
+      track('newsletter_signup', { source });
+      setState('sendt');
+      return;
+    }
+
+    // Ingen liste koblet på ennå: åpne kundens e-postprogram med en ferdig
+    // melding, så adressen faktisk når fram. Vi later ikke som noe annet.
+    const body = `Hei! Send meg Thailand-sjekklisten.\n\nE-post: ${email}\n`;
+    window.location.href =
+      `mailto:${site.email}?subject=${encodeURIComponent('Thailand-sjekklisten')}` +
+      `&body=${encodeURIComponent(body)}`;
     write(KEYS.newsletter, { email, at: Date.now() });
-    track('newsletter_signup', { source: compact ? 'footer' : 'inline' });
-    setDone(true);
+    track('newsletter_signup', { source });
+    setState('mailto');
   };
 
-  if (done) {
+  if (state === 'sendt' || state === 'mailto') {
     return (
       <div className={`news news--done ${compact ? 'news--compact' : ''}`}>
         <span className="news-check"><Icon.check width={20} height={20} /></span>
         <p>
-          <strong>Takk!</strong> Sjekklisten er på vei til innboksen din.
+          {state === 'sendt' ? (
+            <>
+              <strong>Takk!</strong> Sjekklisten er på vei til innboksen din.
+            </>
+          ) : (
+            <>
+              <strong>Nesten der.</strong> Vi åpnet e-postprogrammet ditt med en
+              ferdig melding — send den, så kommer listen i retur.
+            </>
+          )}
         </p>
       </div>
     );
@@ -70,7 +107,9 @@ export default function Newsletter({ compact = false }) {
             aria-invalid={!!error}
             aria-describedby={error ? 'news-error' : undefined}
           />
-          <button className="btn btn-gold" type="submit">Send meg listen</button>
+          <button className="btn btn-gold" type="submit" disabled={state === 'sender'}>
+            {state === 'sender' ? 'Sender…' : 'Send meg listen'}
+          </button>
         </div>
         {error && <p className="news-error" id="news-error">{error}</p>}
         <p className="news-fine">

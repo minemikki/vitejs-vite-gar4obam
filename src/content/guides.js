@@ -244,6 +244,12 @@ export const guides = [
   },
   {
     slug: 'hva-koster-thailand',
+    cta: {
+      h: 'Regn på din egen tur',
+      p: 'Sett inn dager, antall reisende og reisestil, så viser kalkulatoren hva turen koster — med alle satsene åpent framme.',
+      label: 'Åpne reisebudsjettet',
+      to: '/reisebudsjett',
+    },
     title: 'Hva koster to uker i Thailand? Et ærlig budsjett',
     excerpt:
       'Fly, hotell, mat, aktiviteter — regnet ut i kroner, med tre nivåer. Og de utgiftene folk glemmer å ta med.',

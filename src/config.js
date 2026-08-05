@@ -77,6 +77,25 @@ export const payments = {
 };
 
 /*
+ * E-POSTLISTE
+ * -----------
+ * Den billigste kanalen du har. Folk som planlegger Thailand et halvt år
+ * fram husker ikke nettstedet ditt — men de leser e-posten sin.
+ *
+ * Sett `endpoint` til adressen e-postverktøyet ditt tar imot påmeldinger på
+ * (Brevo, Mailchimp, Resend, Formspree — alle har en slik URL). Vi sender en
+ * POST med { email, source }.
+ *
+ * Står den tom, faller skjemaet tilbake til å åpne e-postprogrammet til
+ * kunden med en ferdig melding til deg. Det er klønete, men det er ærlig —
+ * og adressen kommer i det minste fram. Alternativet er å love en e-post
+ * som aldri sendes, og det gjør vi ikke.
+ */
+export const newsletter = {
+  endpoint: '', // TODO: lim inn URL-en fra e-postverktøyet ditt
+};
+
+/*
  * ANALYSE
  * -------
  * Ikke last inn sporing før brukeren har samtykket (GDPR). Legg inn ID her,

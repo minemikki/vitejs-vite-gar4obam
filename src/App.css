@@ -1474,3 +1474,101 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 .dest-empty p { color: var(--ink-soft); line-height: 1.6; margin-bottom: 12px; max-width: 42em; }
 .dest-empty-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+/* ========================== Reisebudsjett ========================== */
+.budget { max-width: var(--maxw); margin: 0 auto; padding: 46px 22px 80px; }
+.budget-grid {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 34px; align-items: start;
+}
+.budget-form {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 28px 28px 24px;
+  box-shadow: var(--shadow-xs);
+}
+.bfield { margin-bottom: 26px; }
+.bfield:last-child { margin-bottom: 0; }
+.bfield > label, .bfield legend {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 10px;
+}
+.bfield > label strong { font-size: 1.14rem; color: var(--emerald); font-variant-numeric: tabular-nums; }
+.bfield input[type='range'] { width: 100%; accent-color: var(--emerald); }
+.bfield select {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--line-strong); background: var(--surface);
+  font: inherit; color: var(--ink);
+}
+.bhint { font-size: 0.84rem; color: var(--muted); margin-top: 8px; }
+.bstyles { display: grid; gap: 8px; }
+.bstyle {
+  text-align: left; padding: 14px 16px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--line-strong); background: var(--surface);
+  cursor: pointer; font: inherit; transition: all 0.18s var(--ease);
+}
+.bstyle strong { display: block; color: var(--ink); margin-bottom: 3px; }
+.bstyle span { font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.bstyle:hover { border-color: var(--emerald); }
+.bstyle.is-on { border-color: var(--emerald); background: var(--emerald-tint); }
+.bstyle.is-on strong { color: var(--emerald); }
+/* Må slå .bfield > label, som ellers skyver avkrysningsboksen og teksten
+   til hver sin side av feltet. */
+.bfield > label.bcheck {
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 10px; cursor: pointer; font-weight: 600; margin-bottom: 0;
+}
+.bcheck input { width: 18px; height: 18px; accent-color: var(--emerald); }
+
+.budget-result {
+  position: sticky; top: calc(var(--nav-h) + 18px);
+  background: linear-gradient(160deg, var(--emerald-900), var(--emerald));
+  color: #fff; border-radius: var(--radius-lg);
+  padding: 30px 28px; box-shadow: var(--shadow);
+}
+.bres-kicker {
+  color: var(--gold-soft); font-weight: 700; font-size: 0.76rem;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;
+}
+.bres-total {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; line-height: 1.05;
+  font-variant-numeric: tabular-nums; margin-bottom: 6px;
+}
+.bres-sub { color: rgba(255, 255, 255, 0.8); font-size: 0.92rem; margin-bottom: 22px; }
+.bres-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
+.bres-table th {
+  text-align: left; font-weight: 600; font-size: 0.94rem;
+  padding: 11px 0; border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.bres-table td {
+  text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
+  padding: 11px 0 11px 12px; border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.92);
+}
+.bres-rate { display: block; font-weight: 400; font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); }
+.bres-table tfoot th, .bres-table tfoot td {
+  border-top: 2px solid rgba(255, 255, 255, 0.32);
+  font-weight: 700; font-size: 1.05rem; color: #fff;
+}
+
+.budget-notes { margin-top: 46px; max-width: 780px; }
+.budget-notes h2 { font-size: 1.35rem; margin-bottom: 14px; }
+.budget-notes ul { list-style: none; display: grid; gap: 12px; margin-bottom: 20px; }
+.budget-notes li { display: flex; gap: 12px; color: var(--ink-soft); line-height: 1.55; }
+.budget-notes li svg { color: var(--emerald); flex: none; margin-top: 3px; }
+.budget-disclaimer {
+  background: var(--cream-2); border-left: 3px solid var(--gold);
+  padding: 16px 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--ink-soft); font-size: 0.94rem; line-height: 1.6; margin-bottom: 16px;
+}
+.budget-more { color: var(--ink-soft); }
+.budget-more a { color: var(--emerald); font-weight: 600; text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .budget-grid { grid-template-columns: minmax(0, 1fr); }
+  .budget-result { position: static; }
+}
+@media (max-width: 600px) {
+  .budget { padding: 32px 18px 60px; }
+  .budget-form, .budget-result { padding: 22px 20px; }
+}
