@@ -33,10 +33,12 @@ export const experiences = [
     blurb:
       'Mat elefantene og gå ved siden av flokken mens de beiter fritt i jungelen — et rolig program uten ridning, drevet av Joy Elephant Sanctuary. Pause ved fossen og lunsj inkludert.',
     tags: ['Etisk', 'Foss', 'Henting inkl.'],
-    // Direkte produktlenke + partner-ID. Ingen ekstra utm-tagger: da lander
-    // kunden rett på turens egen side, ikke på GetYourGuides søk/forside.
+    // Direkte produktlenke + partner-ID. `referral_redirect=1` er avgjørende:
+    // uten det omdirigerer GetYourGuide partner-lenker til søkesiden sin (sett
+    // på mobil, selv i privat vindu). Flagget forteller resolveren deres at
+    // omdirigeringen allerede har skjedd, så kunden blir stående på turen.
     bookingUrl:
-      'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4',
+      'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4&referral_redirect=1',
     // Ekte bilder fra turen, via GetYourGuide-partnerskapet. Første bilde er
     // kortbildet; hele lista vises som galleri på detaljsiden.
     // GetYourGuide bestillingswidget — kalenderen vises inne på detaljsiden.
