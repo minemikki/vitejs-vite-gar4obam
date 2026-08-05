@@ -553,6 +553,10 @@ img.scene { object-fit: cover; }
 .bookbox-perks { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: var(--muted); }
 .bookbox-perks li { display: flex; align-items: center; gap: 8px; }
 .bookbox-perks svg { color: var(--ok); flex: none; }
+/* Nøytral tone for en ærlig «ingen refusjon»-note — ikke grønn hake som leser
+   som et gode. */
+.bookbox-perks .perk-note { color: var(--ink-soft); }
+.bookbox-perks .perk-note svg { color: var(--muted); }
 
 /* ============================ Checkout ============================ */
 .checkout { max-width: var(--maxw); margin: 0 auto; padding: calc(var(--nav-h) + 34px) 22px 70px; }

@@ -32,7 +32,7 @@ export default function ExperienceCard({ exp, saved, onSave }) {
           {exp.rating ? (
             <span className="card-rating">
               <Icon.star width={14} height={14} /> {num(exp.rating)}
-              {exp.reviews ? <span className="card-reviews">({exp.reviews})</span> : null}
+              {exp.reviews ? <span className="card-reviews">({num(exp.reviews)})</span> : null}
             </span>
           ) : null}
         </div>

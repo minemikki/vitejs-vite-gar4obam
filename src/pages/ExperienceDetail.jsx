@@ -154,7 +154,11 @@ function BookingWidget({ exp }) {
       <TripButton exp={exp} variant="block" />
 
       <ul className="bookbox-perks">
-        <li><Icon.check width={16} height={16} /> Gratis avbestilling på de fleste turer</li>
+        {/refunderes ikke/i.test(exp.cancellation || '') ? (
+          <li className="perk-note"><Icon.info width={16} height={16} /> Ingen refusjon ved avbestilling</li>
+        ) : (
+          <li><Icon.check width={16} height={16} /> Gratis avbestilling på de fleste turer</li>
+        )}
         <li><Icon.check width={16} height={16} /> Bekreftelse umiddelbart</li>
         <li><Icon.check width={16} height={16} /> Norsk kundeservice fra oss</li>
       </ul>
@@ -361,7 +365,7 @@ export default function ExperienceDetail() {
                 <Icon.star width={16} height={16} /> {num(exp.rating)}
                 {exp.reviews ? (
                   <em>
-                    ({exp.reviews} anmeldelser{exp.partner ? ` hos ${exp.partner}` : ''})
+                    ({num(exp.reviews)} anmeldelser{exp.partner ? ` hos ${exp.partner}` : ''})
                   </em>
                 ) : null}
               </span>

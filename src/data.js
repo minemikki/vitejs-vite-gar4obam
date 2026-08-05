@@ -113,16 +113,34 @@ export const experiences = [
   },
   {
     id: 'muaythai-bangkok',
-    title: 'Muay Thai — Rajadamnern Stadium',
+    title: 'Muay Thai på Rajadamnern Stadium',
     place: 'Bangkok',
     category: 'Adrenalin',
     scene: 'arena',
-    duration: 'Kveld',
-    priceNOK: 490,
+    duration: '3 timer',
+    priceNOK: 288,
+    // GetYourGuides egne tall for produktet (kilde oppgitt på siden).
+    rating: 4.9,
+    reviews: 14385,
+    partner: 'GetYourGuide',
+    partnerTitle: 'Bangkok: Muay Thai Boxing Tickets at Rajadamnern Stadium',
     blurb:
-      'VIP-billetter til ekte Muay Thai på Thailands mest legendariske arena. Ringside-plasser.',
-    tags: ['VIP', 'Kveldsaktivitet'],
-    bookingUrl: '',
+      'Ekte Muay Thai på Rajadamnern — sportens fødested og verdens eldste boksestadion. Proffkamper på rad i en elektrisk kveldsstemning, med flere billettkategorier å velge mellom.',
+    tags: ['Offisiell billett', 'Kveld'],
+    bookingUrl:
+      'https://www.getyourguide.com/bangkok-l169/bangkok-muay-thai-boxing-tickets-at-rajadamnern-stadium-t505196/?partner_id=1BG7LK4&referral_redirect=1',
+    image: '/bilder/muay-01.avif',
+    gallery: [
+      { src: '/bilder/muay-01.avif', alt: 'Muay Thai-fighter setter et høyt spark i ringen på Rajadamnern stadion' },
+      { src: '/bilder/muay-02.avif', alt: 'To fightere i nærkamp mens dommeren følger med' },
+      { src: '/bilder/muay-03.avif', alt: 'Høyt spark i ringen under en kamp i rødt lys' },
+      { src: '/bilder/muay-04.avif', alt: 'Fighter står over en nedslått motstander i ringen' },
+      { src: '/bilder/muay-05.avif', alt: 'Fighter feirer seieren med hevet arm' },
+      { src: '/bilder/muay-06.avif', alt: 'Stemning ved ringside med publikum tett på' },
+      { src: '/bilder/muay-07.avif', alt: 'Rajadamnern stadion opplyst utenfra om kvelden' },
+      { src: '/bilder/muay-08.avif', alt: 'Det praktfulle taket inne i Rajadamnern stadion' },
+      { src: '/bilder/muay-09.avif', alt: 'Tradisjonelle musikere spiller sarama-musikk under kampene' },
+    ],
   },
   {
     id: 'safariworld-bangkok',
@@ -295,16 +313,23 @@ const details = {
     meeting: 'Henting på hotell i Phuket fra kl. 07:00.',
   },
   'muaythai-bangkok': {
+    operator: 'Global Sport Ventures',
     highlights: [
-      'Rajadamnern — Thailands eldste boksestadion',
-      'Ringside VIP-plasser',
-      'Se oppvarmingsritualet Wai Kru',
-      'Fem til sju kamper på én kveld',
+      'Ekte Muay Thai på Rajadamnern — sportens fødested og verdens eldste boksestadion',
+      'Dyktige proffkjempere i en intens, adrenalinfylt forestilling',
+      'Elektrisk stemning sammen med lokalbefolkning og tilreisende',
+      'Velg mellom flere billettkategorier når du booker',
     ],
-    included: ['VIP-billett ringside', 'Programhefte'],
-    excluded: ['Transport', 'Mat og drikke'],
-    meeting: 'Oppmøte ved hovedinngangen kl. 18:00.',
+    included: ['Billett til Muay Thai-kampene på Rajadamnern stadion (kategori du velger selv)'],
+    excluded: ['Transport til og fra stadion', 'Mat og drikke'],
+    meeting:
+      'Møt opp ved Rajadamnern stadion i Bangkok. Kampene går på kvelden — se billetten din for eksakt oppmøtetid.',
+    // GetYourGuide oppgir: denne aktiviteten refunderes ikke ved avbestilling.
+    // Derfor overstyrer vi standardteksten om gratis avbestilling.
+    cancellation: 'Denne aktiviteten refunderes ikke ved avbestilling.',
     languages: ['Engelsk'],
+    // Stadionarrangement, ikke en gruppetur — ingen maks gruppestørrelse.
+    groupSize: null,
   },
   'safariworld-bangkok': {
     highlights: [
