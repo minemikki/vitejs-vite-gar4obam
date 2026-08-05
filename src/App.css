@@ -1604,8 +1604,13 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 .gallery-thumbs {
   display: grid; grid-auto-flow: column; grid-auto-columns: 96px;
-  gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin;
+  gap: 8px; overflow-x: auto;
+  /* Skjul rullefeltet, men behold rullingen — miniatyrene skal kunne dras
+     bortover uten at en grå stripe med piler bryter det rene uttrykket. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.gallery-thumbs::-webkit-scrollbar { display: none; }
 .gallery-thumb {
   padding: 0; border: 2px solid transparent; border-radius: 10px;
   overflow: hidden; cursor: pointer; background: none; aspect-ratio: 1 / 1;
