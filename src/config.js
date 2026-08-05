@@ -4,6 +4,17 @@
  * │  Alt som er markert TODO må erstattes med ekte opplysninger.     │
  * │  Feltene brukes i vilkår, personvernerklæring, SEO og footer.    │
  * └──────────────────────────────────────────────────────────────────┘
+ *
+ * ── NÅR DU HAR KJØPT DOMENET ──────────────────────────────────────
+ * Tre linjer, i denne rekkefølgen:
+ *
+ *   1. Koble domenet i Vercel: Settings → Domains → Add
+ *   2. `url` under: bytt til https://dittdomene.no  (uten skråstrek til slutt)
+ *   3. `email` under: bytt til adressen du setter opp på det domenet
+ *
+ * Push, og Vercel bygger på nytt. Canonical-tagger, Open Graph, sitemap.xml
+ * og robots.txt henter alle sammen adressen herfra, så de følger etter av seg
+ * selv. Meld deretter sitemapet inn på nytt i Google Search Console.
  */
 
 export const site = {
@@ -16,7 +27,8 @@ export const site = {
   // Bytt den dagen du kobler på eget domene i Vercel. Ingen skråstrek til slutt.
   url: 'https://vitejs-vite-gar4obam.vercel.app',
 
-  // TODO: ekte kontaktopplysninger
+  // TODO: ekte kontaktopplysning. Denne står i vilkårene og er adressen
+  // bestillingsforespørsler sendes til — den MÅ finnes før du tar imot kunder.
   email: 'hei@sawadeetours.no',
   phone: '', // f.eks. '+47 400 00 000' — la stå tom om du ikke vil oppgi telefon
 

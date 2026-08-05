@@ -116,6 +116,21 @@ writeFileSync(
   ].join('\n')
 );
 
+/* --------------------------- bygg-advarsler --------------------------- */
+// Vises i Vercel-loggen. Det er lett å glemme å bytte adresse etter at
+// domenet er kjøpt, og konsekvensen — canonical som peker feil vei — er
+// usynlig på siden og ødeleggende for søk.
+const emailDomain = site.email.split('@')[1] || '';
+const siteDomain = site.url.replace(/^https?:\/\//, '');
+const warnings = [];
+if (siteDomain.endsWith('.vercel.app')) {
+  warnings.push(`site.url peker fortsatt på ${siteDomain} — bytt til eget domene når det er koblet.`);
+}
+if (emailDomain && !siteDomain.endsWith(emailDomain)) {
+  warnings.push(`site.email (${site.email}) ligger ikke på ${siteDomain} — sjekk at adressen finnes.`);
+}
+for (const w of warnings) console.warn(`  ⚠ ${w}`);
+
 // Mellombygget trengs ikke i det som deployes.
 rmSync(join(root, 'dist-ssr'), { recursive: true, force: true });
 

@@ -88,8 +88,29 @@ e-post. Det er en helt gyldig måte å starte på.
    - Build: `npm run build`
    - Output: `dist`
 4. Trykk **Deploy**.
-5. Legg til domenet ditt under **Settings → Domains**, og oppdater
-   `site.url` i `src/config.js` + `public/robots.txt`.
+5. Legg til domenet ditt under **Settings → Domains**.
+
+### Koble på eget domene
+
+1. **Kjøp domenet.** For `.no` bruker du en norsk registrar — Domeneshop,
+   PRO ISP eller One.com. Som privatperson bosatt i Norge kan du registrere
+   `.no` på fødselsnummer; skal selskapet stå som eier, trenger du
+   organisasjonsnummer. Sjekk gjeldende priser og vilkår hos registraren.
+2. **Vercel → prosjektet → Settings → Domains → Add.** Skriv inn domenet.
+3. **Legg inn DNS-postene Vercel viser deg** hos registraren. Vanligvis:
+   `A` for rotdomenet mot Vercels IP, og `CNAME` for `www`. Vercel viser de
+   nøyaktige verdiene — bruk dem, ikke verdier du finner i en guide.
+4. **Vent på at det slår gjennom.** Ofte minutter, av og til noen timer.
+   Vercel ordner HTTPS-sertifikatet selv.
+5. **Oppdater `src/config.js`:** `site.url` til det nye domenet, og
+   `site.email` til en adresse på det domenet. Push.
+
+Canonical-tagger, Open Graph, `sitemap.xml` og `robots.txt` leser alle
+`site.url`, så de følger etter automatisk. Byggeloggen advarer hvis du
+glemmer det.
+
+6. **Meld sitemapet inn på nytt** i Google Search Console med den nye
+   adressen.
 
 Etter første deploy: meld siden inn i
 [Google Search Console](https://search.google.com/search-console) og send inn
