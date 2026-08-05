@@ -15,7 +15,7 @@ import { allExperiences } from '../data.js';
  */
 
 const STORAGE_KEY = KEYS.trip;
-const EVENT = 'sawadee:trip-changed';
+const EVENT = 'andaman:trip-changed';
 
 const emptyTrip = () => ({ items: [], travellers: 2 });
 

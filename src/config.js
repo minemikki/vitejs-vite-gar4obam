@@ -18,8 +18,8 @@
  */
 
 export const site = {
-  name: 'Sawadee Tours',
-  tagline: 'Kuraterte Thailand-opplevelser — booket på norsk',
+  name: 'Andaman',
+  tagline: 'Kuraterte opplevelser i Thailand — booket på norsk',
 
   // Adressen siden FAKTISK ligger på. Denne styrer canonical-taggen på hver
   // side, Open Graph-lenkene og sitemap.xml — så den må stemme, ellers ber vi
@@ -29,7 +29,7 @@ export const site = {
 
   // TODO: ekte kontaktopplysning. Denne står i vilkårene og er adressen
   // bestillingsforespørsler sendes til — den MÅ finnes før du tar imot kunder.
-  email: 'hei@sawadeetours.no',
+  email: 'hei@andaman.no',
   phone: '', // f.eks. '+47 400 00 000' — la stå tom om du ikke vil oppgi telefon
 
   // TODO: juridiske opplysninger. Disse VISES i vilkår og personvern og må

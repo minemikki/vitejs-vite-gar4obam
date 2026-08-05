@@ -1,7 +1,7 @@
 /*
  * Reisemålssider — selve SEO-motoren.
  *
- * Folk googler ikke «Sawadee Tours». De googler «ting å gjøre i Phuket» og
+ * Folk googler ikke «Andaman». De googler «ting å gjøre i Phuket» og
  * «Bangkok med barn». Disse sidene svarer på nettopp de søkene, på norsk,
  * og lenker videre til opplevelsene vi tjener penger på.
  *

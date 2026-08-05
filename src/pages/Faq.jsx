@@ -81,7 +81,7 @@ export const FAQ_GROUPS = [
     title: 'Om oss',
     items: [
       {
-        q: 'Hvem står bak Sawadee Tours?',
+        q: 'Hvem står bak Andaman?',
         a: 'Vi er norsktalende og bor i Thailand. Vi kvalitetssjekker turene selv og velger bare dem vi ville tatt med vår egen familie på. Les mer på Om oss-siden.',
       },
       {

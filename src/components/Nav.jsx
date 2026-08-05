@@ -9,9 +9,7 @@ export function Logo({ light = false }) {
   return (
     <Link to="/" className={`logo ${light ? 'logo--light' : ''}`} aria-label={`${site.name} — til forsiden`}>
       <LogoMark size={38} />
-      <span className="logo-text">
-        Sawadee<span className="logo-text-accent">Tours</span>
-      </span>
+      <span className="logo-text">Andaman</span>
     </Link>
   );
 }

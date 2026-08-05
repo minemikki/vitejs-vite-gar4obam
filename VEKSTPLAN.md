@@ -1,4 +1,4 @@
-# Vekstplan — Sawadee Tours
+# Vekstplan — Andaman
 
 Hvordan vi går fra null til en lønnsom norsk markedsplass for Thailand-opplevelser.
 

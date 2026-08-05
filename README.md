@@ -1,4 +1,4 @@
-# Sawadee Tours
+# Andaman
 
 Norsk markedsplass for opplevelser i Thailand. Bygget med **React 19 + Vite +
 React Router**, forhåndsrendret til statisk HTML og klar for **Vercel**.
