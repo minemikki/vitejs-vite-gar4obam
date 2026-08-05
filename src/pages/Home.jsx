@@ -21,7 +21,13 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-scene-wrap" aria-hidden="true">
-        <HeroScene />
+        <img
+          className="hero-photo"
+          src="/hero.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="hero-scrim" />
       </div>
 

@@ -260,8 +260,8 @@ const Jungle = (p) => (
     {...p}
     label="Elefant i reservat"
     mt={fit(213, 176, 1.26)}
-    from="#0d4530"
-    to="#26946a"
+    from="#0f6347"
+    to="#2eaa7d"
     glow="#ffe6a8"
     gx={300}
     gy={72}
@@ -286,8 +286,8 @@ const Canopy = (p) => (
     {...p}
     label="Palmeblad i regnskogen"
     mt={fit(200, 150, 1.0)}
-    from="#0a3d33"
-    to="#1b8a76"
+    from="#0c6250"
+    to="#22a68f"
     glow="#a9f2d4"
     gx={312}
     gy={64}
@@ -462,18 +462,19 @@ export function HeroScene() {
     >
       <defs>
         <linearGradient id={g('base')} x1="0" y1="0" x2="0.3" y2="1">
-          <stop offset="0" stopColor="#0a2b44" />
-          <stop offset="0.5" stopColor="#155c5c" />
-          <stop offset="1" stopColor="#0b3f30" />
+          <stop offset="0" stopColor="#0d6f7d" />
+          <stop offset="0.5" stopColor="#17a08f" />
+          <stop offset="1" stopColor="#0e7a55" />
         </linearGradient>
         <radialGradient id={g('sun')} cx="0.74" cy="0.5" r="0.62">
-          <stop offset="0" stopColor="#ffc46b" stopOpacity="0.82" />
-          <stop offset="0.32" stopColor="#f5893f" stopOpacity="0.42" />
-          <stop offset="1" stopColor="#f0803c" stopOpacity="0" />
+          <stop offset="0" stopColor="#ffd27a" stopOpacity="0.9" />
+          <stop offset="0.3" stopColor="#ff9d54" stopOpacity="0.5" />
+          <stop offset="0.66" stopColor="#ff7a59" stopOpacity="0.16" />
+          <stop offset="1" stopColor="#ff7a59" stopOpacity="0" />
         </radialGradient>
         <radialGradient id={g('jade')} cx="0.1" cy="1" r="0.85">
-          <stop offset="0" stopColor="#17b487" stopOpacity="0.4" />
-          <stop offset="1" stopColor="#0f7a5f" stopOpacity="0" />
+          <stop offset="0" stopColor="#2fd3a6" stopOpacity="0.46" />
+          <stop offset="1" stopColor="#12a07a" stopOpacity="0" />
         </radialGradient>
         <linearGradient id={g('vig')} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#02231f" stopOpacity="0.34" />

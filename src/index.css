@@ -1,29 +1,36 @@
 :root {
-  /* ---- Premium tropisk palett ----
-     Dyp emerald som base, antikk gull som eneste luksus-aksent, varm krem
-     som grunn. Ingen skrikende oransje — det er det som får reisesider til
-     å se ut som billige tilbudssider. */
-  --cream: #f7f3ea;
-  --cream-2: #efe8da;
-  --surface: #fffdf9;
-  --ink: #10241d;
-  --ink-soft: #33463e;
-  --muted: #64756c;
-  --line: #e4dccb;
-  --line-strong: #d3c8b1;
+  /* ---- Lys tropisk palett ----
+     Turkist havvann som grunn, levende jade-teal som merkefarge, solgul og
+     korall-solnedgang som aksenter. Bygget rundt hero-fotoet: turkis lagune,
+     kalkstein og gyllen solnedgang. Lyst og luftig — ikke den mørke,
+     tunge grønnfargen som fikk siden til å føles gammel. */
+  --cream: #eef7f4;
+  --cream-2: #e1efea;
+  --surface: #ffffff;
+  --ink: #0c2a25;
+  --ink-soft: #395551;
+  --muted: #5f7770;
+  --line: #d9ebe5;
+  --line-strong: #c1ddd5;
 
-  --emerald: #0d4f42;
-  --emerald-600: #0a3f35;
-  --emerald-900: #062a23;
-  --emerald-tint: rgba(13, 79, 66, 0.08);
+  /* Merkefargen: levende tropisk teal (holder hvit tekst, WCAG AA) */
+  --emerald: #0a8074;
+  --emerald-600: #076b60;
+  --emerald-900: #06463d;
+  --emerald-tint: rgba(10, 128, 116, 0.10);
 
-  /* Antikk gull — brukes sparsomt: stjerner, tall, tynne detaljer */
-  --gold: #c9a227;
-  --gold-soft: #e3c05a;
-  --gold-tint: rgba(201, 162, 39, 0.12);
+  /* Solgul — stjerner, tall, tynne detaljer, «Søk»-knappen */
+  --gold: #f2a516;
+  --gold-soft: #ffce6b;
+  --gold-tint: rgba(242, 165, 22, 0.14);
 
-  /* Terrakotta, kun til «tilbud»-signal — aldri som hovedknapp */
-  --clay: #b4512f;
+  /* Korall-solnedgang — varm aksent, brukes sparsomt for reisefølelse */
+  --coral: #f4533f;
+  --coral-soft: #ff8a6b;
+  --coral-tint: rgba(244, 83, 63, 0.10);
+
+  /* Terrakotta — «lagret»-signal og små varme detaljer */
+  --clay: #e05a34;
 
   /* Semantiske farger (uavhengig av merkevare-aksenten) */
   --ok: #2f6f4f;
@@ -35,10 +42,10 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
 
-  --shadow-xs: 0 1px 2px rgba(6, 42, 35, 0.06);
-  --shadow-sm: 0 4px 14px rgba(6, 42, 35, 0.07);
-  --shadow: 0 16px 40px rgba(6, 42, 35, 0.12);
-  --shadow-lg: 0 30px 70px rgba(6, 42, 35, 0.22);
+  --shadow-xs: 0 1px 2px rgba(6, 52, 46, 0.06);
+  --shadow-sm: 0 4px 14px rgba(6, 52, 46, 0.08);
+  --shadow: 0 16px 40px rgba(6, 52, 46, 0.12);
+  --shadow-lg: 0 30px 70px rgba(6, 52, 46, 0.20);
 
   /* Systemfonter: ingen webfont-nedlasting, så ingenting faller stille tilbake. */
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

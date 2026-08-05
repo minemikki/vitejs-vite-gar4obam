@@ -43,7 +43,7 @@
   transition: background 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s;
 }
 .nav.is-solid {
-  background: rgba(247, 243, 234, 0.9);
+  background: rgba(238, 247, 244, 0.9);
   backdrop-filter: saturate(160%) blur(14px);
   border-bottom-color: var(--line);
   box-shadow: var(--shadow-xs);
@@ -87,7 +87,7 @@
   font-weight: 700; font-size: 0.78rem; letter-spacing: 0.03em;
   color: var(--emerald);
   background: var(--emerald-tint);
-  border: 1px solid rgba(13, 79, 66, 0.16);
+  border: 1px solid rgba(10, 128, 116, 0.2);
   padding: 6px 11px; border-radius: 999px;
 }
 
@@ -114,13 +114,16 @@
 }
 .hero-scene-wrap { position: absolute; inset: 0; z-index: -1; }
 .hero-scene { width: 100%; height: 100%; }
-/* Fargeflaten under er kontrollert og mørk nok i seg selv. Sløret gjør bare
-   venstre side et hakk dypere, der teksten står. Legger vi mer på her, blir
-   hele heroen grå — og grått er det som får en side til å se billig ut. */
+.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%; }
+/* Ekte foto er lyst i nedre venstre hjørne, akkurat der den hvite teksten
+   står. Sløret legger et varmt, mørkt dyp nederst og til venstre så tittelen
+   holder kontrast, mens solnedgangen og kalksteinen oppe til høyre får stå
+   fram. To lag: ett bunn-til-topp, ett venstre-til-høyre. */
 .hero-scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(2, 12, 12, 0.5) 0%, rgba(2, 12, 12, 0.16) 46%, rgba(2, 12, 12, 0) 74%);
+    linear-gradient(0deg, rgba(3, 30, 28, 0.82) 0%, rgba(3, 30, 28, 0.44) 26%, rgba(3, 30, 28, 0.08) 52%, rgba(3, 30, 28, 0) 72%),
+    linear-gradient(90deg, rgba(3, 30, 28, 0.58) 0%, rgba(3, 30, 28, 0.2) 38%, rgba(3, 30, 28, 0) 66%);
 }
 .hero-inner {
   position: relative;
