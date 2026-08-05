@@ -25,7 +25,7 @@ export const site = {
   // side, Open Graph-lenkene og sitemap.xml — så den må stemme, ellers ber vi
   // Google indeksere en adresse som ikke finnes, og da rangerer vi ingen steder.
   // Bytt den dagen du kobler på eget domene i Vercel. Ingen skråstrek til slutt.
-  url: 'https://vitejs-vite-gar4obam.vercel.app',
+  url: 'https://andaman.no',
 
   // TODO: ekte kontaktopplysning. Denne står i vilkårene og er adressen
   // bestillingsforespørsler sendes til — den MÅ finnes før du tar imot kunder.
