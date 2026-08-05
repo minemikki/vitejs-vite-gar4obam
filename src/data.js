@@ -31,8 +31,8 @@ export const experiences = [
     partner: 'GetYourGuide',
     partnerTitle: 'Chiang Mai: Ethical Half Day Elephant Sanctuary & Waterfall',
     blurb:
-      'Mat og stell elefantene i et reservat uten ridning, og bad i fossen etterpå. Sju timer med henting fra Chiang Mai.',
-    tags: ['Familievennlig', 'Etisk', 'Foss', 'Henting inkl.'],
+      'Mat elefantene og gå ved siden av flokken mens de beiter fritt i jungelen — et rolig program uten ridning, drevet av Joy Elephant Sanctuary. Pause ved fossen og lunsj inkludert.',
+    tags: ['Etisk', 'Foss', 'Henting inkl.'],
     bookingUrl:
       'https://www.getyourguide.com/chiang-mai-l271/chiang-mai-ethical-half-day-elephant-sanctuary-waterfall-t895033/?partner_id=1BG7LK4&utm_medium=online_publisher',
     // Ekte bilder fra turen, via GetYourGuide-partnerskapet. Første bilde er
@@ -207,16 +207,41 @@ const defaultDetails = {
 
 const details = {
   'elephant-chiangmai': {
+    operator: 'Joy Elephant Sanctuary',
     highlights: [
-      'Mate elefantene for hånd med bananer og sukkerrør',
-      'Bade og børste elefantene i elva',
-      'Ingen ridning — reservatet er sertifisert dyrevelferd',
-      'Hjemmelaget thailunsj i jungelen',
+      'Mat elefantene og se dem på nært hold i deres naturlige miljø',
+      'Gå ved siden av flokken mens de beiter fritt i jungelen',
+      'Ta en pause ved fossen med te',
+      'Lag din egen håndlagde thailandske suvenir',
+      'Etisk, hands-off program — ingen ridning, elefantene går fritt',
     ],
-    included: ['Henting og levering på hotell', 'Lunsj', 'Drikke og frukt', 'Guide', 'Forsikring'],
-    excluded: ['Håndkle og skift', 'Tips (frivillig)'],
-    meeting: 'Vi henter deg på hotellet i Chiang Mai mellom 07:30 og 08:30.',
-    groupSize: 'Maks 12 personer',
+    program: [
+      'Henting på hotellet ditt i Chiang Mai',
+      'Van til Mae Wang, rundt 1,5 time hver vei',
+      'Cirka tre timer med elefantene: mating, observasjon og vandring i jungelen',
+      'Pause ved fossen, og lunsj',
+      'Van tilbake til Chiang Mai',
+    ],
+    included: [
+      'Henting og levering på hotell',
+      'Guide',
+      'Lunsj',
+      'Vann',
+      'Mat til elefantene',
+      'Håndkle',
+      'Forsikring',
+    ],
+    excluded: ['Tips (frivillig)'],
+    meeting:
+      'Henting på hotellet ditt i Chiang Mai sentrum — du velger mellom to hentesteder når du booker. Programmet finnes både som morgen- og ettermiddagsøkt.',
+    bring: ['Badetøy', 'Skift', 'Sandaler', 'Solkrem', 'Egen allergimedisin om du bruker det'],
+    notFor: ['Rullestolbrukere'],
+    // Guiden på turen snakker engelsk. Vår egen kundeservice er på norsk —
+    // det står i bestillingsboksen og i FAQ.
+    languages: ['Engelsk'],
+    // GetYourGuide oppgir ikke maks gruppestørrelse for denne turen, så vi
+    // lar feltet stå tomt i stedet for å finne på et tall.
+    groupSize: null,
   },
   'phiphi-maya': {
     highlights: [

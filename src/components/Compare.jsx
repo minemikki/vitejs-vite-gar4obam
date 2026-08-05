@@ -46,7 +46,7 @@ export default function Compare({ items, onRemove, onClear }) {
     ...(items.some((e) => e.rating)
       ? [{ label: 'Vurdering', get: (e) => (e.rating ? `${num(e.rating)}${e.reviews ? ` (${e.reviews})` : ''}` : '—') }]
       : []),
-    { label: 'Gruppestørrelse', get: (e) => e.groupSize },
+    { label: 'Gruppestørrelse', get: (e) => e.groupSize || '—' },
     { label: 'Språk', get: (e) => e.languages.join(', ') },
     { label: 'Inkludert', get: (e) => e.included.join(' · ') },
     { label: 'Ikke inkludert', get: (e) => e.excluded.join(' · '), muted: true },

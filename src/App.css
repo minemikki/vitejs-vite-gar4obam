@@ -1674,3 +1674,21 @@ body.has-comparebar { padding-bottom: 78px; }
   color: var(--emerald); font-weight: 600; text-decoration: underline;
 }
 .linklike:hover { color: var(--emerald-600); }
+
+/* Program-steg og «verdt å vite» på turdetaljsiden */
+.steplist { list-style: none; counter-reset: step; display: grid; gap: 2px; }
+.steplist li {
+  counter-increment: step; position: relative;
+  padding: 12px 0 12px 44px; color: var(--ink-soft); line-height: 1.5;
+  border-top: 1px solid var(--line);
+}
+.steplist li:first-child { border-top: 0; }
+.steplist li::before {
+  content: counter(step); position: absolute; left: 0; top: 10px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--emerald-tint); color: var(--emerald);
+  font-weight: 700; font-size: 0.85rem; display: grid; place-items: center;
+}
+.know-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 34px; }
+.know-h { font-size: 0.95rem; margin-bottom: 10px; color: var(--ink); }
+@media (max-width: 600px) { .know-grid { grid-template-columns: minmax(0, 1fr); } }

@@ -277,7 +277,7 @@ export function metaForPath(pathname) {
     if (e) {
       return {
         title: `${e.title} i ${e.place} — book på norsk | ${site.name}`,
-        description: `${e.blurb} Fra ${e.priceNOK} kr per person. ${e.duration}, ${e.groupSize.toLowerCase()}.`,
+        description: `${e.blurb} Fra ${e.priceNOK} kr per person. ${e.duration}${e.groupSize ? `, ${e.groupSize.toLowerCase()}` : ''}.`,
         canonical: abs(path),
         jsonLd: [
           experienceLd(e),

@@ -386,6 +386,17 @@ export default function ExperienceDetail() {
             </section>
           )}
 
+          {exp.program?.length > 0 && (
+            <section className="detail-block">
+              <h2>Slik foregår dagen</h2>
+              <ol className="steplist">
+                {exp.program.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </section>
+          )}
+
           <section className="detail-block">
             <h2>Hva er inkludert?</h2>
             <div className="inc-grid">
@@ -408,19 +419,55 @@ export default function ExperienceDetail() {
             </div>
           </section>
 
+          {(exp.bring?.length > 0 || exp.notFor?.length > 0) && (
+            <section className="detail-block">
+              <h2>Verdt å vite</h2>
+              <div className="know-grid">
+                {exp.bring?.length > 0 && (
+                  <div>
+                    <h3 className="know-h">Ta med</h3>
+                    <ul className="ticklist">
+                      {exp.bring.map((b) => (
+                        <li key={b}><Icon.check width={18} height={18} /> {b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {exp.notFor?.length > 0 && (
+                  <div>
+                    <h3 className="know-h">Passer ikke for</h3>
+                    <ul className="ticklist ticklist--no">
+                      {exp.notFor.map((n) => (
+                        <li key={n}><Icon.x width={18} height={18} /> {n}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
           <section className="detail-block">
             <h2>Praktisk informasjon</h2>
             <dl className="deflist">
+              {exp.operator && (
+                <div>
+                  <dt><Icon.shield width={16} height={16} /> Arrangør</dt>
+                  <dd>{exp.operator}</dd>
+                </div>
+              )}
               <div>
                 <dt><Icon.pin width={16} height={16} /> Oppmøte</dt>
                 <dd>{exp.meeting}</dd>
               </div>
+              {exp.groupSize && (
+                <div>
+                  <dt><Icon.users width={16} height={16} /> Gruppestørrelse</dt>
+                  <dd>{exp.groupSize}</dd>
+                </div>
+              )}
               <div>
-                <dt><Icon.users width={16} height={16} /> Gruppestørrelse</dt>
-                <dd>{exp.groupSize}</dd>
-              </div>
-              <div>
-                <dt><Icon.chat width={16} height={16} /> Språk</dt>
+                <dt><Icon.chat width={16} height={16} /> Språk på turen</dt>
                 <dd>{exp.languages.join(', ')}</dd>
               </div>
               <div>
