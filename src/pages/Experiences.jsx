@@ -103,8 +103,8 @@ export default function Experiences() {
           <span className="kicker">Alle opplevelser</span>
           <h1>Turer og aktiviteter i Thailand</h1>
           <p>
-            {allExperiences.length} kuraterte opplevelser, alle kvalitetssjekket av
-            oss. Priser i norske kroner, uten skjulte gebyrer.
+            {allExperiences.length} håndplukkede opplevelser — valgt etter lisens,
+            dyrevelferd og omdømme. Priser i norske kroner, uten skjulte gebyrer.
           </p>
         </div>
       </header>
