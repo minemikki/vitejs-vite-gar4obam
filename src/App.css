@@ -499,6 +499,15 @@ img.scene { object-fit: cover; }
 .detail-rating svg { color: var(--gold-soft); }
 .detail-rating em { font-style: normal; color: rgba(255, 255, 255, 0.72); font-size: 0.88rem; }
 
+/* Turer med bildegalleri trenger ikke et eget toppbilde — galleriet rett under
+   er selve visningen. Da blir toppen én ren, samlet infolinje i stedet for et
+   delt felt som gjentar samme bilde. */
+.detail-hero--solo { grid-template-columns: 1fr; }
+.detail-hero--solo .detail-hero-copy {
+  max-width: var(--maxw); width: 100%; margin: 0 auto;
+  padding: calc(var(--nav-h) + 34px) 22px 34px;
+}
+
 .detail-wrap {
   max-width: var(--maxw); margin: 0 auto; padding: 52px 22px 20px;
   display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 46px; align-items: start;
@@ -816,6 +825,10 @@ img.scene { object-fit: cover; }
     background: linear-gradient(180deg, rgba(6, 42, 35, 0.42) 0%, rgba(6, 42, 35, 0) 40%, var(--emerald-900) 100%);
   }
   .detail-hero-copy { padding: 26px 22px 34px; }
+  /* Solo-toppen har intet bilde over seg, så teksten må klarere den faste
+     menyen selv. */
+  .detail-hero--solo .detail-hero-copy { padding: calc(var(--nav-h) + 18px) 22px 28px; }
+  .detail-hero--solo .crumbs { margin-bottom: 12px; }
 }
 
 @media (max-width: 980px) {

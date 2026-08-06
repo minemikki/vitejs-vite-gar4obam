@@ -247,6 +247,23 @@ function Gallery({ items, title }) {
     [items.length],
   );
 
+  // Sveip på mobil: dra til siden på bildet for å bla. Vi merker om fingeren
+  // faktisk beveget seg, så et rent trykk fortsatt åpner lysboksen mens et
+  // sveip bare bytter bilde.
+  const touchX = useRef(null);
+  const didSwipe = useRef(false);
+  const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; didSwipe.current = false; };
+  const onTouchMove = (e) => {
+    if (touchX.current !== null && Math.abs(e.touches[0].clientX - touchX.current) > 10) didSwipe.current = true;
+  };
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+  };
+  const swipe = { onTouchStart, onTouchMove, onTouchEnd };
+
   useEffect(() => {
     if (!box) return undefined;
     document.body.style.overflow = 'hidden';
@@ -267,10 +284,11 @@ function Gallery({ items, title }) {
       <button
         type="button"
         className="gallery-lead"
-        onClick={() => setBox(true)}
+        onClick={() => { if (!didSwipe.current) setBox(true); }}
         aria-label="Åpne bildet i full størrelse"
+        {...swipe}
       >
-        <img src={items[active].src} alt={items[active].alt} decoding="async" />
+        <img src={items[active].src} alt={items[active].alt} decoding="async" draggable="false" />
         <span className="gallery-count">
           <Icon.search width={15} height={15} /> {active + 1} / {items.length}
         </span>
@@ -309,8 +327,8 @@ function Gallery({ items, title }) {
           >
             <Icon.back width={26} height={26} />
           </button>
-          <figure className="lightbox-fig" onClick={(e) => e.stopPropagation()}>
-            <img src={items[active].src} alt={items[active].alt} />
+          <figure className="lightbox-fig" onClick={(e) => e.stopPropagation()} {...swipe}>
+            <img src={items[active].src} alt={items[active].alt} draggable="false" />
             <figcaption>{items[active].alt} · {active + 1} / {items.length}</figcaption>
           </figure>
           <button
@@ -346,7 +364,7 @@ export default function ExperienceDetail() {
 
   return (
     <>
-      <div className="detail-hero">
+      <div className={`detail-hero${exp.gallery?.length ? ' detail-hero--solo' : ''}`}>
         <div className="detail-hero-copy">
           <nav className="crumbs" aria-label="Brødsmuler">
             <Link to="/">Hjem</Link>
@@ -372,9 +390,11 @@ export default function ExperienceDetail() {
             ) : null}
           </div>
         </div>
-        <div className="detail-hero-art" aria-hidden="true">
-          <Scene name={exp.scene} uid={`hero-${exp.id}`} image={exp.image} alt={exp.title} />
-        </div>
+        {!exp.gallery?.length && (
+          <div className="detail-hero-art" aria-hidden="true">
+            <Scene name={exp.scene} uid={`hero-${exp.id}`} image={exp.image} alt={exp.title} />
+          </div>
+        )}
       </div>
 
       {exp.gallery?.length > 0 && (
