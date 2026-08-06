@@ -512,25 +512,66 @@ img.scene { object-fit: cover; }
   max-width: var(--maxw); margin: 0 auto; padding: 52px 22px 20px;
   display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 46px; align-items: start;
 }
-.detail-block { margin-bottom: 42px; }
-.detail-block h2 { font-size: 1.6rem; margin-bottom: 16px; }
-.detail-lead { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 16px; }
+.detail-block { margin-bottom: 48px; }
+/* Hver seksjon får en liten farget aksentstrek foran tittelen — gir rytme og
+   liv i stedet for én lang grå tekstblokk. */
+.detail-block > h2 {
+  font-size: 1.55rem; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 13px;
+}
+.detail-block > h2::before {
+  content: ''; flex: none; width: 26px; height: 4px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--emerald), var(--gold));
+}
+/* Ingressen er kroken — større og mørkere, ikke grå småtekst. */
+.detail-lead { font-size: 1.2rem; line-height: 1.62; color: var(--ink); margin-bottom: 18px; }
 
-.ticklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.ticklist li { display: flex; align-items: flex-start; gap: 10px; color: var(--ink-soft); }
-.ticklist svg { flex: none; color: var(--ok); margin-top: 3px; }
-.ticklist--no svg { color: var(--muted); }
+/* Sjekk-/kryss-lister: ikonet ligger i en liten farget brikke. */
+.ticklist { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.ticklist li { display: flex; align-items: center; gap: 12px; color: var(--ink-soft); line-height: 1.4; }
+.ticklist svg {
+  flex: none; width: 27px; height: 27px; padding: 5px; box-sizing: border-box;
+  border-radius: 9px; color: var(--ok); background: rgba(47, 125, 91, 0.13);
+}
+.ticklist--no svg { color: var(--coral); background: var(--coral-tint); }
 
-.inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.inc-h { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; font-family: var(--font-sans); }
-.inc-h--yes { color: var(--ok); }
-.inc-h--no { color: var(--muted); }
+/* Høydepunkter som små kort — det er «derfor du booker», så det skal poppe. */
+.hl-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.hl-list li {
+  display: flex; align-items: flex-start; gap: 13px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; padding: 15px 17px; box-shadow: var(--shadow-xs);
+  color: var(--ink); font-weight: 500; line-height: 1.45;
+}
+.hl-ic {
+  flex: none; width: 36px; height: 36px; border-radius: 11px;
+  display: grid; place-items: center;
+  background: var(--gold-tint); color: var(--gold);
+}
 
-.deflist { display: flex; flex-direction: column; gap: 18px; }
-.deflist > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-.deflist dt { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); }
-.deflist dt svg { color: var(--emerald); flex: none; }
-.deflist dd { color: var(--ink-soft); }
+/* «Inkludert» og «Verdt å vite» får hver kolonne i et mykt kort. */
+.inc-grid, .know-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.inc-grid > div, .know-grid > div {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 20px 22px; box-shadow: var(--shadow-xs);
+}
+.inc-h, .know-h {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
+  margin-bottom: 14px; font-family: var(--font-sans); font-weight: 800;
+}
+.inc-h--yes, .know-h { color: var(--emerald); }
+.inc-h--no { color: var(--coral); }
+
+/* Praktisk info: ikon i brikke, ren rad. */
+.deflist { display: flex; flex-direction: column; gap: 0; }
+.deflist > div { display: grid; grid-template-columns: 210px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.deflist > div:last-child { border-bottom: 0; }
+.deflist dt { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--ink); }
+.deflist dt svg {
+  flex: none; width: 28px; height: 28px; padding: 6px; box-sizing: border-box;
+  border-radius: 9px; color: var(--emerald); background: var(--emerald-tint);
+}
+.deflist dd { color: var(--ink-soft); align-self: center; }
 
 /* Bestillingsboks */
 .bookbox {
@@ -1713,20 +1754,28 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 .linklike:hover { color: var(--emerald-600); }
 
-/* Program-steg og «verdt å vite» på turdetaljsiden */
-.steplist { list-style: none; counter-reset: step; display: grid; gap: 2px; }
+/* «Slik foregår dagen» som en ekte tidslinje — nummererte prikker bundet
+   sammen av en linje, så dagen leses som en reise, ikke en punktliste. */
+.steplist { list-style: none; counter-reset: step; display: flex; flex-direction: column; }
 .steplist li {
   counter-increment: step; position: relative;
-  padding: 12px 0 12px 44px; color: var(--ink-soft); line-height: 1.5;
-  border-top: 1px solid var(--line);
+  padding: 0 0 26px 52px; color: var(--ink-soft); line-height: 1.55;
 }
-.steplist li:first-child { border-top: 0; }
+.steplist li:last-child { padding-bottom: 0; }
 .steplist li::before {
-  content: counter(step); position: absolute; left: 0; top: 10px;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--emerald-tint); color: var(--emerald);
-  font-weight: 700; font-size: 0.85rem; display: grid; place-items: center;
+  content: counter(step); position: absolute; left: 0; top: -3px; z-index: 1;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--emerald); color: #fff;
+  font-weight: 800; font-size: 0.98rem; font-family: var(--font-sans);
+  display: grid; place-items: center;
+  box-shadow: 0 0 0 5px var(--emerald-tint);
 }
-.know-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 34px; }
-.know-h { font-size: 0.95rem; margin-bottom: 10px; color: var(--ink); }
-@media (max-width: 600px) { .know-grid { grid-template-columns: minmax(0, 1fr); } }
+.steplist li::after {
+  content: ''; position: absolute; left: 17px; top: 36px; bottom: -3px;
+  width: 2px; background: var(--line-strong);
+}
+.steplist li:last-child::after { display: none; }
+
+@media (max-width: 620px) {
+  .hl-list, .inc-grid, .know-grid { grid-template-columns: 1fr; }
+}

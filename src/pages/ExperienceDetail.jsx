@@ -423,9 +423,12 @@ export default function ExperienceDetail() {
           {exp.highlights.length > 0 && (
             <section className="detail-block">
               <h2>Høydepunkter</h2>
-              <ul className="ticklist">
+              <ul className="hl-list">
                 {exp.highlights.map((h) => (
-                  <li key={h}><Icon.check width={18} height={18} /> {h}</li>
+                  <li key={h}>
+                    <span className="hl-ic"><Icon.star width={17} height={17} /></span>
+                    <span>{h}</span>
+                  </li>
                 ))}
               </ul>
             </section>
