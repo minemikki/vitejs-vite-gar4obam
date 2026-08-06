@@ -15,6 +15,10 @@ export default defineConfig({
     cssCodeSplit: false,
     assetsInlineLimit: 100000000,
     chunkSizeWarningLimit: 100000,
-    rollupOptions: { output: { inlineDynamicImports: true } },
+    target: 'es2019',
+    modulePreload: false,
+    // IIFE (classic script) so the inlined bundle runs from file:// and in
+    // sandboxed preview panes that block ES modules.
+    rollupOptions: { output: { format: 'iife', inlineDynamicImports: true } },
   },
 })
