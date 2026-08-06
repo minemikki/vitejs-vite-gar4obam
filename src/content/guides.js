@@ -952,6 +952,305 @@ export const guides = [
       },
     ],
   },
+
+  /* ------------------------------------------------------------------
+   * «Bo i Thailand»-søylen. Skrevet for nordmenn som vurderer
+   * langtidsopphold — pensjonister, langtidsturister og fjernarbeidere.
+   * Regler, satser og kurser endres; alt som kan gå ut på dato peker
+   * derfor til offisielle kilder i stedet for å late som det er fasit.
+   * ------------------------------------------------------------------ */
+  {
+    slug: 'hva-koster-det-a-bo-i-thailand',
+    title: 'Hva koster det å bo i Thailand?',
+    excerpt:
+      'Et komfortabelt liv i Thailand koster typisk en tredjedel til halvparten av Norge. Her er ekte tall for bolig, mat og de postene folk glemmer — som helseforsikringen.',
+    metaTitle: 'Hva koster det å bo i Thailand? Ekte månedsbudsjetter',
+    metaDescription:
+      'Månedsbudsjett for å bo i Thailand: leiepriser by for by, mat, transport og helseforsikring. Tre eksempelbudsjetter — nøkternt, komfortabelt og romslig.',
+    published: '2026-08-06',
+    readMinutes: 8,
+    topic: 'Bo i Thailand',
+    related: { destinations: ['chiang-mai', 'hua-hin'], categories: [] },
+    sections: [
+      {
+        h: 'Det korte svaret',
+        p: [
+          'En enslig voksen lever komfortabelt i de fleste thailandske byer for cirka 15 000–25 000 kroner i måneden, alt inkludert. Nøkternt går det an å komme ned mot 10 000–12 000. Et romslig liv med vestlig standard, mye restaurant og bil ligger fra 30 000 og oppover. Grovt regnet: en tredjedel til halvparten av hva tilsvarende liv koster i Norge.',
+          'Alle tall i denne guiden er cirka-beløp regnet med en kurs på rundt 30–33 øre per baht. Kursen svinger, så sjekk dagens nivå før du regner på egen økonomi.',
+        ],
+      },
+      {
+        h: 'Bolig: det store kuttet fra norske priser',
+        p: [
+          'Leie er der Thailand virkelig er billigere enn Norge. En moderne ettroms leilighet (condo) med basseng og treningsrom i bygget koster en brøkdel av en tilsvarende norsk leilighet — og du leier møblert.',
+        ],
+        table: {
+          head: ['By', 'Ettroms condo, typisk leie', 'Cirka i kroner'],
+          rows: [
+            ['Chiang Mai', '8 000–15 000 baht', '2 500–5 000 kr'],
+            ['Hua Hin', '10 000–18 000 baht', '3 200–5 800 kr'],
+            ['Bangkok (sentralt)', '15 000–30 000 baht', '4 800–9 700 kr'],
+            ['Phuket', '15 000–35 000 baht', '4 800–11 300 kr'],
+          ],
+        },
+      },
+      {
+        h: 'Mat: billig ute, dyrt vestlig',
+        list: [
+          'Gatekjøkken og lokale spisesteder: 60–100 baht (20–35 kr) per rett. Mange som bor i Thailand lager knapt middag selv.',
+          'Thai-restaurant: 150–300 baht per rett.',
+          'Vestlig restaurant: 300–500 baht og oppover — fort norske priser.',
+          'Importvarer i butikk (ost, vin, norsk sjokolade) er dyre, ofte dyrere enn hjemme. Alkohol er høyt avgiftsbelagt.',
+        ],
+      },
+      {
+        h: 'Postene folk glemmer',
+        list: [
+          'Helseforsikring — den største og viktigste posten for alle som blir mer enn noen måneder. Prisen stiger kraftig med alder; les pensjonistguiden vår for detaljene.',
+          'Strøm til aircondition: 2 000–4 000 baht i måneden i de varme månedene hvis du kjøler leiligheten mye.',
+          'Visumkostnader og fornyelser gjennom året.',
+          'Flyreiser hjem til Norge — én til to i året er vanlig.',
+          'Scooter eller bil: leie av scooter fra rundt 3 000 baht i måneden. Bil er dyrt i Thailand.',
+        ],
+      },
+      {
+        h: 'Tre eksempelbudsjetter (enslig, per måned)',
+        p: [
+          'Tallene er planleggingsgrunnlag, ikke fasit. Helseforsikring står som egen linje fordi den varierer enormt med alder — en frisk 35-åring og en 68-åring betaler helt ulike premier.',
+        ],
+        table: {
+          head: ['Post', 'Nøkternt', 'Komfortabelt', 'Romslig'],
+          rows: [
+            ['Bolig', '3 000 kr', '5 000 kr', '9 000 kr'],
+            ['Mat og drikke', '3 500 kr', '5 500 kr', '9 000 kr'],
+            ['Transport', '800 kr', '1 500 kr', '3 500 kr'],
+            ['Moro, trening, diverse', '2 000 kr', '4 000 kr', '7 000 kr'],
+            ['Helseforsikring (aldersavhengig)', '800–2 500 kr', '800–2 500 kr', '1 500–4 000 kr'],
+            ['Sum cirka', '10–12 000 kr', '17–19 000 kr', '30–33 000 kr'],
+          ],
+        },
+      },
+      {
+        h: 'Hvor pengene rekker lengst',
+        p: [
+          'Chiang Mai er klassikeren for lave kostnader med storbyfasiliteter. Hua Hin gir sjøliv til fornuftig pris og har et stort skandinavisk miljø. Bangkok koster mer, men gir mest by for pengene. Phuket og Koh Samui er dyrest — øypåslag på det meste, spesielt bolig.',
+        ],
+      },
+      {
+        h: 'Ærlig forbehold',
+        p: [
+          'Valutakurs, inflasjon og din egen livsstil flytter alle tallene her. Thailand har også strammet inn på skattereglene for penger utlendinger tar inn i landet — er du der mer enn 180 dager i året, bør du få råd fra noen som kan både norske og thailandske regler før du flytter økonomien din. Sjekk Skatteetaten og NAV for din situasjon.',
+        ],
+      },
+    ],
+    cta: {
+      h: 'Først en rekognoseringstur?',
+      p: 'De fleste som flytter, tar en lengre tur først for å teste byene. Regn ut hva turen koster med kalkulatoren vår.',
+      label: 'Åpne reisebudsjettet',
+      to: '/reisebudsjett',
+    },
+    faq: [
+      {
+        q: 'Kan man leve av 15 000 kroner i måneden i Thailand?',
+        a: 'Ja, mange gjør det — komfortabelt utenfor Bangkok og Phuket. Men marginene blir små når helseforsikring og flyreiser hjem regnes inn, så ha en buffer i tillegg.',
+      },
+      {
+        q: 'Er Thailand fortsatt billig, eller er det en myte?',
+        a: 'Fortsatt klart billigere enn Norge på bolig, mat ute, transport og tjenester. Unntakene er importvarer, alkohol og alt vestlig — der er forskjellen liten eller fraværende.',
+      },
+      {
+        q: 'Hva med skatt når jeg bor i Thailand?',
+        a: 'Norsk pensjon har som hovedregel kildeskatt, og Thailand har egne regler for penger du tar inn i landet. Dette feltet endrer seg — få profesjonell rådgivning, og sjekk Skatteetaten før du melder flytting.',
+      },
+    ],
+  },
+  {
+    slug: 'pensjonist-i-thailand',
+    title: 'Pensjonist i Thailand: visum, penger og helse',
+    excerpt:
+      'Tusenvis av nordmenn har gjort det. Her er de tre tingene som må på plass — pensjonistvisum, helseforsikring og NAV-avklaring — og fellene du må unngå.',
+    metaTitle: 'Pensjonist i Thailand — visum, pensjon, skatt og helse',
+    metaDescription:
+      'Alt en norsk pensjonist må vite før flytting til Thailand: krav til pensjonistvisum, hva som skjer med pensjonen og folketrygden, helseforsikring og hvor nordmenn bor.',
+    published: '2026-08-06',
+    readMinutes: 9,
+    topic: 'Bo i Thailand',
+    related: { destinations: ['hua-hin', 'pattaya'], categories: [] },
+    sections: [
+      {
+        h: 'Det korte svaret',
+        p: [
+          'Å bli pensjonist i Thailand er fullt mulig og godt opptråkket — tusenvis av nordmenn bor der hele eller deler av året. Tre ting må løses, i denne rekkefølgen: visumet (grei sak hvis økonomien er ryddig), helseforsikringen (den virkelige kostnaden), og avklaringen med NAV og Skatteetaten før du flytter (den folk angrer på at de tok for lett på).',
+        ],
+      },
+      {
+        h: 'Pensjonistvisumet',
+        p: [
+          'Thailand har egne visum for pensjonister fra fylte 50 år. Kjernekravet er økonomisk: i en årrekke har det vært enten cirka 800 000 baht stående i thailandsk bank, eller dokumentert månedlig inntekt på cirka 65 000 baht — rundt 20 000 kroner etter dagens kursnivå. En vanlig norsk pensjon oppfyller ofte inntektskravet alene.',
+          'Visumet fornyes årlig, og du melder adresse til immigrasjonen hver 90. dag — en enkel rutine når du først kan den. Satser og regler endres uten forvarsel, så sjekk thailandske myndigheter eller ambassaden i Oslo for gjeldende krav før du søker. Skal du ut av landet og tilbake, trenger du re-entry permit — glemmer du det, kan visumet falle bort.',
+        ],
+      },
+      {
+        h: 'Pensjonen din: hva skjer med den?',
+        list: [
+          'Alderspensjonen fra folketrygden utbetales som hovedregel også når du bor i utlandet.',
+          'Enkelte tillegg og garantiytelser kan falle bort ved flytting — dette må du få avklart skriftlig med NAV før du bestemmer deg.',
+          'Skatt: som hovedregel trekkes kildeskatt av norsk pensjon når du er skattemessig bosatt i utlandet. Norge og Thailand har skatteavtale, og Thailand har de siste årene endret reglene for beskatning av penger som tas inn i landet. Få råd fra noen som kan begge land.',
+          'Tjenestepensjon og privat sparing: sjekk vilkårene hos hver leverandør — de er ikke like.',
+        ],
+      },
+      {
+        h: 'Helse: posten som avgjør om regnestykket går opp',
+        p: [
+          'Dette er den viktigste delen av hele guiden. Medlemskapet i folketrygden opphører som hovedregel når du har bodd i utlandet i over tolv måneder — da dekker ikke Norge lenger helseutgiftene dine. Privat helseforsikring er derfor ikke valgfritt, det er fundamentet.',
+          'Premien stiger bratt med alder, og etter fylte 70 blir det både dyrt og vanskelig å tegne ny forsikring — særlig med eksisterende diagnoser. Regelen er derfor enkel: tegn forsikringen tidlig, og hold den ubrutt. Det finnes også en ordning med frivillig medlemskap i folketrygden under utenlandsopphold; den koster, men kan være riktig for noen — spør NAV.',
+          'Selve helsevesenet er ikke problemet: de private sykehusene i Bangkok og turistbyene holder internasjonal toppstandard, ofte med kortere ventetid enn i Norge. Det er regningen uten forsikring som velter folk.',
+        ],
+      },
+      {
+        h: 'Der nordmenn faktisk bor',
+        table: {
+          head: ['Sted', 'Hvorfor dit', 'Passer for'],
+          rows: [
+            ['Hua Hin', 'Rolig badeby med stort skandinavisk miljø, golf og gode sykehus', 'De som vil ha ro og trygghet'],
+            ['Pattaya/Jomtien', 'Størst norsk miljø, alt på plass, kort vei til Bangkok', 'De som vil ha nettverk fra dag én'],
+            ['Chiang Mai', 'Lavest kostnader, behagelige vintre, kulturby', 'De budsjettbevisste'],
+            ['Phuket', 'Strand, internasjonal flyplass, størst utvalg', 'De som prioriterer øyliv'],
+          ],
+        },
+      },
+      {
+        h: 'Fellene å unngå',
+        list: [
+          'Å kjøpe bolig første året. Lei i 3–6 måneder først — området du elsker i februar kan være et annet sted i regntiden.',
+          'Å reise uten skriftlig avklaring fra NAV og Skatteetaten om pensjon, medlemskap og skatt.',
+          'Å la helseforsikringen vente «til det trengs». Da er den dyrest — eller uoppnåelig.',
+          'Å miste BankID eller norsk bankforbindelse. Du trenger dem til NAV, Skatteetaten og alt norsk resten av livet. Avklar med banken din at du kan beholde kundeforholdet fra utlandet.',
+        ],
+      },
+    ],
+    cta: {
+      h: 'Se pensjonistfavoritten',
+      p: 'Hua Hin er byen flest norske pensjonister velger — rolig, trygg og med et stort skandinavisk miljø. Les hvorfor.',
+      label: 'Les om Hua Hin',
+      to: '/reisemal/hua-hin',
+    },
+    faq: [
+      {
+        q: 'Må jeg melde flytting til folkeregisteret?',
+        a: 'Skal du oppholde deg i utlandet i mer enn seks måneder, har du som hovedregel meldeplikt. Meldingen påvirker skatt og medlemskap i folketrygden, så sett deg inn i konsekvensene hos Skatteetaten og NAV før du melder.',
+      },
+      {
+        q: 'Hvor mye pensjon trenger jeg for visumet?',
+        a: 'Inntektsveien har i en årrekke krevd cirka 65 000 baht i måneden — rundt 20 000 kroner etter dagens kursnivå. Alternativt cirka 800 000 baht på thailandsk bankkonto. Sjekk gjeldende satser hos thailandske myndigheter — de kan endres.',
+      },
+      {
+        q: 'Kan jeg bo i Thailand halve året og Norge halve?',
+        a: 'Ja, mange gjør nettopp det — vinter i Thailand, sommer i Norge. Da beholder du normalt medlemskapet i folketrygden, og mange av flyttespørsmålene forsvinner. Det er den enkleste varianten å starte med.',
+      },
+      {
+        q: 'Er det norsk miljø der nede?',
+        a: 'Ja. Pattaya og Hua Hin har store skandinaviske miljøer med foreninger og treffsteder, og Sjømannskirken er til stede i Thailand. Du trenger ikke starte alene.',
+      },
+    ],
+  },
+  {
+    slug: 'flytte-til-thailand-sjekkliste',
+    title: 'Flytte til Thailand fra Norge: sjekklisten',
+    excerpt:
+      'Flytt i etapper og brenn ingen broer første året. Her er hele løpet — fra tolv måneder før avreise til de første ukene i Thailand — som konkret sjekkliste.',
+    metaTitle: 'Flytte til Thailand fra Norge — komplett sjekkliste',
+    metaDescription:
+      'Konkret sjekkliste for å flytte til Thailand: visum, NAV og skatt, bank og BankID, helseforsikring, hva du gjør de første ukene — og den viktigste regelen: lei før du kjøper.',
+    published: '2026-08-06',
+    readMinutes: 8,
+    topic: 'Bo i Thailand',
+    related: { destinations: ['bangkok', 'chiang-mai'], categories: [] },
+    sections: [
+      {
+        h: 'Prinsippet: flytt i etapper',
+        p: [
+          'De vellykkede flyttingene ser like ut: en lengre rekognoseringstur først, leid bolig det første året, og ingen brente broer hjemme før livet der nede faktisk fungerer. De mislykkede ser også like ut — solgt alt i Norge, kjøpt bolig i Thailand første måneden, og hjem igjen etter et år, dyrere og fattigere.',
+        ],
+      },
+      {
+        h: '6–12 måneder før',
+        list: [
+          'Avklar oppholdsgrunnlaget: pensjonistvisum fra 50 år, egne visum for fjernarbeidere, eller andre varianter. Reglene er i endring — bruk thailandske myndigheters egne sider, ikke forum.',
+          'Ta rekognoseringsturen — gjerne i regntiden. En by du liker i september, tåler du hele året.',
+          'Få helseforsikring på plass tidlig. Premien er lavest og tilgangen best jo før du tegner.',
+          'Snakk med NAV og Skatteetaten om nøyaktig din situasjon: pensjon, medlemskap i folketrygden, skatt. Be om svar skriftlig.',
+          'Bygg buffer: minst seks måneders levekostnader utover det daglige budsjettet.',
+        ],
+      },
+      {
+        h: '3 måneder før',
+        list: [
+          'Bestem hva som skjer med boligen i Norge — utleie gir inntekt og en vei tilbake.',
+          'Skal du være ute over seks måneder: undersøk meldeplikten til folkeregisteret og hva den utløser.',
+          'Fastlege: fornye resepter, få medisinliste på engelsk, og sjekk at medisinene dine er lovlige i Thailand — enkelte norske reseptmedisiner er strengt regulert der.',
+          'Gjennomgå forsikringer: hva gjelder i utlandet, hva må sies opp, hva må tegnes nytt.',
+        ],
+      },
+      {
+        h: '1 måned før',
+        list: [
+          'Sikre norsk bank og BankID — avklar med banken at kundeforholdet består med utenlandsadresse. Uten BankID stopper alt norsk.',
+          'Ordne postadresse i Norge (familie eller postboks) for det som fortsatt kommer på papir.',
+          'Si opp abonnementer, strøm og alt som løper.',
+          'Skann pass, vitnemål, attester og forsikringspapirer til skyen.',
+          'Sjekk anbefalte vaksiner i god tid.',
+        ],
+      },
+      {
+        h: 'De første ukene i Thailand',
+        list: [
+          'Thai SIM-kort eller eSIM første dagen — alt i Thailand skjer på mobilen.',
+          'Utleier skal registrere deg hos immigrasjonen (TM30) — spør om det er gjort.',
+          'Legg 90-dagersmeldingen inn i kalenderen med varsel.',
+          'Åpne thailandsk bankkonto når visum og leiekontrakt er på plass.',
+          'Skal du kjøre: internasjonalt førerkort fra Norge, og kjør defensivt — trafikken er landets største reelle risiko.',
+          'Overfør penger med spesialiserte overføringstjenester framfor vanlig bankoverføring — bedre kurs, lavere gebyr. Større beløp sjeldnere slår små beløp ofte.',
+        ],
+      },
+      {
+        h: 'Den viktigste regelen: lei før du kjøper',
+        p: [
+          'Lei i 3–6 måneder før du binder deg til noe som helst. Og vit hva du går til hvis du senere vil kjøpe: utlendinger kan eie leilighet i Thailand (condo, med utlendingskvote i bygget), men ikke tomt eller landjord. Vær ytterst skeptisk til konstruksjoner som lover deg hus «via et selskap» — det er en juridisk gråsone som har kostet mange utlendinger dyrt.',
+        ],
+      },
+      {
+        h: 'Fjernarbeid fra Thailand?',
+        p: [
+          'Å jobbe for thailandsk arbeidsgiver krever arbeidstillatelse. For fjernarbeid mot arbeidsgiver eller kunder utenfor Thailand har landet de siste årene fått egne visumtyper for langtidsopphold og digitale nomader. Feltet er nytt og reglene justeres — sjekk thailandske myndigheters offisielle informasjon før du planlegger rundt det, og avklar skatteplikten i begge land.',
+        ],
+      },
+    ],
+    cta: {
+      h: 'Neste steg: regn på livet der nede',
+      p: 'Se hva bolig, mat og helseforsikring faktisk koster i måneden — med tre ferdige eksempelbudsjetter.',
+      label: 'Les kostnadsguiden',
+      to: '/guider/hva-koster-det-a-bo-i-thailand',
+    },
+    faq: [
+      {
+        q: 'Kan jeg ta med kjæledyr til Thailand?',
+        a: 'Ja, med mikrochip, vaksinasjonspapirer og importtillatelse. Prosessen tar tid, så start flere måneder før avreise.',
+      },
+      {
+        q: 'Bør jeg ta med bilen?',
+        a: 'Nei. Importavgiftene på biler til Thailand er så høye at det i praksis er uaktuelt. Kjøp eller lei lokalt — eller klar deg med scooter og Grab, som de fleste gjør.',
+      },
+      {
+        q: 'Må jeg kunne thai?',
+        a: 'Du kommer langt med engelsk i byene og turistområdene. Men tall, mat og høflighetsfraser på thai åpner dører, gir bedre priser og mer respekt. Lær det grunnleggende — det er en liten investering med stor avkastning.',
+      },
+      {
+        q: 'Hva med barn og skole?',
+        a: 'Internasjonale skoler finnes i alle større byer, med stor variasjon i pris og kvalitet — fra noen tusen til over tjue tusen kroner i måneden. For barnefamilier er skolepenger ofte den største enkeltposten i budsjettet.',
+      },
+    ],
+  },
 ];
 
 export const getGuide = (slug) => guides.find((g) => g.slug === slug) || null;
