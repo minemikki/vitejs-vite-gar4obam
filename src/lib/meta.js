@@ -176,7 +176,7 @@ const STATIC_META = {
   '/om-oss': {
     title: `Om oss — ${site.name}`,
     description:
-      'Vi er nordmenn i Thailand som kvalitetssjekker hver eneste tur vi selger. Slik jobber vi, og hvorfor du kan stole på oss.',
+      'Vi er norsk og thai, og håndplukker hver tur vi selger — forklart på norsk. Slik jobber vi, og hvorfor du kan stole på oss.',
   },
   '/personvern': {
     title: `Personvernerklæring — ${site.name}`,

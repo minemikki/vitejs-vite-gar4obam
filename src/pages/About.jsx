@@ -6,8 +6,8 @@ export default function About() {
   const values = [
     {
       icon: 'compass',
-      t: 'Vi drar selv først',
-      d: 'Vi legger ikke ut en tur vi ikke har vært på eller kvalitetssjekket. Blir en operatør dårligere, fjerner vi turen.',
+      t: 'Håndplukket, ikke alt',
+      d: 'Vi legger ikke ut alt. Hver tur er sjekket mot ekte kriterier — lisens, forsikring, dyrevelferd og hva gjester faktisk sier. Blir en operatør dårligere, fjerner vi turen.',
     },
     {
       icon: 'heart',
@@ -31,11 +31,11 @@ export default function About() {
       <header className="page-head">
         <div className="page-head-inner">
           <span className="kicker">Om oss</span>
-          <h1>Nordmenn i Thailand som kjenner turene selv</h1>
+          <h1>Norsk og thai — Thailand fra innsiden</h1>
           <p>
-            Vi startet {site.name} fordi det var altfor vanskelig for nordmenn å
-            finne gode opplevelser i Thailand uten å gamble på engelske sider med
-            tusenvis av like tilbud.
+            Vi er norsk og thai, og startet {site.name} fordi det var altfor
+            vanskelig for nordmenn å finne gode opplevelser i Thailand uten å
+            gamble på engelske sider med tusenvis av like tilbud.
           </p>
         </div>
       </header>
@@ -61,7 +61,7 @@ export default function About() {
             utfører selve turene, mens vi står for utvalget, bestillingen på norsk
             og oppfølgingen. Vi velger operatører etter tre ting: gyldig lisens og
             forsikring, hvordan de behandler både gjester og dyr, og om de faktisk
-            leverer det de lover når vi tester dem selv.
+            leverer det de lover, målt på omdømme og ekte gjesteomtaler.
           </p>
 
           <h2>Det vi lover deg</h2>

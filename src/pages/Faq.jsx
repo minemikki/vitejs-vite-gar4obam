@@ -82,7 +82,7 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'Hvem står bak Andaman?',
-        a: 'Vi er norsktalende og bor i Thailand. Vi kvalitetssjekker turene selv og velger bare dem vi ville tatt med vår egen familie på. Les mer på Om oss-siden.',
+        a: 'Vi er norsk og thai, og norsktalende. Vi håndplukker turene mot ekte kriterier — lisens, dyrevelferd og omdømme — og velger bare dem vi trygt kan anbefale videre. Les mer på Om oss-siden.',
       },
       {
         q: 'Er dere et reisebyrå eller en formidler?',

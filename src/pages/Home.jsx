@@ -105,7 +105,7 @@ function Featured() {
           <h2>Håndplukkede opplevelser</h2>
         </div>
         <p className="section-sub">
-          Hver tur er kvalitetssjekket av oss som bor her. Priser i norske kroner —
+          Hver tur er håndplukket og kvalitetssjekket. Priser i norske kroner —
           ingen skjulte gebyrer.
         </p>
       </div>
@@ -125,7 +125,7 @@ function WhyUs() {
   const items = [
     { icon: 'chat', t: 'Alt på norsk', d: 'Kundeservice, bekreftelser og guider på morsmålet. Betal trygt i kroner.' },
     { icon: 'tag', t: 'Ingen påslag', d: 'Du betaler samme pris som hos GetYourGuide — vi legger ikke på et øre, og det er ingen skjulte gebyrer.' },
-    { icon: 'compass', t: 'Ekte lokalkunnskap', d: 'Vi bor i Thailand og velger kun turer vi selv ville tatt familien på.' },
+    { icon: 'compass', t: 'Norsk og thai', d: 'Vi kjenner Thailand fra innsiden — og velger kun turer vi trygt kan anbefale videre.' },
     { icon: 'shield', t: 'Trygt og fleksibelt', d: 'Gratis avbestilling på de fleste turer, og støtte hele veien.' },
   ];
   return (

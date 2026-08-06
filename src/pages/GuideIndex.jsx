@@ -52,8 +52,9 @@ export default function GuideIndex() {
           <span className="kicker">Guider</span>
           <h1>Alt du bør vite før du reiser</h1>
           <p>
-            Ærlige guider skrevet av oss som bor her. Ingen listicles, ingen
-            fyllstoff — bare det du faktisk trenger for å planlegge turen.
+            Ærlige guider skrevet på norsk, med kjennskap til Thailand fra to
+            sider. Ingen listicles, ingen fyllstoff — bare det du faktisk
+            trenger for å planlegge turen.
           </p>
         </div>
       </header>
