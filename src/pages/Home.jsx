@@ -124,7 +124,7 @@ function Featured() {
 function WhyUs() {
   const items = [
     { icon: 'chat', t: 'Alt på norsk', d: 'Kundeservice, bekreftelser og guider på morsmålet. Betal trygt i kroner.' },
-    { icon: 'tag', t: 'Beste pris-garanti', d: 'Finner du samme tur billigere? Vi matcher prisen. Ingen skjulte gebyrer.' },
+    { icon: 'tag', t: 'Ingen påslag', d: 'Du betaler samme pris som hos GetYourGuide — vi legger ikke på et øre, og det er ingen skjulte gebyrer.' },
     { icon: 'compass', t: 'Ekte lokalkunnskap', d: 'Vi bor i Thailand og velger kun turer vi selv ville tatt familien på.' },
     { icon: 'shield', t: 'Trygt og fleksibelt', d: 'Gratis avbestilling på de fleste turer, og støtte hele veien.' },
   ];
@@ -287,7 +287,7 @@ function Cta() {
         <div className="cta-scene" aria-hidden="true"><HeroScene /></div>
         <div className="cta-content">
           <h2>Klar for eventyret?</h2>
-          <p>Book din neste Thailand-opplevelse i dag — trygt, på norsk, til beste pris.</p>
+          <p>Book din neste Thailand-opplevelse i dag — trygt, på norsk og uten påslag.</p>
           <Link to="/opplevelser" className="btn btn-gold btn-lg">
             Utforsk alle opplevelser <Icon.arrow width={18} height={18} />
           </Link>
