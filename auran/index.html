@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
 
   <!--
     ===========================================================================
-    AuranWeb — landingsside (utgave 2: rått & typografisk).
+    AuranWeb — landingsside (utgave 3: varm & folkelig, i førsteperson).
     Én selvstendig fil, ingen byggesteg. FYLL INN før lansering (søk «FYLL-INN»):
       • Telefon: +47 000 00 000   • E-post: post@auranweb.no
-      • Bilde av Michael i «Om»   • Bekreft prisene   • Domene i canonical/OG
+      • BILDE av Michael (hero + «Om meg») — bytt .photo-placeholder med <img>
+      • Bekreft prisene          • Domene i canonical/OG
     Deploy: dra hele /auran-mappa inn på netlify.com/drop (skjemaet virker da).
     ===========================================================================
   -->
 
-  <title>AuranWeb — Nettsider som gir deg kunder | Webbyrå Stavanger</title>
-  <meta name="description" content="Solo-utvikler fra Stavanger, for hele Norge. Raske, søkemotorvennlige nettsider som gir lokale bedrifter flere kunder — til en ærlig fast månedspris. Du ser resultatet før du betaler." />
-  <meta name="theme-color" content="#f4f5f7" />
+  <title>AuranWeb — Nettsider som gir deg flere kunder | Lokalt webbyrå</title>
+  <meta name="description" content="Hei! Jeg heter Michael og lager raske, ærlige nettsider for lokale bedrifter i Norge — til en lav fast månedspris. Du snakker direkte med meg, og ser resultatet før du betaler en krone." />
+  <meta name="theme-color" content="#f5f0e6" />
   <link rel="canonical" href="https://auranweb.no/" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
@@ -26,30 +28,30 @@
   <meta property="og:site_name" content="AuranWeb" />
   <meta property="og:locale" content="nb_NO" />
   <meta property="og:url" content="https://auranweb.no/" />
-  <meta property="og:title" content="Nettsider som gir deg kunder, ikke bare komplimenter" />
-  <meta property="og:description" content="Solo-utvikler fra Stavanger, for hele Norge. Raske sider som løfter deg på Google. Du ser resultatet før du betaler en krone." />
+  <meta property="og:title" content="Hei! Jeg lager nettsider for folk som deg" />
+  <meta property="og:description" content="Raske, ærlige nettsider for lokale bedrifter. Du snakker direkte med meg og ser resultatet før du betaler en krone. Lokalt webbyrå fra Stavanger." />
   <meta property="og:image" content="https://auranweb.no/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nettsider som gir deg kunder, ikke bare komplimenter" />
-  <meta name="twitter:description" content="Solo-utvikler fra Stavanger. Raske sider som løfter deg på Google. Du ser resultatet før du betaler." />
+  <meta name="twitter:title" content="Hei! Jeg lager nettsider for folk som deg" />
+  <meta name="twitter:description" content="Raske, ærlige nettsider for lokale bedrifter. Du ser resultatet før du betaler en krone." />
   <meta name="twitter:image" content="https://auranweb.no/og.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Geist+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nothing+You+Could+Do&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "AuranWeb",
-    "description": "Solo-utvikler i Stavanger som lager raske, søkemotorvennlige nettsider og nettbutikker for små og mellomstore bedrifter i hele Norge.",
+    "description": "Lokalt webbyrå i Stavanger. Michael lager raske, ærlige nettsider og nettbutikker for små og mellomstore bedrifter i hele Norge.",
     "url": "https://auranweb.no/",
     "image": "https://auranweb.no/og.png",
     "logo": "https://auranweb.no/logo-512.png",
-    "slogan": "Nettsider som gir deg kunder, ikke bare komplimenter.",
+    "slogan": "Nettsider som gir deg flere kunder.",
     "areaServed": "NO",
     "priceRange": "$$",
     "telephone": "+47 000 00 000",
@@ -65,274 +67,260 @@
   </script>
 
   <style>
-    /* ======================= Tokens ======================= */
+    /* ======================= Tokens (varmt, ett tema bevisst) ======================= */
     :root{
-      --paper:#f4f5f7;
-      --surface:#ffffff;
-      --ink:#0e1116;
-      --ink-soft:#565f6e;
-      --line:rgba(14,17,22,.14);
-      --line-strong:rgba(14,17,22,.30);
+      --paper:#f5f0e6;
+      --paper-2:#efe7d8;
+      --card:#fffdf8;
+      --ink:#2b2722;
+      --ink-soft:#78715f;
+      --line:rgba(43,39,34,.14);
+      --line-2:rgba(43,39,34,.08);
       --accent:#0057ea;
       --accent-ink:#ffffff;
-      --sel:rgba(0,87,234,.16);
-      --maxw:1180px;
-      --gut:26px;
+      --accent-tint:#e6ecfb;
+      --honey:#f6c453;
+      --honey-soft:rgba(246,196,83,.5);
+      --sel:rgba(246,196,83,.45);
+      --radius:16px;
+      --radius-lg:26px;
+      --shadow:0 2px 4px rgba(43,39,34,.05),0 16px 40px rgba(43,39,34,.08);
+      --shadow-sm:0 1px 2px rgba(43,39,34,.05),0 6px 16px rgba(43,39,34,.06);
+      --maxw:1160px;--gut:24px;
     }
-    @media (prefers-color-scheme:dark){
-      :root{
-        --paper:#0c0e12;
-        --surface:#14171d;
-        --ink:#edeff2;
-        --ink-soft:#98a1b0;
-        --line:rgba(255,255,255,.15);
-        --line-strong:rgba(255,255,255,.34);
-        --accent:#4d81ff;
-        --accent-ink:#0b1020;
-        --sel:rgba(77,129,255,.26);
-      }
-    }
-    :root[data-theme="light"]{
-      --paper:#f4f5f7;--surface:#ffffff;--ink:#0e1116;--ink-soft:#565f6e;
-      --line:rgba(14,17,22,.14);--line-strong:rgba(14,17,22,.30);
-      --accent:#0057ea;--accent-ink:#fff;--sel:rgba(0,87,234,.16);
-    }
-    :root[data-theme="dark"]{
-      --paper:#0c0e12;--surface:#14171d;--ink:#edeff2;--ink-soft:#98a1b0;
-      --line:rgba(255,255,255,.15);--line-strong:rgba(255,255,255,.34);
-      --accent:#4d81ff;--accent-ink:#0b1020;--sel:rgba(77,129,255,.26);
-    }
-
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;background:var(--paper);color:var(--ink);
-      font-family:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-      font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
-    }
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Work Sans",system-ui,-apple-system,sans-serif;font-size:17.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     ::selection{background:var(--sel)}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;margin:0;line-height:1.0;letter-spacing:-.025em}
+    h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;margin:0;line-height:1.08;letter-spacing:-.005em}
     p{margin:0}
-
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
-    .mono{font-family:"Geist Mono",ui-monospace,monospace;font-weight:500;text-transform:uppercase;letter-spacing:.13em;font-size:.72rem}
-    .accent{color:var(--accent)}
-
-    /* underline mark on a key word */
-    .mark{color:var(--accent);position:relative;white-space:nowrap}
-    .mark::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.09em;background:var(--accent);opacity:.55}
+    .hand{font-family:"Nothing You Could Do",cursive;color:var(--accent);font-weight:400}
+    .mark{background:var(--honey-soft);padding:.03em .2em;border-radius:.28em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+    .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+    .kicker::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
 
     /* ======================= Buttons ======================= */
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;cursor:pointer;
-      font-family:"Geist Mono",monospace;font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;
-      padding:15px 22px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);
-      border-radius:0;transition:background .18s,color .18s,transform .18s;
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-    .btn.ghost{background:transparent;color:var(--ink)}
-    .btn.ghost:hover{background:var(--ink);color:var(--paper)}
-    .btn .arw{transition:transform .18s}
-    .btn:hover .arw{transform:translateX(3px)}
-
-    .link-arrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-bottom:2px solid var(--accent);padding-bottom:2px}
-    .link-arrow .arw{transition:transform .18s}
-    .link-arrow:hover .arw{transform:translateX(4px)}
+    .btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-family:"Work Sans",sans-serif;font-weight:600;font-size:1rem;padding:14px 26px;border-radius:999px;border:1.5px solid transparent;transition:transform .16s,box-shadow .16s,background .16s,color .16s}
+    .btn.primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 20px rgba(0,87,234,.24)}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,87,234,.32)}
+    .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+    .btn.ghost:hover{transform:translateY(-2px);border-color:var(--ink);box-shadow:var(--shadow-sm)}
+    .btn .arw{transition:transform .16s}.btn:hover .arw{transform:translateX(3px)}
+    .btn-sm{padding:11px 20px;font-size:.94rem}
+    .textlink{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--accent)}
+    .textlink u{text-decoration-color:var(--honey);text-decoration-thickness:2px;text-underline-offset:3px}
+    .textlink .arw{transition:transform .16s}.textlink:hover .arw{transform:translateX(4px)}
 
     /* ======================= Header ======================= */
-    header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+    header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--paper) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
     header.scrolled{border-color:var(--line)}
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;height:72px}
     .brand{display:flex;align-items:center;gap:11px}
-    .brand img{height:30px;width:auto}
-    .brand b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
-    nav.main{display:flex;align-items:center;gap:28px}
-    nav.main a.nl{font-family:"Geist Mono",monospace;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);transition:color .15s;position:relative;padding:4px 0}
+    .brand img{height:32px}
+    .brand b{font-family:"Young Serif",serif;font-weight:400;font-size:1.4rem}
+    nav.main{display:flex;align-items:center;gap:26px}
+    nav.main a.nl{font-weight:500;color:var(--ink-soft);transition:color .15s;position:relative}
     nav.main a.nl:hover,nav.main a.nl.active{color:var(--ink)}
-    nav.main a.nl.active::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--accent)}
+    nav.main a.nl.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--honey);border-radius:2px}
     .head-cta{display:flex;align-items:center;gap:14px}
-    .hamburger{display:none;width:44px;height:44px;border:1.5px solid var(--ink);background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-    .hamburger span{width:20px;height:2px;background:var(--ink);transition:.25s}
+    .hamburger{display:none;width:46px;height:46px;border:1.5px solid var(--line);background:var(--card);border-radius:14px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+    .hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
     body.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     body.menu-open .hamburger span:nth-child(2){opacity:0}
     body.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    /* ======================= Section scaffold ======================= */
-    section{position:relative}
-    .sec{padding:104px 0;border-top:1px solid var(--line)}
-    .kicker{display:flex;align-items:center;gap:12px;color:var(--ink-soft);margin-bottom:26px}
-    .kicker::before{content:"";width:26px;height:2px;background:var(--accent)}
-    .kicker .idx{color:var(--accent)}
-    h2.big{font-size:clamp(2rem,4.6vw,3.4rem);max-width:16ch;text-wrap:balance}
-    .sec-lead{color:var(--ink-soft);font-size:1.12rem;max-width:52ch;margin-top:18px}
+    /* ======================= Sections ======================= */
+    .sec{padding:100px 0}
+    .sec.alt{background:var(--paper-2)}
+    .sec-head{max-width:640px;margin-bottom:52px}
+    .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+    .sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin:18px 0 14px;letter-spacing:-.01em}
+    .sec-head p{color:var(--ink-soft);font-size:1.12rem}
 
     /* ======================= Hero ======================= */
-    .hero{padding:70px 0 84px}
-    .masthead{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;color:var(--ink-soft);padding-bottom:26px;margin-bottom:44px;border-bottom:1px solid var(--line)}
-    .hero h1{font-size:clamp(2.7rem,7.4vw,6.1rem);letter-spacing:-.035em;max-width:16ch}
-    .hero h1 .dim{color:var(--ink-soft)}
-    .hero-lead{margin-top:34px;font-size:clamp(1.1rem,1.7vw,1.35rem);color:var(--ink-soft);max-width:60ch}
-    .hero-lead b{color:var(--ink);font-weight:600}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:38px}
-    .spec{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px;border:1px solid var(--line)}
-    .spec div{padding:18px 20px;border-right:1px solid var(--line);color:var(--ink-soft)}
-    .spec div:last-child{border-right:none}
-    .spec b{display:block;color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:-.01em;text-transform:none;margin-top:7px;line-height:1.15}
+    .hero{padding:56px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+    .hero .label{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 13px;font-weight:600;font-size:.9rem;color:var(--ink-soft);box-shadow:var(--shadow-sm);margin-bottom:24px}
+    .hero .label .d{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+    .hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);letter-spacing:-.015em;line-height:1.04}
+    .hero .lead{margin-top:26px;font-size:1.2rem;color:var(--ink-soft);max-width:36ch}
+    .hero .lead b{color:var(--ink);font-weight:600}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:32px}
+    .trustline{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+    .trustline span{display:inline-flex;align-items:center;gap:9px;font-weight:500;color:var(--ink);font-size:.96rem}
+    .trustline svg{width:19px;height:19px;color:var(--accent);flex:none}
 
-    /* ======================= Tjenester ======================= */
-    .rows{border-top:1px solid var(--line);margin-top:8px}
-    .row{display:grid;grid-template-columns:auto 1fr minmax(0,42ch);gap:34px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line);transition:padding-left .25s}
-    .row:hover{padding-left:12px}
-    .row .n{color:var(--accent)}
-    .row h3{font-size:clamp(1.5rem,3vw,2.15rem)}
-    .row p{color:var(--ink-soft)}
-    .row .p-em{color:var(--ink);font-weight:600}
+    /* portrettkort */
+    .portrait-wrap{position:relative;justify-self:center}
+    .portrait{width:min(360px,80vw);aspect-ratio:4/5;border-radius:var(--radius-lg);background:linear-gradient(165deg,#fbe9c2,#f3d59a 60%,#e9c07a);border:1px solid var(--line);box-shadow:var(--shadow);transform:rotate(-2deg);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+    /* FYLL-INN: bytt hele .photo-placeholder med <img src="michael.jpg" alt="Michael"> (fyller rammen) */
+    .photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#8a6d2e;text-align:center;padding:24px}
+    .photo-placeholder .mono-av{width:104px;height:104px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;font-family:"Young Serif",serif;font-size:2.8rem;color:#6b5320}
+    .photo-placeholder small{font-weight:600;letter-spacing:.04em;opacity:.85;font-size:.8rem}
+    .sig-badge{position:absolute;right:-14px;bottom:-18px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 18px;transform:rotate(3deg)}
+    .sig-badge .hand{font-size:1.7rem;line-height:1}
+    .sig-badge small{display:block;color:var(--ink-soft);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+
+    /* ======================= Kort-nett ======================= */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .card .ico{width:54px;height:54px;border-radius:16px;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent)}
+    .card .ico svg{width:27px;height:27px}
+    .card h3{font-size:1.4rem;margin-bottom:9px}
+    .card p{color:var(--ink-soft);font-size:1rem}
 
     /* ======================= Arbeid ======================= */
-    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-bottom:none}
-    .work{padding:34px 28px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-    .work:last-child{border-right:none}
-    .work .tagline{color:var(--accent);margin-bottom:auto}
-    .work .num{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2.4rem;color:var(--line-strong);line-height:1;margin-bottom:28px}
-    .work h3{font-size:1.5rem;margin:10px 0 10px}
-    .work p{color:var(--ink-soft);font-size:.98rem}
-    .work-note{border:1px solid var(--line);border-top:none;padding:22px 28px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+    .work{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+    .work:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .work .top{height:150px;position:relative;display:flex;align-items:flex-end;padding:16px}
+    .work .top.cafe{background:linear-gradient(150deg,#e7b98c,#c67d43)}
+    .work .top.salong{background:linear-gradient(150deg,#e7a6c4,#b56794)}
+    .work .top.bygg{background:linear-gradient(150deg,#8fb6d6,#4c7ea6)}
+    .work .top .chip{background:rgba(255,255,255,.9);border-radius:999px;padding:5px 13px;font-weight:600;font-size:.82rem;color:var(--ink)}
+    .work .b{padding:22px 24px 26px}
+    .work .b h3{font-size:1.3rem;margin-bottom:6px}
+    .work .b p{color:var(--ink-soft);font-size:.97rem}
+    .work-note{margin-top:30px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;align-items:center;color:var(--ink-soft);text-align:center}
 
     /* ======================= Prosess ======================= */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
-    .step{padding:40px 30px;border-right:1px solid var(--line)}
-    .step:last-child{border-right:none}
-    .step .sn{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:3.4rem;line-height:1;letter-spacing:-.04em;-webkit-text-stroke:1.4px var(--ink);color:transparent;margin-bottom:22px}
-    .step h3{font-size:1.4rem;margin-bottom:10px}
-    .step p{color:var(--ink-soft);font-size:1rem}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .step{position:relative;padding:8px 4px}
+    .step .n{font-family:"Young Serif",serif;font-size:2.3rem;color:var(--accent);background:var(--accent-tint);width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .step h3{font-size:1.35rem;margin-bottom:9px}
+    .step p{color:var(--ink-soft)}
 
     /* ======================= Priser ======================= */
-    .toggle{display:inline-flex;border:1.5px solid var(--ink);margin:8px 0 34px}
-    .toggle button{font-family:"Geist Mono",monospace;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;padding:11px 20px;background:transparent;color:var(--ink-soft);border:none;cursor:pointer;transition:.18s}
-    .toggle button.active{background:var(--ink);color:var(--paper)}
-    .price-banner{border-left:2px solid var(--accent);padding:6px 0 6px 20px;color:var(--ink-soft);max-width:60ch;margin-bottom:40px}
+    .price-banner{max-width:660px;margin:0 auto 28px;text-align:center;color:var(--ink-soft);font-size:1.04rem}
     .price-banner b{color:var(--ink)}
-    .plans{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
-    .plan{padding:32px 28px 34px;border-right:1px solid var(--line);display:flex;flex-direction:column}
-    .plan:last-child{border-right:none}
-    .plan.feat{background:var(--surface);box-shadow:inset 0 3px 0 var(--accent)}
-    .plan .pname{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-    .plan h3{font-size:1.5rem}
-    .plan .tag{color:var(--accent)}
-    .plan .desc{color:var(--ink-soft);font-size:.92rem;min-height:2.6em;margin-bottom:22px}
-    .plan .amount{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2.7rem;letter-spacing:-.03em;line-height:1;display:flex;align-items:baseline;gap:7px}
-    .plan .amount .per{font-family:"Geist Mono",monospace;font-weight:500;font-size:.8rem;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase}
-    .plan .alt{color:var(--ink-soft);font-size:.82rem;margin:10px 0 24px;min-height:1.2em}
+    .toggle{display:flex;justify-content:center;margin-bottom:38px}
+    .toggle .pill{display:inline-flex;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px}
+    .sec.alt .toggle .pill{background:var(--paper)}
+    .toggle button{border:none;background:transparent;padding:10px 22px;border-radius:999px;font-family:"Work Sans",sans-serif;font-weight:600;font-size:.95rem;color:var(--ink-soft);cursor:pointer;transition:.18s}
+    .toggle button.active{background:var(--card);color:var(--ink);box-shadow:var(--shadow-sm)}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+    .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 28px;box-shadow:var(--shadow-sm);position:relative;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .plan:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .plan.pop{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-6px)}
+    .plan.pop:hover{transform:translateY(-9px)}
+    .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--honey);color:#5a4410;font-weight:700;font-size:.76rem;letter-spacing:.04em;padding:6px 15px;border-radius:999px}
+    .plan h3{font-size:1.45rem;margin-bottom:4px}
+    .plan .desc{color:var(--ink-soft);font-size:.92rem;min-height:2.6em;margin-bottom:18px}
+    .plan .amt{font-family:"Young Serif",serif;font-size:2.5rem;line-height:1;display:flex;align-items:baseline;gap:7px}
+    .plan .amt .per{font-family:"Work Sans",sans-serif;font-size:.92rem;font-weight:600;color:var(--ink-soft)}
+    .plan .alt{color:var(--ink-soft);font-size:.85rem;margin:9px 0 22px;min-height:1.2em}
     .plan .alt b{color:var(--ink)}
-    .plan ul{list-style:none;margin:0 0 28px;padding:0;flex:1}
-    .plan li{display:flex;gap:11px;padding:8px 0;border-bottom:1px dotted var(--line);font-size:.95rem;color:var(--ink)}
-    .plan li:last-child{border-bottom:none}
-    .plan li .c{color:var(--accent);font-family:"Geist Mono",monospace;font-size:.9rem;flex:none}
+    .plan ul{list-style:none;margin:0 0 26px;padding:0;flex:1}
+    .plan li{display:flex;gap:11px;align-items:flex-start;padding:7px 0;font-size:.96rem}
+    .plan li svg{width:19px;height:19px;color:var(--accent);flex:none;margin-top:3px}
     .plan .btn{width:100%;justify-content:center}
-    .fineprint{color:var(--ink-soft);margin-top:24px;font-size:.86rem}
-    /* pris-modus (maanedlig som standard) */
+    .fineprint{text-align:center;color:var(--ink-soft);font-size:.86rem;margin-top:26px}
     #priser .u-once,#priser .alt-once{display:none}
     #priser.once .u-month{display:none}
     #priser.once .u-once{display:inline}
     #priser.once .alt-month{display:none}
     #priser.once .alt-once{display:inline}
 
-    /* ======================= Om ======================= */
-    .about{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:start}
-    .pull{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.6rem,3.2vw,2.5rem);line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
-    .about .body{color:var(--ink-soft);font-size:1.08rem;margin-top:26px;max-width:56ch}
-    .about .body b{color:var(--ink);font-weight:600}
-    .sig{margin-top:26px;color:var(--accent)}
-    .who{display:flex;align-items:center;gap:16px;margin-top:6px;padding-bottom:26px;border-bottom:1px solid var(--line)}
-    /* FYLL-INN: bytt .portrait med et ekte bilde av Michael */
-    .portrait{width:64px;height:64px;flex:none;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.7rem}
-    .who b{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.1rem}
-    .who small{display:block;color:var(--ink-soft)}
-    .glist{list-style:none;margin:24px 0 0;padding:0}
-    .glist li{display:flex;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
-    .glist li .c{color:var(--accent);font-family:"Geist Mono",monospace}
-    .glist li span.t{font-weight:600}
+    /* ======================= Om meg ======================= */
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+    .about .photo2{justify-self:center}
+    .about .photo2 .portrait{transform:rotate(2deg)}
+    .about h2{font-size:clamp(1.9rem,3.8vw,2.8rem);margin:16px 0 20px}
+    .about .story{color:var(--ink-soft);font-size:1.1rem}
+    .about .story b{color:var(--ink);font-weight:600}
+    .about .sign{margin-top:22px;display:flex;align-items:center;gap:14px}
+    .about .sign .hand{font-size:2.1rem}
+    .about .sign small{color:var(--ink-soft);font-size:.82rem}
+    .guarantees{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+    .guarantees div{display:flex;gap:11px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-weight:600;font-size:.95rem;box-shadow:var(--shadow-sm)}
+    .guarantees svg{width:20px;height:20px;color:var(--accent);flex:none}
 
     /* ======================= FAQ ======================= */
-    .faq{border-top:1px solid var(--line)}
-    details{border-bottom:1px solid var(--line)}
-    summary{list-style:none;cursor:pointer;padding:26px 46px 26px 0;position:relative;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.15rem,2.1vw,1.5rem);letter-spacing:-.01em}
+    .faq{max-width:780px;margin:0 auto}
+    details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow-sm);overflow:hidden}
+    details[open]{border-color:var(--accent)}
+    summary{list-style:none;cursor:pointer;padding:22px 24px;font-family:"Young Serif",serif;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
     summary::-webkit-details-marker{display:none}
-    summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:"Geist Mono",monospace;font-size:1.5rem;color:var(--accent);transition:transform .25s}
-    details[open] summary::after{content:"\2013"}
-    .faq .ans{padding:0 46px 28px 0;color:var(--ink-soft);font-size:1.05rem;max-width:70ch}
+    summary .pm{width:26px;height:26px;flex:none;position:relative}
+    summary .pm::before,summary .pm::after{content:"";position:absolute;background:var(--accent);border-radius:2px;top:12px;left:5px;width:16px;height:2px;transition:transform .25s}
+    summary .pm::after{transform:rotate(90deg)}
+    details[open] summary .pm::after{transform:rotate(0)}
+    details .ans{padding:0 24px 22px;color:var(--ink-soft);font-size:1.03rem}
 
     /* ======================= Kontakt ======================= */
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .contact .big-cta{font-size:clamp(2.2rem,4.6vw,3.6rem)}
-    .cinfo{margin-top:34px;border-top:1px solid var(--line)}
-    .cinfo a,.cinfo div{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);transition:padding-left .2s}
-    .cinfo a:hover{padding-left:8px}
-    .cinfo .k{color:var(--ink-soft)}
-    .cinfo .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.12rem}
-    form.f{border:1px solid var(--line);padding:30px}
-    .field{margin-bottom:22px}
-    .field label{display:block;margin-bottom:9px;color:var(--ink-soft)}
-    .field input,.field textarea{
-      width:100%;padding:12px 0;border:none;border-bottom:1.5px solid var(--line-strong);
-      background:transparent;color:var(--ink);font:inherit;border-radius:0;transition:border-color .15s;
-    }
-    .field input::placeholder,.field textarea::placeholder{color:color-mix(in srgb,var(--ink-soft) 70%,transparent)}
-    .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .contact-info h2{font-size:clamp(1.9rem,3.8vw,2.8rem);margin:16px 0 14px}
+    .contact-info .lead{color:var(--ink-soft);font-size:1.1rem;margin-bottom:14px}
+    .contact-info .hand{font-size:1.7rem;display:block;margin-bottom:26px}
+    .citem{display:flex;gap:14px;align-items:center;margin-bottom:15px}
+    .citem .ic{width:48px;height:48px;border-radius:14px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);flex:none}
+    .citem .ic svg{width:22px;height:22px;color:var(--accent)}
+    .citem small{display:block;color:var(--ink-soft);font-size:.82rem}
+    .citem b{font-family:"Young Serif",serif;font-weight:400;font-size:1.12rem}
+    form.f{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow)}
+    .field{margin-bottom:17px}
+    .field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:8px}
+    .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font:inherit;color:var(--ink);background:var(--paper);transition:border-color .15s,box-shadow .15s}
+    .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-tint);background:var(--card)}
     .field textarea{resize:vertical;min-height:110px}
     form.f .btn{width:100%;justify-content:center;margin-top:6px}
-    .fnote{color:var(--ink-soft);font-size:.82rem;margin-top:14px;text-align:center}
+    .fnote{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:12px}
     .hp{position:absolute;left:-9999px}
-    .thanks{display:none;border:1px solid var(--accent);padding:40px 30px}
+    .thanks{display:none;text-align:center;background:var(--card);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:44px 30px;box-shadow:var(--shadow)}
     .thanks.show{display:block}
-    .thanks .big-cta{font-size:2rem;margin-bottom:10px}
+    .thanks .hand{font-size:2.6rem;display:block;margin-bottom:6px}
+    .thanks h3{font-size:1.6rem;margin-bottom:8px}
     .thanks p{color:var(--ink-soft)}
 
     /* ======================= Footer ======================= */
-    footer{border-top:1px solid var(--line);padding:70px 0 34px}
-    .foot-word{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(3.4rem,15vw,12rem);line-height:.86;letter-spacing:-.04em;color:var(--ink);margin-bottom:40px}
-    .foot-rows{display:flex;justify-content:space-between;flex-wrap:wrap;gap:22px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:26px}
-    .foot-rows .cols{display:flex;gap:34px;flex-wrap:wrap}
-    .foot-rows a:hover{color:var(--ink)}
+    footer{background:var(--paper-2);border-top:1px solid var(--line);padding:60px 0 30px}
+    .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;margin-bottom:36px}
+    .foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+    .foot-brand img{height:30px}
+    .foot-brand b{font-family:"Young Serif",serif;font-weight:400;font-size:1.35rem}
+    footer .tag{color:var(--ink-soft);max-width:320px}
+    .foot-links{display:flex;gap:40px;flex-wrap:wrap}
+    .foot-links h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;font-weight:600}
+    .foot-links a{display:block;padding:5px 0;color:var(--ink);opacity:.85}
+    .foot-links a:hover{opacity:1;color:var(--accent)}
+    .foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--ink-soft);font-size:.9rem}
+    .foot-bottom .hand{font-size:1.2rem}
 
     /* ======================= Reveal ======================= */
-    .js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+    .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
     .js .rv.in{opacity:1;transform:none}
-    .js .rv.d1{transition-delay:.07s}.js .rv.d2{transition-delay:.14s}.js .rv.d3{transition-delay:.21s}
+    .js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
 
     /* ======================= Responsiv ======================= */
+    @media (max-width:940px){
+      .hero-grid{grid-template-columns:1fr;gap:44px}
+      .portrait-wrap{order:-1}
+      .about{grid-template-columns:1fr;gap:36px}
+      .about .photo2{order:-1}
+      .contact{grid-template-columns:1fr;gap:32px}
+    }
     @media (max-width:900px){
-      nav.main{position:fixed;inset:68px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px var(--gut) 22px;transform:translateY(-130%);transition:transform .3s;z-index:60}
+      nav.main{position:fixed;inset:72px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:10px var(--gut) 22px;transform:translateY(-135%);transition:transform .3s;z-index:60;box-shadow:var(--shadow)}
       body.menu-open nav.main{transform:none}
-      nav.main a.nl{padding:16px 0;font-size:.95rem;border-bottom:1px solid var(--line)}
+      nav.main a.nl{padding:15px 4px;border-bottom:1px solid var(--line-2)}
       nav.main a.nl.active::after{display:none}
       .head-cta .btn{display:none}
       .hamburger{display:flex}
     }
-    @media (max-width:820px){
-      .sec{padding:76px 0}
-      .about,.contact{grid-template-columns:1fr;gap:34px}
-      .spec{grid-template-columns:1fr 1fr}
-      .spec div:nth-child(2){border-right:none}
-      .spec div:nth-child(1),.spec div:nth-child(2){border-bottom:1px solid var(--line)}
-      .work-grid,.steps,.plans{grid-template-columns:1fr}
-      .work,.step,.plan{border-right:none;border-bottom:1px solid var(--line)}
-      .steps .step:last-child,.plans .plan:last-child{border-bottom:none}
-      .row{grid-template-columns:auto 1fr;gap:8px 20px}
-      .row p{grid-column:1/-1;max-width:60ch}
-    }
-    @media (max-width:520px){
-      :root{--gut:20px}
-      body{font-size:16px}
-      .masthead{gap:6px 14px;font-size:.66rem}
+    @media (max-width:760px){
+      .sec{padding:74px 0}
+      .cards,.steps,.plans{grid-template-columns:1fr}
+      .work-list{grid-template-columns:1fr!important}
+      .guarantees{grid-template-columns:1fr}
+      .plan.pop{transform:none}.plan.pop:hover{transform:translateY(-4px)}
     }
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important;scroll-behavior:auto!important}
       .js .rv{opacity:1!important;transform:none!important}
+      .portrait{transform:none!important}
     }
   </style>
 </head>
@@ -349,11 +337,11 @@
         <a class="nl" href="#tjenester">Tjenester</a>
         <a class="nl" href="#arbeid">Arbeid</a>
         <a class="nl" href="#priser">Priser</a>
-        <a class="nl" href="#om">Om</a>
+        <a class="nl" href="#om">Om meg</a>
         <a class="nl" href="#kontakt">Kontakt</a>
       </nav>
       <div class="head-cta">
-        <a class="btn solid" href="#kontakt">Gratis skisse</a>
+        <a class="btn primary btn-sm" href="#kontakt">Ta en prat</a>
         <button class="hamburger" id="hamburger" aria-label="Åpne meny" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -362,24 +350,33 @@
   <main id="hoved">
     <!-- ===================== Hero ===================== -->
     <section class="hero">
-      <div class="wrap">
-        <div class="masthead mono rv">
-          <span>AuranWeb</span>
-          <span>Webbyrå — solo-utvikler</span>
-          <span>Stavanger → hele Norge</span>
-          <span>Est. 2026</span>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="label rv"><span class="d"></span> Ditt lokale webbyrå — én ekte person</span>
+          <h1 class="rv d1">Hei! Jeg lager nettsider som gir deg <span class="mark">flere kunder</span>.</h1>
+          <p class="lead rv d2">Jeg heter Michael, og jeg bygger raske, ærlige nettsider for lokale bedrifter her i Norge. Ingen selgere, ingen mellomledd — <b>bare meg</b>, og en side som faktisk gjør jobben. Du ser den ferdig før du betaler en krone.</p>
+          <div class="hero-actions rv d2">
+            <a href="#kontakt" class="btn primary">Ta en gratis prat <span class="arw">→</span></a>
+            <a href="#arbeid" class="textlink">Se hva jeg lager <span class="arw">→</span></a>
+          </div>
+          <div class="trustline rv d3">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Du ser før du betaler</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ingen binding</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Jeg svarer telefonen selv</span>
+          </div>
         </div>
-        <h1 class="rv d1">Pene nettsider er lett. Nettsider som gir deg <span class="mark">kunder</span> — <span class="dim">det er jobben min.</span></h1>
-        <p class="hero-lead rv d2">Jeg er utvikleren som bygger raske, søkemotorvennlige nettsider for lokale bedrifter — og sørger for at folk faktisk <b>finner deg på Google</b>. Du ser resultatet før du betaler en krone.</p>
-        <div class="hero-actions rv d2">
-          <a href="#kontakt" class="btn solid">Få en gratis skisse <span class="arw">→</span></a>
-          <a href="#arbeid" class="link-arrow">Se hva jeg lager <span class="arw">→</span></a>
-        </div>
-        <div class="spec mono rv d3">
-          <div>01 <b>Solo-utvikler</b> Ingen mellomledd</div>
-          <div>02 <b>Svar innen 24t</b> Du snakker med meg</div>
-          <div>03 <b>Skisse først</b> Se før du betaler</div>
-          <div>04 <b>Ingen binding</b> Si opp når du vil</div>
+        <div class="portrait-wrap rv d1">
+          <div class="portrait">
+            <!-- FYLL-INN: bytt hele blokka under med <img src="michael.jpg" alt="Michael"> -->
+            <div class="photo-placeholder">
+              <div class="mono-av">M</div>
+              <small>DITT BILDE HER<br>(så folk ser hvem de prater med)</small>
+            </div>
+          </div>
+          <div class="sig-badge">
+            <div class="hand">Michael</div>
+            <small>Stavanger</small>
+          </div>
         </div>
       </div>
     </section>
@@ -387,192 +384,192 @@
     <!-- ===================== Tjenester ===================== -->
     <section class="sec" id="tjenester">
       <div class="wrap">
-        <div class="kicker mono rv"><span class="idx">(01)</span> Tjenester</div>
-        <h2 class="big rv">Tre ting jeg gjør — og gjør skikkelig.</h2>
-        <div class="rows">
-          <div class="row rv">
-            <div class="n mono">N°01</div>
+        <div class="sec-head rv">
+          <span class="kicker">Tjenester</span>
+          <h2>Dette kan jeg hjelpe deg med</h2>
+          <p>Alt du trenger for å bli funnet på nett og gjøre besøkende om til kunder.</p>
+        </div>
+        <div class="cards">
+          <div class="card rv">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></div>
             <h3>Nettsider</h3>
-            <p>Raske, skreddersydde sider bygget for å gjøre besøkende til kunder. Mobil først, alltid.</p>
+            <p>Raske, skreddersydde sider bygget for å gjøre besøkende til kunder. Ser knallbra ut på mobil — alltid.</p>
           </div>
-          <div class="row rv">
-            <div class="n mono">N°02</div>
+          <div class="card rv d1">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6 5 3H2"/></svg></div>
             <h3>Nettbutikker</h3>
-            <p>WooCommerce-butikker som gjør det trygt og enkelt å selge produkter og tjenester på nett.</p>
+            <p>Trygge WooCommerce-butikker som gjør det enkelt å selge produktene og tjenestene dine på nett.</p>
           </div>
-          <div class="row rv">
-            <div class="n mono">N°03</div>
+          <div class="card rv d2">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 9-9"/><path d="M21 7v6M21 7h-6"/></svg></div>
             <h3>SEO &amp; synlighet</h3>
-            <p><span class="p-em">Dette er kanten min.</span> Teknisk SEO, fart og innhold som løfter deg på Google — så folk finner deg først.</p>
+            <p>Det jeg kan best: teknisk SEO, fart og innhold som løfter deg på Google — så folk finner nettopp deg.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================== Arbeid ===================== -->
-    <section class="sec" id="arbeid">
+    <section class="sec alt" id="arbeid">
       <div class="wrap">
-        <div class="kicker mono rv"><span class="idx">(02)</span> Arbeid</div>
-        <h2 class="big rv">Bygget for bransjen din.</h2>
-        <p class="sec-lead rv">Sider laget for hvordan folk faktisk velger en lokal bedrift.</p>
-        <div class="work-grid" style="margin-top:44px">
-          <div class="work rv">
-            <div class="num">01</div>
-            <div class="tagline mono">Kafé &amp; Restaurant</div>
-            <h3>Meny som frister</h3>
-            <p>Meny, bordbestilling og stemning som fyller lokalet — også utenfor rushet.</p>
-          </div>
-          <div class="work rv d1">
-            <div class="num">02</div>
-            <div class="tagline mono">Frisør &amp; Salong</div>
-            <h3>Booking 24/7</h3>
-            <p>Timebestilling døgnet rundt. Kundene booker selv, også når du har stengt.</p>
-          </div>
-          <div class="work rv d2">
-            <div class="num">03</div>
-            <div class="tagline mono">Håndverk &amp; Bygg</div>
-            <h3>Tillit som selger</h3>
-            <p>Referanser, bilder og enkel kontakt som gjør en forespørsel til et oppdrag.</p>
-          </div>
+        <div class="sec-head center rv">
+          <span class="kicker">Arbeid</span>
+          <h2>Litt av det jeg lager</h2>
+          <p>Sider laget for hvordan folk faktisk velger en lokal bedrift.</p>
         </div>
-        <div class="work-note mono rv">
-          <span>Ekte kundedemoer legges ut fortløpende.</span>
-          <a href="#kontakt" class="link-arrow" style="font-family:'Geist Mono',monospace;letter-spacing:.08em;font-size:.76rem">Se en skisse for din bransje <span class="arw">→</span></a>
+        <div class="cards work-list">
+          <article class="work rv">
+            <div class="top cafe"><span class="chip">Kafé &amp; Restaurant</span></div>
+            <div class="b"><h3>Meny som frister</h3><p>Meny, bordbestilling og god stemning som fyller lokalet — også utenom rushet.</p></div>
+          </article>
+          <article class="work rv d1">
+            <div class="top salong"><span class="chip">Frisør &amp; Salong</span></div>
+            <div class="b"><h3>Booking døgnet rundt</h3><p>Kundene bestiller time selv — også når du har stengt for kvelden.</p></div>
+          </article>
+          <article class="work rv d2">
+            <div class="top bygg"><span class="chip">Håndverk &amp; Bygg</span></div>
+            <div class="b"><h3>Tillit som gir oppdrag</h3><p>Referanser, bilder og enkel kontakt som gjør en forespørsel til en jobb.</p></div>
+          </article>
         </div>
+        <p class="work-note rv">Ekte kundedemoer legges ut fortløpende. <a href="#kontakt" class="textlink">Vil du se en skisse for din bransje? <span class="arw">→</span></a></p>
       </div>
     </section>
 
     <!-- ===================== Prosess ===================== -->
     <section class="sec" id="prosess">
       <div class="wrap">
-        <div class="kicker mono rv"><span class="idx">(03)</span> Slik jobber vi</div>
-        <h2 class="big rv">Fra prat til live på tre steg.</h2>
-        <div class="steps" style="margin-top:44px">
-          <div class="step rv">
-            <div class="sn">01</div>
-            <h3>Gratis prat &amp; skisse</h3>
-            <p>En uforpliktende prat om bedriften din — så lager jeg en skisse.</p>
-          </div>
-          <div class="step rv d1">
-            <div class="sn">02</div>
-            <h3>Du ser før du betaler</h3>
-            <p>Du ser et ferdig utkast av siden før du betaler en eneste krone.</p>
-          </div>
-          <div class="step rv d2">
-            <div class="sn">03</div>
-            <h3>Live på få dager</h3>
-            <p>Er du fornøyd, setter vi siden live raskt — og jeg drifter den videre for deg.</p>
-          </div>
+        <div class="sec-head center rv">
+          <span class="kicker">Slik jobber vi</span>
+          <h2>Sånn gjør vi det — helt enkelt</h2>
+          <p>Ingen overraskelser, ingen dyre forskuddsregninger. Du er trygg hele veien.</p>
+        </div>
+        <div class="steps">
+          <div class="step rv"><div class="n">1</div><h3>Vi tar en prat</h3><p>Vi tar en uforpliktende prat om bedriften din, så lager jeg en skisse.</p></div>
+          <div class="step rv d1"><div class="n">2</div><h3>Du ser før du betaler</h3><p>Du får se et ferdig utkast av siden før du betaler en eneste krone.</p></div>
+          <div class="step rv d2"><div class="n">3</div><h3>Live på få dager</h3><p>Er du fornøyd, setter vi siden live raskt — og jeg drifter den videre for deg.</p></div>
         </div>
       </div>
     </section>
 
     <!-- ===================== Priser ===================== -->
-    <section class="sec once-host" id="priser">
+    <section class="sec alt" id="priser">
       <div class="wrap">
-        <div class="kicker mono rv"><span class="idx">(04)</span> Priser</div>
-        <h2 class="big rv">Ærlig pris. Alt inkludert.</h2>
-        <p class="price-banner rv">Andre byrå tar gjerne <b>10 000–15 000 kr på forskudd</b>. Hos meg starter du på en lav fast månedspris med <b>hosting, drift, support og endringer inkludert</b> — eller en engangspris hvis du heller vil eie siden.</p>
-        <div class="toggle mono rv" role="tablist" aria-label="Prismodell">
-          <button id="tab-month" class="active" role="tab" aria-selected="true">Månedlig</button>
-          <button id="tab-once" role="tab" aria-selected="false">Engangs</button>
+        <div class="sec-head center rv">
+          <span class="kicker">Priser</span>
+          <h2>Ærlige priser, ingen overraskelser</h2>
         </div>
-        <div class="plans rv">
-          <div class="plan">
-            <div class="pname"><h3>Start</h3></div>
+        <p class="price-banner rv">Andre byrå tar gjerne <b>10 000–15 000 kr på forskudd</b>. Hos meg starter du på en lav fast månedspris med <b>hosting, drift, support og endringer inkludert</b> — eller en engangspris om du heller vil eie siden.</p>
+        <div class="toggle rv" role="tablist" aria-label="Prismodell">
+          <div class="pill">
+            <button id="tab-month" class="active" role="tab" aria-selected="true">Månedlig</button>
+            <button id="tab-once" role="tab" aria-selected="false">Engangs</button>
+          </div>
+        </div>
+        <div class="plans">
+          <div class="plan rv">
+            <h3>Start</h3>
             <p class="desc">En skarp, profesjonell side for deg som skal etablere deg.</p>
-            <div class="amount"><span class="u-month">790</span><span class="u-once">3 990</span> <span class="per"><span class="u-month">kr / mnd</span><span class="u-once">kr engangs</span></span></div>
-            <p class="alt"><span class="alt-month">Eller <b>3 990 kr</b> engangs</span><span class="alt-once">Eller <b>790 kr/mnd</b>, alt inkludert</span></p>
+            <div class="amt"><span class="u-month">790,-</span><span class="u-once">3 990,-</span> <span class="per"><span class="u-month">/mnd</span><span class="u-once">engangs</span></span></div>
+            <p class="alt"><span class="alt-month">Eller <b>3 990,-</b> engangs</span><span class="alt-once">Eller <b>790,-/mnd</b>, alt inkludert</span></p>
             <ul>
-              <li><span class="c">+</span> Skreddersydd design</li>
-              <li><span class="c">+</span> Mobiltilpasset &amp; rask</li>
-              <li><span class="c">+</span> Hosting &amp; drift inkludert</li>
-              <li><span class="c">+</span> Support &amp; endringer</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Skreddersydd design</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mobiltilpasset &amp; rask</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Hosting &amp; drift inkludert</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support &amp; endringer</li>
             </ul>
             <a href="#kontakt" class="btn ghost">Velg Start</a>
           </div>
-          <div class="plan feat">
-            <div class="pname"><h3>Vekst</h3><span class="tag mono">Mest valgt</span></div>
-            <p class="desc">Bli funnet på Google og gjør nettsiden til en kundemaskin.</p>
-            <div class="amount"><span class="u-month">1 290</span><span class="u-once">6 990</span> <span class="per"><span class="u-month">kr / mnd</span><span class="u-once">kr engangs</span></span></div>
-            <p class="alt"><span class="alt-month">Eller <b>6 990 kr</b> engangs</span><span class="alt-once">Eller <b>1 290 kr/mnd</b>, alt inkludert</span></p>
+          <div class="plan pop rv d1">
+            <span class="badge">Mest valgt</span>
+            <h3>Vekst</h3>
+            <p class="desc">Bli funnet på Google og gjør siden til en kundemaskin.</p>
+            <div class="amt"><span class="u-month">1 290,-</span><span class="u-once">6 990,-</span> <span class="per"><span class="u-month">/mnd</span><span class="u-once">engangs</span></span></div>
+            <p class="alt"><span class="alt-month">Eller <b>6 990,-</b> engangs</span><span class="alt-once">Eller <b>1 290,-/mnd</b>, alt inkludert</span></p>
             <ul>
-              <li><span class="c">+</span> Alt i Start</li>
-              <li><span class="c">+</span> Booking &amp; skjema</li>
-              <li><span class="c">+</span> SEO &amp; Google-oppsett</li>
-              <li><span class="c">+</span> Prioritert support</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Alt i Start</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Booking &amp; skjema</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> SEO &amp; Google-oppsett</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Prioritert support</li>
             </ul>
-            <a href="#kontakt" class="btn solid">Velg Vekst</a>
+            <a href="#kontakt" class="btn primary">Velg Vekst</a>
           </div>
-          <div class="plan">
-            <div class="pname"><h3>Nettbutikk</h3></div>
+          <div class="plan rv d2">
+            <h3>Nettbutikk</h3>
             <p class="desc">Selg produkter og tjenester trygt, med full kontroll.</p>
-            <div class="amount"><span class="u-month">1 990</span><span class="u-once">12 900</span> <span class="per"><span class="u-month">kr / mnd</span><span class="u-once">kr engangs</span></span></div>
-            <p class="alt"><span class="alt-month">Eller <b>12 900 kr</b> engangs</span><span class="alt-once">Eller <b>1 990 kr/mnd</b>, alt inkludert</span></p>
+            <div class="amt"><span class="u-month">1 990,-</span><span class="u-once">12 900,-</span> <span class="per"><span class="u-month">/mnd</span><span class="u-once">engangs</span></span></div>
+            <p class="alt"><span class="alt-month">Eller <b>12 900,-</b> engangs</span><span class="alt-once">Eller <b>1 990,-/mnd</b>, alt inkludert</span></p>
             <ul>
-              <li><span class="c">+</span> Alt i Vekst</li>
-              <li><span class="c">+</span> WooCommerce nettbutikk</li>
-              <li><span class="c">+</span> Betaling &amp; frakt</li>
-              <li><span class="c">+</span> Opplæring</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Alt i Vekst</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> WooCommerce nettbutikk</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Betaling &amp; frakt</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Opplæring</li>
             </ul>
             <a href="#kontakt" class="btn ghost">Velg Nettbutikk</a>
           </div>
         </div>
-        <p class="fineprint mono rv">Veiledende, eks. mva · Ingen binding · Du ser alltid skissen først</p>
+        <p class="fineprint rv">Veiledende, eks. mva · Ingen binding · Du ser alltid skissen først</p>
       </div>
     </section>
 
-    <!-- ===================== Om ===================== -->
+    <!-- ===================== Om meg ===================== -->
     <section class="sec" id="om">
       <div class="wrap about">
-        <div class="rv">
-          <div class="kicker mono"><span class="idx">(05)</span> Om</div>
-          <p class="pull">Du snakker direkte med han som bygger siden. Ingen selgere, ingen mellomledd, ingen skjulte kostnader.</p>
-          <p class="body">Bak AuranWeb står jeg, <b>Michael</b> — utvikler fra Stavanger. Jeg svarer telefonen, står ansvarlig for jobben, og bygger bare sider jeg faktisk kan stå for. Velger du meg, får du én fast person hele veien.</p>
-          <p class="sig mono">— Michael · Stavanger</p>
+        <div class="photo2 rv">
+          <div class="portrait-wrap">
+            <div class="portrait">
+              <!-- FYLL-INN: samme bilde av Michael her også -->
+              <div class="photo-placeholder">
+                <div class="mono-av">M</div>
+                <small>DITT BILDE HER</small>
+              </div>
+            </div>
+            <div class="sig-badge"><div class="hand">Hei!</div></div>
+          </div>
         </div>
         <div class="rv d1">
-          <div class="who">
-            <div class="portrait">M</div>
-            <div>
-              <b>Michael</b>
-              <small class="mono">Utvikler &amp; gründer</small>
-            </div>
+          <span class="kicker">Om meg</span>
+          <h2>Du snakker med meg — hele veien</h2>
+          <p class="story">Jeg heter <b>Michael</b> og holder til i Stavanger. AuranWeb er mitt — jeg tar telefonen, svarer på e-post, og bygger hver eneste side selv. Ingen callsenter, ingen selgere som lover deg gull og grønne skoger. Jeg tror på ærlig arbeid, tydelig pris, og at du skal se resultatet før du betaler. Bygger jeg siden din, står jeg ansvarlig for den — så enkelt er det.</p>
+          <div class="sign">
+            <span class="hand">Michael</span>
+            <small>Utvikler &amp; gründer<br>AuranWeb, Stavanger</small>
           </div>
-          <ul class="glist">
-            <li><span class="c">✓</span> <span class="t">Du ser før du betaler</span></li>
-            <li><span class="c">✓</span> <span class="t">Ingen binding</span></li>
-            <li><span class="c">✓</span> <span class="t">Fornøyd-garanti</span></li>
-            <li><span class="c">✓</span> <span class="t">Lokal &amp; tilgjengelig</span></li>
-          </ul>
+          <div class="guarantees">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Du ser før du betaler</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ingen binding</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fornøyd-garanti</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lokal &amp; tilgjengelig</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ===================== FAQ ===================== -->
-    <section class="sec" id="faq">
+    <section class="sec alt" id="faq">
       <div class="wrap">
-        <div class="kicker mono rv"><span class="idx">(06)</span> Spørsmål</div>
-        <h2 class="big rv">Godt å vite.</h2>
-        <div class="faq rv" style="margin-top:36px">
-          <details open>
-            <summary>Hva koster en nettside?</summary>
-            <div class="ans">Fra 790 kr/mnd med alt inkludert, eller engangspris fra 3 990 kr. Du får alltid et tydelig tilbud først — ingen skjulte kostnader.</div>
+        <div class="sec-head center rv">
+          <span class="kicker">Spørsmål &amp; svar</span>
+          <h2>Ting du kanskje lurer på</h2>
+        </div>
+        <div class="faq">
+          <details class="rv" open>
+            <summary>Hva koster en nettside? <span class="pm"></span></summary>
+            <div class="ans">Fra 790,-/mnd med alt inkludert, eller engangspris fra 3 990,-. Du får alltid et tydelig tilbud først — ingen skjulte kostnader.</div>
           </details>
-          <details>
-            <summary>Hvor lang tid tar det?</summary>
+          <details class="rv">
+            <summary>Hvor lang tid tar det? <span class="pm"></span></summary>
             <div class="ans">Vanligvis noen få dager fra vi er enige. Enkle sider kan være live samme uke.</div>
           </details>
-          <details>
-            <summary>Eier jeg nettsiden?</summary>
+          <details class="rv">
+            <summary>Eier jeg nettsiden? <span class="pm"></span></summary>
             <div class="ans">Ja — ved engangskjøp eier du siden fullt ut. På månedsabonnement drifter jeg alt for deg, og du kan når som helst gå over til å eie den.</div>
           </details>
-          <details>
-            <summary>Hva om jeg ikke er fornøyd?</summary>
+          <details class="rv">
+            <summary>Hva om jeg ikke er fornøyd? <span class="pm"></span></summary>
             <div class="ans">Du ser en ferdig skisse før du betaler noe. Er du ikke fornøyd, koster det deg ingenting. Null risiko.</div>
           </details>
-          <details>
-            <summary>Må jeg binde meg?</summary>
+          <details class="rv">
+            <summary>Må jeg binde meg? <span class="pm"></span></summary>
             <div class="ans">Nei. Abonnementet har ingen bindingstid — du kan si opp når du vil.</div>
           </details>
         </div>
@@ -582,15 +579,23 @@
     <!-- ===================== Kontakt ===================== -->
     <section class="sec" id="kontakt">
       <div class="wrap contact">
-        <div class="rv">
-          <div class="kicker mono"><span class="idx">(07)</span> Ta kontakt</div>
-          <h2 class="big big-cta">La oss ta en prat.</h2>
-          <p class="sec-lead">Fortell litt om bedriften din, så tar jeg kontakt med en gratis skisse og pris. Helt uforpliktende.</p>
+        <div class="contact-info rv">
+          <span class="kicker">Ta kontakt</span>
+          <h2>La oss ta en prat</h2>
+          <p class="lead">Fortell meg litt om bedriften din, så tar jeg kontakt med en gratis skisse og pris. Helt uforpliktende — og du snakker med meg, ikke en selger.</p>
+          <span class="hand">Jeg gleder meg til å høre fra deg!</span>
           <!-- FYLL-INN: ekte telefon og e-post -->
-          <div class="cinfo">
-            <a href="mailto:post@auranweb.no"><span class="k mono">E-post</span> <span class="v">post@auranweb.no</span></a>
-            <a href="tel:+4700000000"><span class="k mono">Telefon</span> <span class="v">+47 000 00 000</span></a>
-            <div><span class="k mono">Sted</span> <span class="v">Stavanger — hele Norge</span></div>
+          <a class="citem" href="mailto:post@auranweb.no">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><small>E-post</small><b>post@auranweb.no</b></span>
+          </a>
+          <a class="citem" href="tel:+4700000000">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 2 6a2 2 0 0 1 2-2Z"/></svg></span>
+            <span><small>Telefon</small><b>+47 000 00 000</b></span>
+          </a>
+          <div class="citem">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><small>Sted</small><b>Stavanger — for hele Norge</b></span>
           </div>
         </div>
         <div class="rv d1">
@@ -601,11 +606,12 @@
             <div class="field"><label for="epost">E-post</label><input id="epost" name="epost" type="email" required placeholder="ola@bedrift.no" autocomplete="email" /></div>
             <div class="field"><label for="bedrift">Bedrift (valgfritt)</label><input id="bedrift" name="bedrift" type="text" placeholder="Bedriften din AS" autocomplete="organization" /></div>
             <div class="field"><label for="melding">Melding</label><textarea id="melding" name="melding" required placeholder="Fortell kort hva du ser for deg …"></textarea></div>
-            <button type="submit" class="btn solid">Send forespørsel <span class="arw">→</span></button>
-            <p class="fnote mono">Svar innen 24 timer · Du forplikter deg ikke til noe</p>
+            <button type="submit" class="btn primary">Send til Michael <span class="arw">→</span></button>
+            <p class="fnote">Jeg svarer deg selv, vanligvis innen 24 timer.</p>
           </form>
           <div class="thanks" id="takk" role="status" aria-live="polite">
-            <h3 class="big-cta">Takk — jeg tar kontakt!</h3>
+            <span class="hand">Tusen takk!</span>
+            <h3>Jeg tar kontakt snart</h3>
             <p>Meldingen er sendt. Du hører fra meg innen 24 timer med en gratis skisse og pris.</p>
           </div>
         </div>
@@ -615,26 +621,37 @@
 
   <footer>
     <div class="wrap">
-      <div class="foot-word">AuranWeb</div>
-      <div class="foot-rows mono">
-        <div class="cols">
-          <a href="#tjenester">Tjenester</a>
-          <a href="#arbeid">Arbeid</a>
-          <a href="#priser">Priser</a>
-          <a href="#om">Om</a>
-          <a href="#kontakt">Kontakt</a>
+      <div class="foot-top">
+        <div>
+          <div class="foot-brand"><img src="logo.png" alt="" /> <b>AuranWeb</b></div>
+          <p class="tag">Raske, ærlige nettsider for lokale bedrifter — laget av én ekte person i Stavanger.</p>
         </div>
-        <div class="cols">
-          <a href="mailto:post@auranweb.no">post@auranweb.no</a>
-          <span>© 2026 · Stavanger, Norge</span>
+        <div class="foot-links">
+          <div>
+            <h4>Meny</h4>
+            <a href="#tjenester">Tjenester</a>
+            <a href="#arbeid">Arbeid</a>
+            <a href="#priser">Priser</a>
+            <a href="#om">Om meg</a>
+            <a href="#kontakt">Kontakt</a>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <a href="mailto:post@auranweb.no">post@auranweb.no</a>
+            <a href="tel:+4700000000">+47 000 00 000</a>
+            <a href="#kontakt">Ta en gratis prat</a>
+          </div>
         </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 AuranWeb · Stavanger, Norge</span>
+        <span class="hand">Laget med omtanke i Stavanger</span>
       </div>
     </div>
   </footer>
 
   <script>
     document.documentElement.classList.add('js');
-
     var header=document.getElementById('top');
     var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>6);};
     onScroll();window.addEventListener('scroll',onScroll,{passive:true});
