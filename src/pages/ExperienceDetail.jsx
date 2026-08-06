@@ -39,6 +39,10 @@ function PartnerBox({ exp }) {
         <strong>{nok(exp.priceNOK)}</strong>
         <span>per person</span>
       </div>
+      <p className="bookbox-pricenote">
+        Veiledende fra-pris. {exp.partner} setter dagsprisen — du ser den
+        endelige prisen når du velger dato.
+      </p>
 
       <a
         className="btn btn-gold btn-block btn-lg"

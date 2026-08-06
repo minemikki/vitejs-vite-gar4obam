@@ -23,11 +23,14 @@ export const experiences = [
     category: 'Natur & dyr',
     scene: 'jungle',
     duration: '7 timer',
-    priceNOK: 516,
+    // Veiledende fra-pris hentet fra GetYourGuide. GetYourGuide justerer
+    // dagsprisen (valuta, etterspørsel), så dette er et omtrentlig nivå —
+    // prisnotisen i bestillingsboksen sier tydelig at dagsprisen settes der.
+    priceNOK: 519,
     // Tallene under er GetYourGuides egne for produktet, ikke våre. Derfor
     // står kilden på siden — en vurdering uten kilde er verdiløs.
     rating: 4.9,
-    reviews: 682,
+    reviews: 684,
     partner: 'GetYourGuide',
     partnerTitle: 'Chiang Mai: Ethical Half Day Elephant Sanctuary & Waterfall',
     blurb:

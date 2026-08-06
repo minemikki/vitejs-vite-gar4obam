@@ -543,6 +543,7 @@ img.scene { object-fit: cover; }
 .bookbox-price s { color: var(--muted); font-size: 0.95rem; }
 .bookbox-price strong { font-size: 2rem; font-weight: 800; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
 .bookbox-price span { color: var(--muted); font-size: 0.9rem; }
+.bookbox-pricenote { font-size: 0.78rem; line-height: 1.45; color: var(--muted); margin: -12px 0 18px; }
 .bookbox-form { display: flex; flex-direction: column; gap: 14px; }
 .bookbox-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; font-weight: 600; }
 .bookbox-form label > span { display: inline-flex; align-items: center; gap: 6px; }
