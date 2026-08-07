@@ -412,16 +412,23 @@ export default function ExperienceDetail() {
 
       <div className="detail-wrap">
         <div className="detail-main">
-          <section className="detail-block">
-            <h2>Om opplevelsen</h2>
-            <p className="detail-lead">{exp.blurb}</p>
+          <section className="detail-block detail-intro">
+            {exp.hook ? (
+              <>
+                <span className="detail-kicker">Opplevelsen</span>
+                <h2 className="detail-hook">{exp.hook}</h2>
+              </>
+            ) : (
+              <h2>Om opplevelsen</h2>
+            )}
+            <p className="detail-lead">{exp.intro || exp.blurb}</p>
             <div className="tagrow">
               {exp.tags.map((t) => <span className="tag" key={t}>{t}</span>)}
             </div>
           </section>
 
           {exp.highlights.length > 0 && (
-            <section className="detail-block">
+            <section className="detail-block detail-block--gold">
               <h2>Høydepunkter</h2>
               <ul className="hl-list">
                 {exp.highlights.map((h) => (
@@ -435,7 +442,7 @@ export default function ExperienceDetail() {
           )}
 
           {exp.program?.length > 0 && (
-            <section className="detail-block">
+            <section className="detail-block detail-block--teal">
               <h2>Slik foregår dagen</h2>
               <ol className="steplist">
                 {exp.program.map((step) => (
@@ -445,7 +452,7 @@ export default function ExperienceDetail() {
             </section>
           )}
 
-          <section className="detail-block">
+          <section className="detail-block detail-block--green">
             <h2>Hva er inkludert?</h2>
             <div className="inc-grid">
               <div>
@@ -468,7 +475,7 @@ export default function ExperienceDetail() {
           </section>
 
           {(exp.bring?.length > 0 || exp.notFor?.length > 0) && (
-            <section className="detail-block">
+            <section className="detail-block detail-block--coral">
               <h2>Verdt å vite</h2>
               <div className="know-grid">
                 {exp.bring?.length > 0 && (
@@ -495,7 +502,7 @@ export default function ExperienceDetail() {
             </section>
           )}
 
-          <section className="detail-block">
+          <section className="detail-block detail-block--teal">
             <h2>Praktisk informasjon</h2>
             <dl className="deflist">
               {exp.operator && (

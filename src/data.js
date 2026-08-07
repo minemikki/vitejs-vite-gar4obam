@@ -35,6 +35,11 @@ export const experiences = [
     partnerTitle: 'Chiang Mai: Ethical Half Day Elephant Sanctuary & Waterfall',
     blurb:
       'Mat elefantene og gå ved siden av flokken mens de beiter fritt i jungelen — et rolig program uten ridning, drevet av Joy Elephant Sanctuary. Pause ved fossen og lunsj inkludert.',
+    // Kort, slående krok + en mer levende ingress til detaljsiden. Cards og
+    // meta bruker fortsatt den korte `blurb`-en.
+    hook: 'Elefanter som får være elefanter.',
+    intro:
+      'Ingen ridning. Ingen show. Bare deg, en flokk elefanter og jungelen rundt. Du mater dem for hånd, rusler ved siden av dem mens de beiter fritt, og kjøler deg ned ved fossen etterpå — før lunsjen står klar. Henting fra hotellet i Chiang Mai er inkludert.',
     tags: ['Etisk', 'Foss', 'Henting inkl.'],
     // Direkte produktlenke + partner-ID. `referral_redirect=1` er avgjørende:
     // uten det omdirigerer GetYourGuide partner-lenker til søkesiden sin (sett
@@ -129,6 +134,9 @@ export const experiences = [
     partnerTitle: 'Bangkok: Muay Thai Boxing Tickets at Rajadamnern Stadium',
     blurb:
       'Ekte Muay Thai på Rajadamnern — sportens fødested og verdens eldste boksestadion. Proffkamper på rad i en elektrisk kveldsstemning, med flere billettkategorier å velge mellom.',
+    hook: 'Der Muay Thai ble født.',
+    intro:
+      'Rajadamnern er Muay Thais fødested, og stemningen treffer deg i brystet fra første sekund. Proffkjempere i ringen, trommer og en sal som koker — sammen med lokalbefolkning og tilreisende. Tre timer ekte kampsport, med flere billettkategorier å velge mellom.',
     tags: ['Offisiell billett', 'Kveld'],
     bookingUrl:
       'https://www.getyourguide.com/bangkok-l169/bangkok-muay-thai-boxing-tickets-at-rajadamnern-stadium-t505196/?partner_id=1BG7LK4&referral_redirect=1',

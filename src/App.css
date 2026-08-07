@@ -523,8 +523,29 @@ img.scene { object-fit: cover; }
   content: ''; flex: none; width: 26px; height: 4px; border-radius: 4px;
   background: linear-gradient(90deg, var(--emerald), var(--gold));
 }
+/* Fargekodet aksent per seksjon — matcher innholdets farge, så siden får
+   variasjon og personlighet i stedet for én tone hele veien. */
+.detail-block--gold  > h2::before { background: var(--gold); }
+.detail-block--teal  > h2::before { background: var(--emerald); }
+.detail-block--green > h2::before { background: var(--ok); }
+.detail-block--coral > h2::before { background: var(--coral); }
+
+/* Åpningen som et blad-oppslag: liten korall-etikett, så en stor, slående
+   krok i serif. Det er her teksten skal treffe. */
+.detail-intro { margin-bottom: 52px; }
+.detail-kicker {
+  display: inline-block; font-family: var(--font-sans);
+  font-size: 0.74rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--coral); margin-bottom: 12px;
+}
+.detail-block > h2.detail-hook {
+  display: block; font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.08;
+  letter-spacing: -0.022em; color: var(--ink); margin-bottom: 16px; max-width: 15em;
+}
+.detail-block > h2.detail-hook::before { content: none; }
 /* Ingressen er kroken — større og mørkere, ikke grå småtekst. */
-.detail-lead { font-size: 1.2rem; line-height: 1.62; color: var(--ink); margin-bottom: 18px; }
+.detail-lead { font-size: 1.22rem; line-height: 1.62; color: var(--ink-soft); margin-bottom: 18px; max-width: 40em; }
+.detail-intro .detail-lead { color: var(--ink); }
 
 /* Sjekk-/kryss-lister: ikonet ligger i en liten farget brikke. */
 .ticklist { list-style: none; display: flex; flex-direction: column; gap: 11px; }
