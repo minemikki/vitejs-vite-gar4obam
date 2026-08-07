@@ -465,12 +465,22 @@ img.scene { object-fit: cover; }
    Scenene er tegnet i 4:3 — strakk man dem over hele bredden ble de zoomet
    til det ugjenkjennelige. Her beholder de nesten sitt naturlige format. */
 .detail-hero {
-  background: linear-gradient(160deg, var(--emerald-900), var(--emerald));
+  position: relative;
+  /* Varm gyllen glød i hjørnet gir dybde og knytter toppen til solnedgangen
+     i hero-fotoet — premium, ikke flatt. */
+  background:
+    radial-gradient(88% 128% at 89% -24%, rgba(242, 165, 22, 0.2), transparent 52%),
+    linear-gradient(158deg, var(--emerald-900), var(--emerald));
   color: #fff;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: stretch;
   overflow: hidden;
+}
+/* Tynn gulltråd der toppen møter innholdet — en fin, dyr detalj. */
+.detail-hero::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 206, 107, 0.5), transparent);
 }
 .detail-hero-copy {
   padding: calc(var(--nav-h) + 44px) 34px 44px
@@ -487,17 +497,22 @@ img.scene { object-fit: cover; }
 .crumbs a:hover { color: #fff; text-decoration: underline; }
 .crumbs span[aria-current] { color: rgba(255, 255, 255, 0.94); }
 .detail-cat {
-  display: inline-block; align-self: flex-start;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  padding: 5px 13px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
-  margin-bottom: 12px;
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+  padding: 6px 14px 6px 12px; border-radius: 999px;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.11em;
+  color: rgba(255, 255, 255, 0.94); margin-bottom: 18px;
 }
-.detail-hero h1 { color: #fff; font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: 14px; text-shadow: 0 2px 24px rgba(4, 26, 21, 0.4); }
-.detail-facts { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.96rem; color: rgba(255, 255, 255, 0.94); }
-.detail-facts span { display: inline-flex; align-items: center; gap: 6px; }
-.detail-rating svg { color: var(--gold-soft); }
-.detail-rating em { font-style: normal; color: rgba(255, 255, 255, 0.72); font-size: 0.88rem; }
+.detail-cat::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); flex: none; }
+.detail-hero h1 { color: #fff; font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: 18px; text-shadow: 0 2px 26px rgba(4, 26, 21, 0.42); }
+.detail-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; font-size: 0.96rem; color: rgba(255, 255, 255, 0.92); }
+.detail-facts span { display: inline-flex; align-items: center; gap: 7px; }
+.detail-facts span svg { opacity: 0.82; }
+.detail-rating svg { color: var(--gold-soft); opacity: 1; }
+.detail-rating { font-weight: 600; }
+.detail-rating em { font-style: normal; font-weight: 400; color: rgba(255, 255, 255, 0.66); font-size: 0.88rem; }
 
 /* Turer med bildegalleri trenger ikke et eget toppbilde — galleriet rett under
    er selve visningen. Da blir toppen én ren, samlet infolinje i stedet for et
