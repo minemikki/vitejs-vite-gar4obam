@@ -890,8 +890,15 @@ img.scene { object-fit: cover; }
   .detail-hero-copy { padding: 26px 22px 34px; }
   /* Solo-toppen har intet bilde over seg, så teksten må klarere den faste
      menyen selv. */
-  .detail-hero--solo .detail-hero-copy { padding: calc(var(--nav-h) + 18px) 22px 28px; }
-  .detail-hero--solo .crumbs { margin-bottom: 12px; }
+  .detail-hero--solo .detail-hero-copy { padding: calc(var(--nav-h) + 20px) 22px 26px; }
+  /* På mobil er brødsmulene overflødige — tittelen står stort rett under, og
+     nettleseren har egen tilbakeknapp. Å vise hele tittelen i brødsmulene OG
+     som H1 ble dobbelt opp og gjorde toppen høy. Skjul dem her (JSON-LD for
+     søk beholdes uansett), og stram inn fakta-linjen. */
+  .detail-hero .crumbs { display: none; }
+  .detail-hero h1 { margin-bottom: 12px; }
+  .detail-facts { gap: 9px 16px; }
+  .detail-rating { width: 100%; }
 }
 
 @media (max-width: 980px) {
