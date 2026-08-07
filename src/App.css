@@ -621,6 +621,27 @@ img.scene { object-fit: cover; }
 .bookbox-price strong { font-size: 2rem; font-weight: 800; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
 .bookbox-price span { color: var(--muted); font-size: 0.9rem; }
 .bookbox-pricenote { font-size: 0.78rem; line-height: 1.45; color: var(--muted); margin: -12px 0 18px; }
+
+/* Klebrig booking-linje nederst på mobil — pris + knapp alltid synlig, som de
+   store bookingsidene. Skjult på desktop, der sidepanelet følger med i sporet. */
+.stickybook { display: none; }
+@media (max-width: 820px) {
+  .stickybook {
+    display: flex; align-items: center; gap: 14px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+    padding: 11px 16px calc(11px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 26px rgba(6, 52, 46, 0.12);
+  }
+  .stickybook-price { display: flex; align-items: baseline; gap: 6px; flex: none; line-height: 1.05; }
+  .stickybook-price span { font-size: 0.76rem; color: var(--muted); }
+  .stickybook-price strong { font-size: 1.28rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stickybook .btn { flex: 1; padding: 13px 16px; white-space: nowrap; }
+  /* Plass så den faste linjen ikke dekker bunnen av footeren. */
+  .footer { padding-bottom: 88px; }
+}
 .bookbox-form { display: flex; flex-direction: column; gap: 14px; }
 .bookbox-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; font-weight: 600; }
 .bookbox-form label > span { display: inline-flex; align-items: center; gap: 6px; }

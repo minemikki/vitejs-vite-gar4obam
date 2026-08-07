@@ -555,6 +555,30 @@ export default function ExperienceDetail() {
           </div>
         </section>
       )}
+
+      {/* Klebrig booking-linje på mobil — pris + knapp alltid synlig mens du
+          blar, slik de store bookingsidene gjør. Skjult på desktop. */}
+      <div className="stickybook" aria-label="Bestilling">
+        <div className="stickybook-price">
+          <span>Fra</span>
+          <strong>{nok(exp.priceNOK)}</strong>
+        </div>
+        {exp.bookingUrl ? (
+          <a
+            className="btn btn-gold"
+            href={exp.bookingUrl}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            onClick={() => track('partner_click', { id: exp.id, partner: exp.partner })}
+          >
+            Sjekk ledige datoer
+          </a>
+        ) : (
+          <Link className="btn btn-gold" to={`/bestill/${exp.slug}`}>
+            Book nå
+          </Link>
+        )}
+      </div>
     </>
   );
 }
