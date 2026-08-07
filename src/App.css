@@ -1724,23 +1724,25 @@ body.has-comparebar { padding-bottom: 78px; }
 }
 
 /* ============================ Bildegalleri ============================ */
-.detail-gallery-wrap { max-width: var(--maxw); margin: 0 auto; padding: 30px 22px 0; }
+.detail-gallery-wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px 22px 0; }
 .gallery { display: grid; gap: 12px; }
 .gallery-lead {
   position: relative; display: block; width: 100%; padding: 0; border: 0;
   border-radius: var(--radius-lg); overflow: hidden; cursor: zoom-in;
-  background: var(--cream-2); aspect-ratio: 16 / 9; box-shadow: var(--shadow-sm);
+  /* Større, høyere bilde = mer liv og oppmerksomhet med en gang. */
+  background: var(--cream-2); aspect-ratio: 3 / 2; box-shadow: var(--shadow);
 }
-.gallery-lead img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-lead img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s var(--ease); }
+.gallery-lead:hover img { transform: scale(1.03); }
 .gallery-count {
-  position: absolute; right: 14px; bottom: 14px;
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(4, 18, 15, 0.72); color: #fff;
-  font-size: 0.84rem; font-weight: 600; padding: 6px 12px; border-radius: 999px;
-  backdrop-filter: blur(3px);
+  position: absolute; right: 16px; bottom: 16px;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(4, 18, 15, 0.66); color: #fff;
+  font-size: 0.92rem; font-weight: 700; padding: 8px 15px; border-radius: 999px;
+  backdrop-filter: blur(4px);
 }
 .gallery-thumbs {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 96px;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 112px;
   gap: 8px; overflow-x: auto;
   /* Skjul rullefeltet, men behold rullingen — miniatyrene skal kunne dras
      bortover uten at en grå stripe med piler bryter det rene uttrykket. */
@@ -1791,7 +1793,14 @@ body.has-comparebar { padding-bottom: 78px; }
 .lightbox-next { right: 18px; }
 
 @media (max-width: 700px) {
-  .gallery-thumbs { grid-auto-columns: 72px; }
+  /* Fullbredt, høyt hero-bilde rett under toppen — treffer med en gang, som de
+     store bookingsidene. Miniatyrene beholder sin egen kant-luft. */
+  .detail-gallery-wrap { padding: 0; }
+  .gallery { gap: 10px; }
+  .gallery-lead { border-radius: 0; aspect-ratio: 4 / 5; box-shadow: none; }
+  .gallery-count { right: 12px; bottom: 12px; }
+  .gallery-thumbs { grid-auto-columns: 84px; padding: 0 16px; }
+  .gallery-credit { padding: 0 16px; }
   .lightbox-nav { width: 44px; height: 44px; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
