@@ -161,9 +161,15 @@ Pattaya Transfer, Pattaya Rent a Car), national chains, and one visa agent adver
 
 Thai businesses answer Messenger and LINE far faster than email. How to send:
 
-- Write **from the SiamFind Facebook Page**, not your personal profile. A message from a Page
-  to a Page lands in their normal inbox; a personal profile they don't know lands in
-  "Message requests", which many never open.
+- A Facebook Page can't start a conversation, so write from your **personal profile**.
+  Messaging a business **Page** (their "Send message" button) is fine: it lands in the Page's
+  normal inbox. Only messages to someone's *personal* profile land in "Message requests" —
+  for those, also comment on their ad ("Sent you a message about a free listing 👍") so they
+  get a notification, or use the LINE/phone number in their ad instead.
+- Make your profile trustworthy before you start: a real photo, "Founder at SiamFind" as
+  work, and a SiamFind cover image. People check who is writing before they reply.
+- Stay around 15–20 new people a day and vary the wording (their name, their trade).
+  Many identical messages to strangers can get your messaging blocked for a while.
 - Keep the first message short. Messenger rewards a quick, friendly opener with the link.
 - If someone answers but doesn't take over the shop, ask what's missing ("prices? more
   photos?") and fix it the same day.
