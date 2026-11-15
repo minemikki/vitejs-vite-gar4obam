@@ -15,6 +15,13 @@ before handing over a property shop.
 Tip: send 10 a day, follow up once after 3 days, and visit the Jomtien ones in person with a
 printed poster (`https://siamfind.com/preview/<slug>/poster`).
 
+**Also in Admin → Outreach (email drafts, waiting for your Send):** Pattaya Condos & Homes,
+Pattaya Real Estate Co., Seaboard Properties, Rent Buy Thailand, Mr.T Pattaya Taxi, MAKS Car
+Rental, SPS Car Hire, Pattaya Bike Trip, Khun Clean Pattaya, Visa Pattaya, No Limit Divers.
+Each email links to their preview. Not queued: Mike Pattaya Taxi and Pattaya Condo Cleaning
+(already emailed earlier — use LINE now), 9Laundry and Pattaya Scuba Adventures (no published
+email), My Pattaya Place (only a personal Gmail is published — call instead).
+
 ---
 
 ## Property (Jomtien / Pratumnak rentals)
