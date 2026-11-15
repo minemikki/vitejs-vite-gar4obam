@@ -154,3 +154,104 @@ Good candidates for batch 2, found in the same research (published business cont
 Skipped on purpose: businesses with their own strong booking systems (Pattaya Express,
 Pattaya Transfer, Pattaya Rent a Car), national chains, and one visa agent advertising
 "no funds needed" retirement visas.
+
+---
+
+## Facebook Messenger
+
+Thai businesses answer Messenger and LINE far faster than email. How to send:
+
+- Write **from the SiamFind Facebook Page**, not your personal profile. A message from a Page
+  to a Page lands in their normal inbox; a personal profile they don't know lands in
+  "Message requests", which many never open.
+- Keep the first message short. Messenger rewards a quick, friendly opener with the link.
+- If someone answers but doesn't take over the shop, ask what's missing ("prices? more
+  photos?") and fix it the same day.
+
+### A. Shops already built — send the preview
+
+Short message (swap in the name and slug):
+
+- EN: Hi! I'm Michael from SiamFind 👋 I made a free shop page for **{name}** with your prices — have a look: https://siamfind.com/preview/{slug} — one tap and it's yours. Any questions, just ask here.
+- TH: สวัสดีครับ ผมไมเคิลจาก SiamFind ครับ 👋 ผมทำหน้าร้านฟรีให้ **{name}** พร้อมราคาแล้ว ลองดูได้ที่ https://siamfind.com/preview/{slug} กดครั้งเดียวก็เป็นของคุณครับ สงสัยอะไรถามในนี้ได้เลยครับ
+
+| Business | Facebook | Preview slug |
+|---|---|---|
+| Pattaya Condos & Homes | https://www.facebook.com/PattayaCondosHomes/ | pattaya-condos-homes |
+| Rent Buy Thailand | https://www.facebook.com/RBTcondos/ | rent-buy-thailand |
+| My Pattaya Place | https://www.facebook.com/mypattayaplace | my-pattaya-place |
+| Mike Pattaya Taxi | https://www.facebook.com/people/Mike-Pattaya-Taxi/100063803192485 | mike-pattaya-taxi |
+| MAKS Car Rental | https://www.facebook.com/maks.carrent | maks-car-rental |
+| SPS Car Hire | https://www.facebook.com/profile.php?id=100071502034638 | sps-car-hire |
+| Pattaya Condo Cleaning | https://www.facebook.com/pattayacondoclean | pattaya-condo-cleaning |
+| Pattaya Scuba Adventures | https://facebook.com/pattayascubaadventures/ | pattaya-scuba-adventures |
+| No Limit Divers | https://www.facebook.com/nolimitdiverspattaya/ | no-limit-divers |
+
+No Facebook page on their site (use LINE/WhatsApp from the list above instead): Pattaya Real
+Estate Co., Seaboard Properties, Mr.T Pattaya Taxi, Pattaya Bike Trip, 9Laundry, Khun Clean,
+Visa Pattaya.
+
+### B. New categories — ask for their price list, then I build the shop
+
+These are from the new-categories research (electricians, builders, CCTV, IT, pets, tutors…).
+No preview yet: most don't publish prices, so the first message asks for them. When they
+send a price list or photos, forward it and I'll build their shop the same day.
+
+- EN: Hi! I'm Michael from SiamFind, a marketplace where expats in Pattaya find local services. I'd like to make a free shop page for **{name}** in English and Thai, so foreigners can find and message you. Could you send me your price list (or a few prices) and some photos of your work? It's completely free.
+- TH: สวัสดีครับ ผมไมเคิลจาก SiamFind เว็บที่ชาวต่างชาติในพัทยาใช้หาช่างและบริการครับ ผมอยากทำหน้าร้านฟรีให้ **{name}** ทั้งภาษาอังกฤษและภาษาไทย ให้ลูกค้าต่างชาติหาเจอและทักมาได้ รบกวนส่งราคาค่าบริการ (หรือราคาคร่าวๆ) และรูปผลงานให้ผมหน่อยได้ไหมครับ ฟรีทั้งหมดครับ
+
+| Business | Category | Facebook |
+|---|---|---|
+| ACES Pattaya | Electrician, solar, plumbing (Huay Yai; EN line +66 99 093 8789) | https://facebook.com/acespattaya |
+| Kuffki Consulting ("Pattaya Handyman") | Handyman, fluent English | https://facebook.com/kuffkiconsulting |
+| ช่างกุญแจพัทยา (087-488-4333) | Locksmith 24h | https://facebook.com/pattayakey |
+| key24thailand | Locksmith, North Pattaya / Naklua | https://facebook.com/key24thailand |
+| Locksmith 699 | Locksmith | https://facebook.com/Locksmith699 |
+| Casa Miguel | Villa builder (prices on site: 32,000–38,000 THB/m²) | https://facebook.com/CasaMiguelco |
+| Wandeegroup Asia | Villa builder (prices on site) | https://facebook.com/wandeegroup.asia |
+| EPS (European Painting & Electrical Services) | Painting, tiling, carpentry, electrical (Naklua) | https://facebook.com/eps.co.th |
+| ModulPlus | Kitchens and wardrobes (RU/EN/TH/CN) | https://facebook.com/modul.plus.pattaya |
+| South Beach Interior | Interior design and fit-out (Nong Prue) | https://facebook.com/SouthBeachInterior |
+| Arch66 Decoration | Curtains, blinds, wallpaper | https://facebook.com/arch66.design |
+| Assawin Steel Roof | Roofing | https://facebook.com/Assawinsteelroof/ |
+| Focus System & Design | CCTV, Wi-Fi, solar (Naklua) | https://facebook.com/focussystemanddesign |
+| Info Service Plus | CCTV | https://facebook.com/Info.Service.Plus.Pattaya |
+| CCTV Operation | CCTV (Bang Lamung) | https://facebook.com/cctvinoperation |
+| High Solar Thailand | Solar | https://facebook.com/HighSolarThailand |
+| Comcare Computer Service | IT repair, "perfect English" (LINE Mike2JZ) | https://facebook.com/Comcarecomputer |
+| Wattana System Computer | IT repair | https://facebook.com/WattanasystemComputer |
+| iPhone & Mac Pattaya | Apple repair (LINE @macpattaya) | https://facebook.com/servicefixmac |
+| Fix iPhone Pattaya | Phone repair | https://facebook.com/fixiphonepattaya |
+| WeFix Pattaya | Phone repair (Tukcom) | https://facebook.com/WeFix.Pattaya |
+| Rno Service | Car repair | https://facebook.com/Rno.Service.Th/ |
+| Tom Pattaya Motorbike | Motorbike repair | https://facebook.com/TomPattayaMotorbike/ |
+| Next Level Garage | Big bike workshop ("opening soon") | https://facebook.com/customstunt |
+| Pattaya Pro Cleaning | Housekeeping (prices on site: studio from 450 THB) — check it isn't Clean Pro Pattaya | https://facebook.com/pattayaprocleaning |
+| Ms.Clean | Cleaning | https://facebook.com/ms.cleanbyleggio.page/ |
+| ThaiKidsHome | Babysitting (from 350 THB/hour) | https://facebook.com/thaikidshome |
+| Baan Lalisa Nursing Home | Elderly / dementia care (Nong Prue) | https://facebook.com/bannlalisa |
+| Studio Melodica | Music and singing lessons | https://facebook.com/s.melodica |
+| G Clef Music Studio | Music lessons (Huay Yai) | https://facebook.com/gclefmusicstudiopattaya/ |
+| Pattaya Dog Hotel | Dog boarding, walking, grooming | https://facebook.com/Doctorkenyaker |
+| Dog Sitter Pattaya | Pet sitting | https://facebook.com/Dogsitterpattaya/ |
+| Jaijai Grooming | Pet grooming | https://facebook.com/jaijaigrooming/ |
+| PET lovercare | Pet care | https://facebook.com/Petlovercarepattaya/ |
+| Pawsitive Salon | Pet grooming | https://facebook.com/pawsitivesalon/ |
+| PJ's Paw Spa | Pet grooming | https://facebook.com/pjspawspa/ |
+
+### C. Find the ones who only live on Facebook
+
+The biggest win is the Thai tradespeople who have no website at all: electricians, plumbers,
+aircon, roofers, tilers, painters, nannies. They advertise in local Facebook groups. Search
+Facebook for these and join the active groups (sort by recent posts):
+
+- Thai: `ช่างพัทยา`, `ช่างไฟพัทยา`, `ช่างประปาพัทยา`, `ล้างแอร์พัทยา`, `รับเหมาพัทยา`, `แม่บ้านพัทยา`, `พี่เลี้ยงเด็กพัทยา`, `ซื้อขายพัทยา`
+- English: `Pattaya expats`, `Jomtien expats`, `Pattaya buy and sell`, `Pattaya handyman`
+
+Then each day:
+
+1. Message 10 tradespeople who posted an ad in the last week, with message B.
+2. Post once a week in the expat groups: "Looking for a good electrician / plumber / aircon
+   tech in Pattaya? We're listing trusted local pros on SiamFind — recommend yours below."
+   The comments give you both customers and new tradespeople to contact.
+3. Send every price list or photo you get back to me, and I'll turn it into a shop.
